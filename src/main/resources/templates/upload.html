@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="eng" xmlns:th="http://www.thymeleaf.org">
 
+<div th:insert="baseStructure/header :: header">  </div>
 
 <head>
-
-	<title> File Uploader - Upload File </title>	
-		
+	<title> File Uploader - Upload File </title>		
 </head>
 
 
 <body>
+
+<br><br>
+
+<div class="container">
 
 	<form method="POST" action="/upload" enctype="multipart/form-data">
 	
@@ -18,9 +21,8 @@
 		
 	</form>
 	
-	
-	
-	
+</div>	
+
 	
 
 </body>

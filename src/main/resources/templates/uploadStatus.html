@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="eng" xmlns:th="http://www.thymeleaf.org">
 
+<div th:insert="baseStructure/header :: header">  </div>
+
 <head>
 
 	<title> File Uploader - Upload Status </title>	
@@ -9,18 +11,26 @@
 
 
 <body>
+	
+	<br><br>
 
-	<div th:if="${message}">
+	<div class="container" th:if="${message}">
 		<h2 th:text="${message}"></h2>
-		Type: <h3 th:text="${file_Type}"></h3>
-		Size: <h3 th:text="${file_Size}"></h3>
-		
+		Type: <span th:text="${file_Type}"></span><br>
+		Size: <span th:text="${file_Size}"></span><br>		
 	</div>
-
-	<div>
+		
+	<br><br>
+	
+	<div class="container">
+		<button class="btn btn-secondary" onclick="location.href='http://localhost:10100/scan/latest'">Scan uploaded File</button>
+	</div>
+	
+	<br><br>
+	
+	<div class="container">
 		<button class="btn btn-secondary" onclick="location.href='http://localhost:10100/upload'">Upload another File</button>
 	</div>
-
 	
 
 </body>
