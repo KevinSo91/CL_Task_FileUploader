@@ -22,7 +22,8 @@ public class LogFileService{
 	@Autowired 
 	private LogFileRepository logFileRepo;
 	
-	private static String uploadFolderDefault = "C:\\uploads\\";
+	
+	private static String uploadFolderDefault = ".\\data\\";
 	
 	
 	// Constructors
@@ -67,6 +68,7 @@ public class LogFileService{
 		
 		// Erstelle Eintrag in Datenbank		
 		LogFile logFile = new LogFile(user, email, info, filePath.toString(), LocalDateTime.now());
+		logFile.setLines();
 		logFileRepo.save(logFile);
 		
 		

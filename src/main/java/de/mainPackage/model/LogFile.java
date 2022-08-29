@@ -1,6 +1,10 @@
 package de.mainPackage.model;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +30,8 @@ public class LogFile{
 	private String info;
 	private String path;
 	
+	private ArrayList<String> lines;
+	
 	private LocalDateTime upload_time;
 	
 	
@@ -41,6 +47,7 @@ public class LogFile{
 		this.info = info;
 		this.path = path;
 		this.upload_time = upload_time;
+		this.lines = new ArrayList<String>();
 	}
 			
 	
@@ -90,7 +97,45 @@ public class LogFile{
 		this.upload_time = upload_time;
 	}
 
+//	public void setLines(MultipartFile file) {
+//		try {			
+//			FileReader fileReader = new FileReader(file);
+//			BufferedReader bufferedReader = new BufferedReader(fileReader);
+//						
+//			int i = 0;			
+//			String zeile;
+//			while ((zeile = bufferedReader.readLine()) != null) {
+//				this.lines.add(zeile);
+//				i++;
+//			}
+//			
+//			fileReader.close();
+//			bufferedReader.close();
+//		
+//		} catch (FileNotFoundException e) {			
+//			System.out.println("Datei nicht vorhanden");
+//		} catch (NumberFormatException e) {			
+//			e.printStackTrace();
+//		} catch (IOException e) {			
+//			e.printStackTrace();
+//		}
+//	}
 	
+	public void setLines() {
+		FileInputStream inputStream = null;
+		Scanner sc = null;
+		try {
+			inputStream = new FileInputStream(this.path);
+			sc = new Scanner(inputStream, "UTF-8");
+			while(sc.hasNextLine()) {
+				String line = sc.nextLine();
+				this.lines.add(line);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	// Methods
 	
