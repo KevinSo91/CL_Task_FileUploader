@@ -39,6 +39,7 @@ public class UploadController {
 
 		
 		String message = this.logFileService.uploadLogFile(file, "user1", "testFolder", "user1@mail.com", "Test Info");
+//		this.logFileService.saveLines(logFileService.)
 		
 		redirectAttributes.addFlashAttribute("message", message);
 		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());

@@ -3,13 +3,16 @@ package de.mainPackage.model;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -22,23 +25,25 @@ public class LogFile{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="logfile_id")
 	private int id;
 	
-	private String person;
-	
+	private String person;	
 	private String email;	
 	private String info;
 	private String path;
-	
-	private ArrayList<String> lines;
-	
 	private LocalDateTime upload_time;
 	
+	@OneToMany(mappedBy="logFile")
+	private Set<LogFileLine> lines;
+	
+		
 	
 	
 	// Constructors
 	
-	public LogFile() {		
+	public LogFile() {	
+		this.lines = new HashSet<LogFileLine>();
 	}
 		
 	public LogFile(String user, String email, String info, String path, LocalDateTime upload_time) {
@@ -47,7 +52,7 @@ public class LogFile{
 		this.info = info;
 		this.path = path;
 		this.upload_time = upload_time;
-		this.lines = new ArrayList<String>();
+		this.lines = new HashSet<LogFileLine>();
 	}
 			
 	
@@ -129,7 +134,7 @@ public class LogFile{
 			sc = new Scanner(inputStream, "UTF-8");
 			while(sc.hasNextLine()) {
 				String line = sc.nextLine();
-				this.lines.add(line);
+				this.lines.add(new LogFileLine(line));
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
