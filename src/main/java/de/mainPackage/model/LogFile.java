@@ -35,7 +35,7 @@ public class LogFile{
 	private LocalDateTime upload_time;
 	
 	@OneToMany(mappedBy="logFile")
-	private Set<LogFileLine> lines;
+	private Set<LogFileLine> lines = new HashSet<>();
 	
 		
 	
@@ -43,7 +43,7 @@ public class LogFile{
 	// Constructors
 	
 	public LogFile() {	
-		this.lines = new HashSet<LogFileLine>();
+//		this.lines = new HashSet<LogFileLine>();
 	}
 		
 	public LogFile(String user, String email, String info, String path, LocalDateTime upload_time) {

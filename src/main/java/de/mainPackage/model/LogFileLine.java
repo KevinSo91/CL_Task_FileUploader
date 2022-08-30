@@ -19,7 +19,7 @@ public class LogFileLine {
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name="logfile_id", nullable=false)
+	@JoinColumn(name="logfile_id")
 	private LogFile logFile;
 	
 	private String line;
