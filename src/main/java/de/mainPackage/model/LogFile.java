@@ -101,6 +101,10 @@ public class LogFile{
 	public void setUpload_time(LocalDateTime upload_time) {
 		this.upload_time = upload_time;
 	}
+	
+	public void addLine(String line) {
+		this.lines.add(new LogFileLine(line));
+	}
 
 //	public void setLines(MultipartFile file) {
 //		try {			
@@ -126,15 +130,15 @@ public class LogFile{
 //		}
 //	}
 	
-	public void setLines() {
+	public static void saveLines(LogFile file) {
 		FileInputStream inputStream = null;
 		Scanner sc = null;
 		try {
-			inputStream = new FileInputStream(this.path);
+			inputStream = new FileInputStream(file.path);
 			sc = new Scanner(inputStream, "UTF-8");
 			while(sc.hasNextLine()) {
 				String line = sc.nextLine();
-				this.lines.add(new LogFileLine(line));
+				file.lines.add(new LogFileLine(line, file));
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

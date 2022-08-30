@@ -87,7 +87,7 @@ public class LogFileService{
 			sc = new Scanner(inputStream, "UTF-8");
 			while(sc.hasNextLine()) {
 				String line = sc.nextLine();
-				this.lineRepo.save(new LogFileLine(line));
+				logFile.addLine(line);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
