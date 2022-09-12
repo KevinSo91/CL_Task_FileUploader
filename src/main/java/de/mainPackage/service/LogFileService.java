@@ -19,16 +19,14 @@ import de.mainPackage.repository.LogFileLineRepository;
 import de.mainPackage.repository.LogFileRepository;
 
 @Service
-public class LogFileService{
-	
+public class LogFileService{	
 	
 	// Attributes
 	
 	@Autowired 
 	private LogFileRepository logFileRepo;
 	@Autowired
-	private LogFileLineRepository lineRepo;
-	
+	private LogFileLineRepository lineRepo;	
 	
 	private static String uploadFolderDefault = ".\\data\\";
 	
@@ -36,12 +34,11 @@ public class LogFileService{
 	// Constructors
 		
 	
-	
-	// Methods	
+	// Methods
 	
 	@SuppressWarnings("deprecation")
-	public LogFile getLogFileById(int id) {
-		return this.logFileRepo.getById(id);
+	public LogFile getLogFileById(int logFileId) {
+		return this.logFileRepo.getById(logFileId);
 	}
 	
 	public String uploadLogFile(MultipartFile file, 
@@ -82,31 +79,10 @@ public class LogFileService{
 		// Erstelle Eintrag in Datenbank		
 		LogFile logFile = new LogFile(user, email, info, filePath.toString(), LocalDateTime.now());		
 		
-		logFile.addLines();
+//		logFile.addLines();
+//		saveLines(logFile);
 		
 		logFileRepo.save(logFile);
-		
-		
-//		TEST
-//		Schreibe Lines
-		
-//		FileInputStream inputStream = null;
-//		Scanner sc = null;
-//		try {
-//			inputStream = new FileInputStream(logFile.getPath());
-//			sc = new Scanner(inputStream, "UTF-8");
-//			while(sc.hasNextLine()) {
-//				String line = sc.nextLine();
-//				this.lineRepo.save(new LogFileLine(line));
-//			}
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-//		TEST
-		
-		
 		
 		return message;
 	}
@@ -133,7 +109,6 @@ public class LogFileService{
 				this.lineRepo.save(new LogFileLine(line));
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

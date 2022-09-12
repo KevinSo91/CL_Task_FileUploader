@@ -15,11 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "logfiles")
-public class LogFile{
-	
+public class LogFile{	
 	
 	// Attributes
 	
@@ -34,13 +35,13 @@ public class LogFile{
 	private String path;
 	private LocalDateTime upload_time;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="logFile")
 	private Set<LogFileLine> lines = new HashSet<LogFileLine>();
-	
-		
-	
+				
 	
 	// Constructors
+	
 	
 	public LogFile() {	
 		this.lines = new HashSet<LogFileLine>();
@@ -52,11 +53,11 @@ public class LogFile{
 		this.info = info;
 		this.path = path;
 		this.upload_time = upload_time;
-//		this.lines = new HashSet<LogFileLine>();
 	}
 			
 	
-	// Getter/Setter	
+	// Getter/Setter
+	
 	
 	public int getLogFileId() {
 		return id;
@@ -101,7 +102,43 @@ public class LogFile{
 	public void setUpload_time(LocalDateTime upload_time) {
 		this.upload_time = upload_time;
 	}
+		
+	public String getPerson() {
+		return person;
+	}
 
+	public void setPerson(String person) {
+		this.person = person;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Set<LogFileLine> getLines() {
+		return lines;
+	}
+
+		
+	// Methods
+	
+	
+	public void addLines() {
+		FileInputStream inputStream = null;
+		Scanner sc = null;
+		try {
+			inputStream = new FileInputStream(this.path);
+			sc = new Scanner(inputStream, "UTF-8");
+			while(sc.hasNextLine()) {
+				
+				String line = sc.nextLine();
+				this.lines.add(new LogFileLine(line));
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
 //	public void setLines(MultipartFile file) {
 //		try {			
 //			FileReader fileReader = new FileReader(file);
@@ -125,28 +162,6 @@ public class LogFile{
 //			e.printStackTrace();
 //		}
 //	}
-	
-	public void addLines() {
-		FileInputStream inputStream = null;
-		Scanner sc = null;
-		try {
-			inputStream = new FileInputStream(this.path);
-			sc = new Scanner(inputStream, "UTF-8");
-			while(sc.hasNextLine()) {
-				
-				String line = sc.nextLine();
-				this.lines.add(new LogFileLine(line));
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	// Methods
-	
-	
-	
 	
 	
 }

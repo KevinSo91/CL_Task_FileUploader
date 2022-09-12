@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.mainPackage.service.LogFileLineService;
 import de.mainPackage.service.LogFileService;
 
 @Controller
@@ -17,6 +18,9 @@ public class UploadController {
 	
 	@Autowired
 	private LogFileService logFileService;
+	@Autowired
+	private LogFileLineService logFileLineService;
+	
 
 	
 	@Autowired
@@ -41,6 +45,9 @@ public class UploadController {
 
 		// Speichere Datei in Ordner mit aktuellem Datum
 		String message = this.logFileService.uploadLogFile(file, "user1", LocalDate.now().toString(), "user1@mail.com", "Test Info");
+		
+//		logFileLineService.saveLines(logFileService.getLogFileById(1));
+		
 //		this.logFileService.saveLines(logFileService.getLogFileById(1));
 		
 		redirectAttributes.addFlashAttribute("message", message);
