@@ -1,0 +1,138 @@
+package de.comline.servicedeskdownloadportaladminapp.config.apprelated;
+
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
+
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(
+        entityManagerFactoryRef = "primaryEntityManagerFactory",
+        transactionManagerRef = "primaryTransactionManager",
+        basePackages = {"de.comline.servicedeskdownloadportaladminapp.repository.apprelated"})
+public class ApprelatedJpaConfiguration {
+
+    @Primary
+    @Bean(name = "primaryDataSourceProperties")
+    @ConfigurationProperties("spring.datasource-primary")
+    public DataSourceProperties primaryDataSourceProperties() {
+        return new DataSourceProperties();
+    }
+
+    @Primary
+    @Bean(name = "primaryDataSource")
+    @ConfigurationProperties("spring.datasource-primary.configuration")
+    public DataSource primaryDataSource(@Qualifier("primaryDataSourceProperties") DataSourceProperties primaryDataSourceProperties) {
+        return primaryDataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource.class).build();
+    }
+
+    @Primary
+    @Bean(name = "primaryEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean primaryEntityManagerFactory(
+            EntityManagerFactoryBuilder primaryEntityManagerFactoryBuilder, @Qualifier("primaryDataSource") DataSource primaryDataSource) {
+
+        Map<String, String> primaryJpaProperties = new HashMap<>();
+        primaryJpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL82Dialect");
+        primaryJpaProperties.put("hibernate.hbm2ddl.auto", "update");
+
+        return primaryEntityManagerFactoryBuilder
+                .dataSource(primaryDataSource)
+                .packages("de.comline.servicedeskdownloadportaladminapp.model.apprelated")
+                .persistenceUnit("primaryDataSource")
+                .properties(primaryJpaProperties)
+                .build();
+    }
+
+    @Primary
+    @Bean(name = "primaryTransactionManager")
+    public PlatformTransactionManager primaryTransactionManager(
+            @Qualifier("primaryEntityManagerFactory") EntityManagerFactory primaryEntityManagerFactory) {
+
+        return new JpaTransactionManager(primaryEntityManagerFactory);
+    }
+}
+
+ 
+
+ 
+
+ 
+
+package de.comline.servicedeskdownloadportaladminapp.config.jiraservicedesk;
+
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
+
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(
+        entityManagerFactoryRef = "secondaryEntityManagerFactory",
+        transactionManagerRef = "secondaryTransactionManager",
+        basePackages = {"de.comline.servicedeskdownloadportaladminapp.repository.jiraservicedesk"})
+public class ServicedeskJpaConfiguration {
+
+    @Bean(name = "secondaryDataSourceProperties")
+    @ConfigurationProperties("spring.datasource-secondary")
+    public DataSourceProperties secondaryDataSourceProperties() {
+        return new DataSourceProperties();
+    }
+
+    @Bean(name = "secondaryDataSource")
+    @ConfigurationProperties("spring.datasource-secondary.configuration")
+    public DataSource secondaryDataSource(@Qualifier("secondaryDataSourceProperties") DataSourceProperties secondaryDataSourceProperties) {
+        return secondaryDataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource.class).build();
+    }
+
+    @Bean(name = "secondaryEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean secondaryEntityManagerFactory(
+            EntityManagerFactoryBuilder secondaryEntityManagerFactoryBuilder, @Qualifier("secondaryDataSource") DataSource secondaryDataSource) {
+
+        Map<String, String> secondaryJpaProperties = new HashMap<>();
+        secondaryJpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL82Dialect");
+        secondaryJpaProperties.put("hibernate.hbm2ddl.auto", "none");
+
+        return secondaryEntityManagerFactoryBuilder
+                .dataSource(secondaryDataSource)
+                .packages("de.comline.servicedeskdownloadportaladminapp.model.jiraservicedesk")
+                .persistenceUnit("secondaryDataSource")
+                .properties(secondaryJpaProperties)
+                .build();
+    }
+
+    @Bean(name = "secondaryTransactionManager")
+    public PlatformTransactionManager secondaryTransactionManager(
+            @Qualifier("secondaryEntityManagerFactory") EntityManagerFactory secondaryEntityManagerFactory) {
+
+        return new JpaTransactionManager(secondaryEntityManagerFactory);
+    }
+}

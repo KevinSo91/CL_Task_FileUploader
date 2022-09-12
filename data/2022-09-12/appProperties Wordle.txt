@@ -1,0 +1,13 @@
+spring.datasource.url = jdbc:postgresql://localhost:5432/wordle_db
+spring.datasource.username = postgres
+spring.datasource.password = passwort
+
+spring.jpa.hibernate.ddl-auto = create-drop
+spring.jpa.show-sql = true
+spring.jpa.database-platform = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql = true
+
+spring.thymeleaf.cache = false
+
+server.port = 8090
+server.error.include-message = always

@@ -1,5 +1,7 @@
 package de.mainPackage.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,9 +39,9 @@ public class UploadController {
 		System.out.println(LogFileService.checkLogFileType(file));
 		System.out.println(LogFileService.checkLogFileSize(file));
 
-		
-		String message = this.logFileService.uploadLogFile(file, "user1", "testFolder", "user1@mail.com", "Test Info");
-//		this.logFileService.saveLines(logFileService.)
+		// Speichere Datei in Ordner mit aktuellem Datum
+		String message = this.logFileService.uploadLogFile(file, "user1", LocalDate.now().toString(), "user1@mail.com", "Test Info");
+//		this.logFileService.saveLines(logFileService.getLogFileById(1));
 		
 		redirectAttributes.addFlashAttribute("message", message);
 		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());
@@ -52,6 +54,12 @@ public class UploadController {
 	@GetMapping("/uploadStatus")
 	public String uploadStatus() {
 		return "uploadStatus";
+	}
+	
+	
+	@PostMapping("/upload/scan")
+	public String scanFile() {
+		return "";
 	}
 	
 	

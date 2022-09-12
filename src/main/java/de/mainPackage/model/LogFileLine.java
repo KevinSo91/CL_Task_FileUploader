@@ -19,19 +19,16 @@ public class LogFileLine {
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name="logfile_id")
+	@JoinColumn(name="logfile_id", nullable=false)
 	private LogFile logFile;
 	
 	private String line;
 	
+	private long lineNumber;
+	
 	
 	public LogFileLine(String line) {
 		this.line = line;
-	}
-	
-	public LogFileLine(String line, LogFile file) {
-		this.line = line;
-		this.logFile = file;
 	}
 
 }

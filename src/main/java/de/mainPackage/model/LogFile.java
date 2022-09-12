@@ -35,7 +35,7 @@ public class LogFile{
 	private LocalDateTime upload_time;
 	
 	@OneToMany(mappedBy="logFile")
-	private Set<LogFileLine> lines = new HashSet<>();
+	private Set<LogFileLine> lines = new HashSet<LogFileLine>();
 	
 		
 	
@@ -43,7 +43,7 @@ public class LogFile{
 	// Constructors
 	
 	public LogFile() {	
-//		this.lines = new HashSet<LogFileLine>();
+		this.lines = new HashSet<LogFileLine>();
 	}
 		
 	public LogFile(String user, String email, String info, String path, LocalDateTime upload_time) {
@@ -52,7 +52,7 @@ public class LogFile{
 		this.info = info;
 		this.path = path;
 		this.upload_time = upload_time;
-		this.lines = new HashSet<LogFileLine>();
+//		this.lines = new HashSet<LogFileLine>();
 	}
 			
 	
@@ -101,10 +101,6 @@ public class LogFile{
 	public void setUpload_time(LocalDateTime upload_time) {
 		this.upload_time = upload_time;
 	}
-	
-	public void addLine(String line) {
-		this.lines.add(new LogFileLine(line));
-	}
 
 //	public void setLines(MultipartFile file) {
 //		try {			
@@ -130,15 +126,16 @@ public class LogFile{
 //		}
 //	}
 	
-	public static void saveLines(LogFile file) {
+	public void addLines() {
 		FileInputStream inputStream = null;
 		Scanner sc = null;
 		try {
-			inputStream = new FileInputStream(file.path);
+			inputStream = new FileInputStream(this.path);
 			sc = new Scanner(inputStream, "UTF-8");
 			while(sc.hasNextLine()) {
+				
 				String line = sc.nextLine();
-				file.lines.add(new LogFileLine(line, file));
+				this.lines.add(new LogFileLine(line));
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

@@ -34,9 +34,15 @@ public class LogFileService{
 	
 	
 	// Constructors
+		
 	
 	
 	// Methods	
+	
+	@SuppressWarnings("deprecation")
+	public LogFile getLogFileById(int id) {
+		return this.logFileRepo.getById(id);
+	}
 	
 	public String uploadLogFile(MultipartFile file, 
 								String user,
@@ -74,25 +80,30 @@ public class LogFileService{
 		}
 		
 		// Erstelle Eintrag in Datenbank		
-		LogFile logFile = new LogFile(user, email, info, filePath.toString(), LocalDateTime.now());
-//		logFile.setLines();
+		LogFile logFile = new LogFile(user, email, info, filePath.toString(), LocalDateTime.now());		
+		
+		logFile.addLines();
+		
 		logFileRepo.save(logFile);
+		
 		
 //		TEST
 //		Schreibe Lines
-		FileInputStream inputStream = null;
-		Scanner sc = null;
-		try {
-			inputStream = new FileInputStream(logFile.getPath());
-			sc = new Scanner(inputStream, "UTF-8");
-			while(sc.hasNextLine()) {
-				String line = sc.nextLine();
-				logFile.addLine(line);
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+//		FileInputStream inputStream = null;
+//		Scanner sc = null;
+//		try {
+//			inputStream = new FileInputStream(logFile.getPath());
+//			sc = new Scanner(inputStream, "UTF-8");
+//			while(sc.hasNextLine()) {
+//				String line = sc.nextLine();
+//				this.lineRepo.save(new LogFileLine(line));
+//			}
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 //		TEST
 		
 		
