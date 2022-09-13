@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -25,6 +26,7 @@ public class LogFileLine {
 	@JoinColumn(name="logfile_id", referencedColumnName = "logfile_id", nullable=false)
 	private LogFile logFile;
 	
+	@Column(columnDefinition="TEXT")
 	private String line;
 	
 	private long lineNumber;
