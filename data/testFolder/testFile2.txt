@@ -1,7 +1,0 @@
-test1
-test2
-error: blablabla
-test4
-test5
-warning: achtung
-test7

@@ -1,8 +1,0 @@
-spring.datasource.url=jdbc:postgresql://localhost:5432/kundenapi
-spring.datasource.username=postgres
-spring.datasource.password=passwort
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-
-server.port=8081
