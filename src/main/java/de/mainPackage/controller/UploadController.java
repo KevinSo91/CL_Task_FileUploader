@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,8 @@ public class UploadController {
 	
 	
 	@GetMapping({"/", "/upload"})
-	public String getUploadPage() {		
+	public String getUploadPage(Model model) {
+		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
 		return "upload";
 	}
 
@@ -45,17 +47,12 @@ public class UploadController {
 
 		// Speichere Datei in Ordner mit aktuellem Datum
 		String message = this.logFileService.uploadLogFile(file, "user1", LocalDate.now().toString(), "user1@mail.com", "Test Info");
-		
-//		logFileLineService.saveLines(logFileService.getLogFileById(1));
-		
-//		this.logFileService.saveLines(logFileService.getLogFileById(1));
-		
+				
 		redirectAttributes.addFlashAttribute("message", message);
 		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());
 		redirectAttributes.addFlashAttribute("file_Size", file.getSize());
 				
-		return "redirect:/uploadStatus";
-		
+		return "redirect:/uploadStatus";		
 	}
 	
 	@GetMapping("/uploadStatus")

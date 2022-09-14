@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,10 @@ public class LogFileService{
 		
 	
 	// Methods
+	
+	public List<LogFile> getAllLogFiles(){
+		return logFileRepo.findAll();
+	}
 	
 	@SuppressWarnings("deprecation")
 	public LogFile getLogFileById(int logFileId) {

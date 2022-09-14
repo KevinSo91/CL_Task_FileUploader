@@ -2,6 +2,7 @@ package de.mainPackage.service;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class LogFileLineService {
 	}
 	
 	//Methods
+	
+	public List<LogFileLine> getAllLines() {
+		return lineRepo.findAll();
+	}
 	
 	public void saveLines(LogFile logFile) {
 		FileInputStream inputStream = null;
