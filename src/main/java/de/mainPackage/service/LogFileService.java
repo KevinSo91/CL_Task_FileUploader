@@ -82,10 +82,7 @@ public class LogFileService{
 		}
 		
 		// Erstelle Eintrag in Datenbank		
-		LogFile logFile = new LogFile(user, email, info, filePath.toString(), LocalDateTime.now());		
-		
-//		logFile.addLines();
-//		saveLines(logFile);
+		LogFile logFile = new LogFile(user, email, info, filePath.toString(), LocalDateTime.now());
 		
 		logFileRepo.save(logFile);
 		

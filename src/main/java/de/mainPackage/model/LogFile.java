@@ -33,7 +33,8 @@ public class LogFile{
 	private String email;	
 	private String info;
 	private String path;
-	private LocalDateTime upload_time;
+	private LocalDateTime uploadTime;
+	private boolean isScanned;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="logFile")
@@ -43,32 +44,30 @@ public class LogFile{
 	// Constructors
 	
 	
-	public LogFile() {	
+	public LogFile() {
+		this.isScanned = false;
 		this.lines = new HashSet<LogFileLine>();
 	}
 		
-	public LogFile(String user, String email, String info, String path, LocalDateTime upload_time) {
+	public LogFile(String user, String email, String info, String path, LocalDateTime uploadTime) {
 		this.person = user;
 		this.email = email;
 		this.info = info;
 		this.path = path;
-		this.upload_time = upload_time;
+		this.uploadTime = uploadTime;
+		this.isScanned = false;
 	}
 			
 	
-	// Getter/Setter
+	// Getter / Setter
 	
 	
-	public int getLogFileId() {
-		return id;
-	}
-
-	public String getUser() {
+	public String getPerson() {
 		return person;
 	}
 
-	public void setUser(String user) {
-		this.person = user;
+	public void setPerson(String person) {
+		this.person = person;
 	}
 
 	public String getEmail() {
@@ -95,20 +94,20 @@ public class LogFile{
 		this.path = path;
 	}
 
-	public LocalDateTime getUpload_time() {
-		return upload_time;
+	public LocalDateTime getUploadTime() {
+		return uploadTime;
 	}
 
-	public void setUpload_time(LocalDateTime upload_time) {
-		this.upload_time = upload_time;
-	}
-		
-	public String getPerson() {
-		return person;
+	public void setUploadTime(LocalDateTime uploadTime) {
+		this.uploadTime = uploadTime;
 	}
 
-	public void setPerson(String person) {
-		this.person = person;
+	public boolean getIsScanned() {
+		return isScanned;
+	}
+
+	public void setIsScanned(boolean isScanned) {
+		this.isScanned = isScanned;
 	}
 
 	public int getId() {
@@ -118,8 +117,8 @@ public class LogFile{
 	public Set<LogFileLine> getLines() {
 		return lines;
 	}
-
-		
+	
+	
 	// Methods
 	
 	
@@ -138,30 +137,6 @@ public class LogFile{
 			e.printStackTrace();
 		}
 	}
-	
-//	public void setLines(MultipartFile file) {
-//		try {			
-//			FileReader fileReader = new FileReader(file);
-//			BufferedReader bufferedReader = new BufferedReader(fileReader);
-//						
-//			int i = 0;			
-//			String zeile;
-//			while ((zeile = bufferedReader.readLine()) != null) {
-//				this.lines.add(zeile);
-//				i++;
-//			}
-//			
-//			fileReader.close();
-//			bufferedReader.close();
-//		
-//		} catch (FileNotFoundException e) {			
-//			System.out.println("Datei nicht vorhanden");
-//		} catch (NumberFormatException e) {			
-//			e.printStackTrace();
-//		} catch (IOException e) {			
-//			e.printStackTrace();
-//		}
-//	}
 	
 	
 }

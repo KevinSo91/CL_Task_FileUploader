@@ -34,15 +34,17 @@
 					<th>Upload Time</th>
 					<th>User</th>
 					<th>Info</th>
+					<th>Is Scanned</th>
 				</tr>
 				
 			</thead>
 			<tbody>
 				<tr th:each="logFile : ${logFilesList}">
 					<td th:text="${logFile.id}"></td>
-					<td th:text="${logFile.upload_time}"></td>
+					<td th:text="${logFile.uploadTime}"></td>
 					<td th:text="${logFile.person}"></td>
 					<td th:text="${logFile.info}"></td>
+					<td th:text="${logFile.isScanned}"></td>
 				</tr>
 			</tbody>
 		</table>

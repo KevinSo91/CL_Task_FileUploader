@@ -19,6 +19,10 @@ public class LogFileLineController{
 	@PostMapping("/scanFile/{LogFileId}")
 	public String CreateLines(@PathVariable int LogFileId) {
 		logFileLineService.saveLines(logFileService.getLogFileById(LogFileId));
+//		logFileService.getLogFileById(LogFileId).setPerson("user2");
+//		logFileService.getLogFileById(LogFileId).setIsScanned(true);
+//		System.out.println(logFileService.getLogFileById(LogFileId));
+//		logFileService.getLogFileById(LogFileId).
 		return "upload";
 	}
 	
