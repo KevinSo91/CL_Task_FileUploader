@@ -33,7 +33,7 @@ public class LogFileService{
 	
 	
 	// Constructors
-		
+	
 	
 	// Methods
 	
@@ -100,6 +100,8 @@ public class LogFileService{
 		return file.getContentType();
 	}
 	
+	// Methods
+
 	public void saveLines(LogFile logFile) {
 		FileInputStream inputStream = null;
 		Scanner sc = null;
@@ -113,6 +115,12 @@ public class LogFileService{
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		
+		
+//		logFileRepo.getOne(logFile.getId()).setIsScanned(true);
+//		logFileRepo.save(null)
+		
 		
 	}
 	

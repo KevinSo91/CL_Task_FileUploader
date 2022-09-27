@@ -23,6 +23,7 @@ public class LogFileLineController{
 //		logFileService.getLogFileById(LogFileId).setIsScanned(true);
 //		System.out.println(logFileService.getLogFileById(LogFileId));
 //		logFileService.getLogFileById(LogFileId).
+		
 		return "upload";
 	}
 	
