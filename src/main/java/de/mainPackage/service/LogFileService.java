@@ -84,7 +84,7 @@ public class LogFileService{
 		}
 		
 		// Erstelle Eintrag in Tabelle 'logfiles'		
-		LogFile logFile = new LogFile(user, email, info, filePath.toString(), LocalDateTime.now());		
+		LogFile logFile = new LogFile(user, email, info, fileName ,filePath.toString(), LocalDateTime.now());		
 		logFileRepo.save(logFile);
 		
 		

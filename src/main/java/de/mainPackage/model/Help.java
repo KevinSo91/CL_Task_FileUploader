@@ -9,23 +9,27 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="faq")
-public class Hilfestellung{
+public class Help{
 	
 	// Attributes
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="hilfestellung_id")
+	@Column(name="help_id")
 	private int id;
 	
 	// Treffer-Pattern
 	private String regEx;
 	
 	@Column(columnDefinition="TEXT")
-	private String hilfestellung;
+	private String helpText;
 	
 	private String link;
 
+	
+	// Getter / Setter
+	
+	
 	public String getRegEx() {
 		return regEx;
 	}

@@ -32,6 +32,7 @@ public class LogFile{
 	private String person;	
 	private String email;	
 	private String info;
+	private String fileName;
 	private String path;
 	private LocalDateTime uploadTime;
 	private boolean isScanned;
@@ -49,10 +50,11 @@ public class LogFile{
 		this.lines = new HashSet<LogFileLine>();
 	}
 		
-	public LogFile(String user, String email, String info, String path, LocalDateTime uploadTime) {
+	public LogFile(String user, String email, String info, String fileName, String path, LocalDateTime uploadTime) {
 		this.person = user;
 		this.email = email;
 		this.info = info;
+		this.fileName = fileName;
 		this.path = path;
 		this.uploadTime = uploadTime;
 		this.isScanned = false;
@@ -84,6 +86,14 @@ public class LogFile{
 
 	public void setInfo(String info) {
 		this.info = info;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public String getPath() {

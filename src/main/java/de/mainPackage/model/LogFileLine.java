@@ -34,6 +34,7 @@ public class LogFileLine {
 	
 	// Constructors
 	
+	
 	public LogFileLine() {		
 	}
 	

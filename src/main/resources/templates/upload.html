@@ -31,6 +31,7 @@
 			<thead>
 				<tr>
 					<th>ID</th>
+					<th>Name</th>
 					<th>Upload Time</th>
 					<th>User</th>
 					<th>Info</th>
@@ -42,6 +43,7 @@
 			<tbody>
 				<tr th:each="logFile : ${logFilesList}">
 					<td th:text="${logFile.id}"></td>
+					<td th:text="${logFile.fileName}"></td>					
 					<td th:text="${logFile.uploadTime}"></td>
 					<td th:text="${logFile.person}"></td>
 					<td th:text="${logFile.info}"></td>
