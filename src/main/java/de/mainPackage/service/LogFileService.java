@@ -28,6 +28,8 @@ public class LogFileService{
 	private LogFileRepository logFileRepo;
 	@Autowired
 	private LogFileLineRepository lineRepo;	
+	@Autowired
+	private LogFileLineService logFileLineService;
 	
 	private static String uploadFolderDefault = ".\\data\\";
 	
@@ -81,10 +83,16 @@ public class LogFileService{
 			message = "Upload failed";
 		}
 		
-		// Erstelle Eintrag in Datenbank		
-		LogFile logFile = new LogFile(user, email, info, filePath.toString(), LocalDateTime.now());
-		
+		// Erstelle Eintrag in Tabelle 'logfiles'		
+		LogFile logFile = new LogFile(user, email, info, filePath.toString(), LocalDateTime.now());		
 		logFileRepo.save(logFile);
+		
+		
+		// Erstelle Einträge in Tabelle 'logfile_lines' (scan)
+		logFileLineService.saveLines(logFile);
+		logFile.setIsScanned(true);
+		logFileRepo.save(logFile);
+				
 		
 		return message;
 	}

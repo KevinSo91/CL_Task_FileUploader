@@ -34,6 +34,8 @@ public class LogFileLine {
 	
 	// Constructors
 	
+	public LogFileLine() {		
+	}
 	
 	public LogFileLine(String line) {
 		this.line = line;

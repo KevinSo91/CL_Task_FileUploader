@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+
+<div th:insert="baseStructure/header :: header">  </div>
+
+<head>
+	<title> File Analyzer - All Logfile Lines </title>
+	
+	<!-- Java Script für die Tabellen Ansicht -->
+	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+		    $('#table_logFileLines').DataTable();
+		} );
+	</script>
+	<!-- ENDE Java Script für die Tabellen Ansicht -->		
+</head>
+
+
+<body>
+
+	<br><br>
+	
+	<div class="container">
+		
+		<table id="table_logFileLines" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>LogFileLine ID</th>
+					<th>LogFile ID</th>
+					<th>Line</th>
+					<th>Line Number</th>									
+				</tr>
+				
+			</thead>
+			<tbody>
+				<tr th:each="logFileLine : ${logFileLinesList}">
+					<td th:text="${logFileLine.id}"></td>
+					<td th:text="${logFileLine.logFile.path}"></td>
+					<td th:text="${logFileLine.line}"></td>
+					<td th:text="${logFileLine.lineNumber}"></td>		
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
+	
+	<br><br>
+	
+		
+
+</body>
+
+
+</html>

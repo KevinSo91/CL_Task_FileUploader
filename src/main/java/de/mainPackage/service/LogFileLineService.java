@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import de.mainPackage.model.LogFile;
 import de.mainPackage.model.LogFileLine;
 import de.mainPackage.repository.LogFileLineRepository;
+import de.mainPackage.repository.LogFileRepository;
 
 @Service
 public class LogFileLineService {
@@ -19,6 +20,8 @@ public class LogFileLineService {
 	
 	@Autowired
 	private LogFileLineRepository lineRepo;
+	@Autowired
+	private LogFileRepository logFileRepo;
 	
 	// Constructors
 	
@@ -47,7 +50,8 @@ public class LogFileLineService {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+		logFile.setIsScanned(true);
+		logFileRepo.save(logFile);
 	}
 	
 }

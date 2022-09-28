@@ -2,6 +2,8 @@ package de.mainPackage.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -18,13 +20,16 @@ public class LogFileLineController{
 	
 	@PostMapping("/scanFile/{LogFileId}")
 	public String CreateLines(@PathVariable int LogFileId) {
-		logFileLineService.saveLines(logFileService.getLogFileById(LogFileId));
-//		logFileService.getLogFileById(LogFileId).setPerson("user2");
-//		logFileService.getLogFileById(LogFileId).setIsScanned(true);
-//		System.out.println(logFileService.getLogFileById(LogFileId));
-//		logFileService.getLogFileById(LogFileId).
 		
+		logFileLineService.saveLines(logFileService.getLogFileById(LogFileId));
 		return "upload";
+		
+	}
+	
+	@GetMapping("/logFileLines")
+	public String getAllLogFileLines(Model model) {
+		model.addAttribute("logFileLinesList", logFileLineService.getAllLines());
+		return "logFileLines";
 	}
 	
 }
