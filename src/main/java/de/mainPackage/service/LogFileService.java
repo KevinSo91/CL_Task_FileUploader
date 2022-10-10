@@ -90,7 +90,7 @@ public class LogFileService{
 		
 		// Erstelle Einträge in Tabelle 'logfile_lines' (scan)
 		logFileLineService.saveLines(logFile);
-		logFile.setIsScanned(true);
+//		logFile.setIsScanned(true);
 		logFileRepo.save(logFile);
 				
 		

@@ -38,6 +38,14 @@ public class Help{
 		this.regEx = regEx;
 	}
 
+	public String getHelpText() {
+		return helpText;
+	}
+
+	public void setHelpText(String helpText) {
+		this.helpText = helpText;
+	}
+
 	public String getLink() {
 		return link;
 	}

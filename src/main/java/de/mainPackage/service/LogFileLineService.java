@@ -2,6 +2,7 @@ package de.mainPackage.service;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,18 +39,21 @@ public class LogFileLineService {
 	public void saveLines(LogFile logFile) {
 		FileInputStream inputStream = null;
 		Scanner sc = null;
+		ArrayList<LogFileLine> logFileLines = new ArrayList<LogFileLine>();
 		try {
 			inputStream = new FileInputStream(logFile.getPath());
 			sc = new Scanner(inputStream, "UTF-8");
 			long lineIndex = 0;
 			while(sc.hasNextLine()) {
 				String line = sc.nextLine();
-				this.lineRepo.save(new LogFileLine(logFile, line, lineIndex));
+				logFileLines.add(new LogFileLine(logFile, line, lineIndex));
+//				this.lineRepo.save(new LogFileLine(logFile, line, lineIndex));
 				lineIndex++ ;
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		lineRepo.saveAll(logFileLines);
 		logFile.setIsScanned(true);
 		logFileRepo.save(logFile);
 	}
