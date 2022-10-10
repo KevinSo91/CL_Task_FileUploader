@@ -146,26 +146,9 @@ public class LogFile{
 	
 	
 	// Methods
+		
 	
-	
-//	public void addLines() {
-//		FileInputStream inputStream = null;
-//		Scanner sc = null;
-//		try {
-//			inputStream = new FileInputStream(this.path);
-//			sc = new Scanner(inputStream, "UTF-8");
-//			while(sc.hasNextLine()) {
-//				
-//				String line = sc.nextLine();
-//				this.lines.add(new LogFileLine(line));
-//			}
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
-	
-	public void addHelp(Help help) {
+	public void addMatch(Help help) {
 		this.matches.add(help);
 	}
 	

@@ -22,6 +22,7 @@ import de.mainPackage.repository.LogFileRepository;
 @Service
 public class LogFileService{	
 	
+	
 	// Attributes
 	
 	
@@ -96,6 +97,7 @@ public class LogFileService{
 		
 	
 	// Static Methods
+	
 	
 	public static long checkLogFileSize(MultipartFile file) {		
 		return file.getSize();
