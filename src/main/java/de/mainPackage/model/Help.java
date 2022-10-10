@@ -1,10 +1,14 @@
 package de.mainPackage.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +28,29 @@ public class Help{
 	@Column(columnDefinition="TEXT")
 	private String helpText;
 	
+	public int getId() {
+		return id;
+	}
+
 	private String link;
+	
+	@ManyToMany(mappedBy = "matches")
+	private Set<LogFile> logFiles = new HashSet<LogFile>();
 
 	
+	// Contructors
+	
+	public Help() {		
+	}
+	
+	public Help(String regEx, String helpText, String link) {
+		super();
+		this.regEx = regEx;
+		this.helpText = helpText;
+		this.link = link;
+	}
+	
+
 	// Getter / Setter
 	
 	

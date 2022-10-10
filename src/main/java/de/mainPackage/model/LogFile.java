@@ -12,6 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -40,6 +43,14 @@ public class LogFile{
 	@JsonIgnore
 	@OneToMany(mappedBy="logFile")
 	private Set<LogFileLine> lines = new HashSet<LogFileLine>();
+	
+	@ManyToMany
+	@JoinTable(
+			name = "logfiles_matches",
+			joinColumns = @JoinColumn(name = "logfile_id"),
+			inverseJoinColumns = @JoinColumn(name = "help_id")
+			)
+	private Set<Help> matches = new HashSet<Help>();
 				
 	
 	// Constructors
@@ -48,6 +59,7 @@ public class LogFile{
 	public LogFile() {
 		this.isScanned = false;
 		this.lines = new HashSet<LogFileLine>();
+		this.matches = new HashSet<Help>();
 	}
 		
 	public LogFile(String user, String email, String info, String fileName, String path, LocalDateTime uploadTime) {
@@ -128,24 +140,33 @@ public class LogFile{
 		return lines;
 	}
 	
+	public Set<Help> getMatches() {
+		return matches;
+	}
+	
 	
 	// Methods
 	
 	
-	public void addLines() {
-		FileInputStream inputStream = null;
-		Scanner sc = null;
-		try {
-			inputStream = new FileInputStream(this.path);
-			sc = new Scanner(inputStream, "UTF-8");
-			while(sc.hasNextLine()) {
-				
-				String line = sc.nextLine();
-				this.lines.add(new LogFileLine(line));
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+//	public void addLines() {
+//		FileInputStream inputStream = null;
+//		Scanner sc = null;
+//		try {
+//			inputStream = new FileInputStream(this.path);
+//			sc = new Scanner(inputStream, "UTF-8");
+//			while(sc.hasNextLine()) {
+//				
+//				String line = sc.nextLine();
+//				this.lines.add(new LogFileLine(line));
+//			}
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
+	
+	public void addHelp(Help help) {
+		this.matches.add(help);
 	}
 	
 	

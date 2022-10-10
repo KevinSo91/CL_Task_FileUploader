@@ -26,9 +26,9 @@ public class LogFileLineService {
 	
 	// Constructors
 	
-	public LogFileLineService(LogFileLineRepository lineRepo) {
-		this.lineRepo = lineRepo;		
-	}
+//	public LogFileLineService(LogFileLineRepository lineRepo) {
+//		this.lineRepo = lineRepo;		
+//	}
 	
 	//Methods
 	

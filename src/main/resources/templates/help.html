@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+
+<div th:insert="baseStructure/header :: header">  </div>
+
+<head>
+	<title> File Analyzer - All Helps </title>
+	
+	<!-- Java Script für die Tabellen Ansicht -->
+	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+		    $('#table_helps').DataTable();
+		} );
+	</script>
+	<!-- ENDE Java Script für die Tabellen Ansicht -->		
+</head>
+
+
+<body>
+
+	<br><br>
+	
+	<div class="container">
+		
+		<table id="table_helps" class="table table-bordered table-striped">
+			<thead>
+				<tr>					
+					<th>ID</th>
+					<th>Treffer-Pattern</th>
+					<th>Hilfestellung</th>
+					<th>Link</th>									
+				</tr>
+				
+			</thead>
+			<tbody>
+				<tr th:each="help : ${helpList}">					
+					<td th:text="${help.id}"></td>
+					<td th:text="${help.regEx}"></td>
+					<td th:text="${help.helpText}"></td>
+					<td th:text="${help.link}"></td>		
+				</tr>
+			</tbody>
+		</table>
+		
+		<br><br>
+		
+		
+		<form method="post" action="#" th:action="@{/help/createTestPattern}">			        
+		    <input type="submit" value="create Test-Pattern" />
+		</form>
+	
+	</div>
+	
+	<br><br>
+	
+	
+	
+		
+
+</body>
+
+
+</html>

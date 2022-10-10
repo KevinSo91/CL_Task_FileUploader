@@ -24,10 +24,9 @@ public class LogFileService{
 	
 	// Attributes
 	
+	
 	@Autowired 
 	private LogFileRepository logFileRepo;
-	@Autowired
-	private LogFileLineRepository lineRepo;	
 	@Autowired
 	private LogFileLineService logFileLineService;
 	
@@ -39,6 +38,7 @@ public class LogFileService{
 	
 	// Methods
 	
+	
 	public List<LogFile> getAllLogFiles(){
 		return logFileRepo.findAll();
 	}
@@ -48,6 +48,7 @@ public class LogFileService{
 		return this.logFileRepo.getById(logFileId);
 	}
 	
+	// LogFile hochladen und die LogFiles + Zeilen in DB speichern
 	public String uploadLogFile(MultipartFile file, 
 								String user,
 								String folder, 
@@ -85,18 +86,14 @@ public class LogFileService{
 		
 		// Erstelle Eintrag in Tabelle 'logfiles'		
 		LogFile logFile = new LogFile(user, email, info, fileName ,filePath.toString(), LocalDateTime.now());		
-		logFileRepo.save(logFile);
-		
+		logFileRepo.save(logFile);		
 		
 		// Erstelle Einträge in Tabelle 'logfile_lines' (scan)
-		logFileLineService.saveLines(logFile);
-//		logFile.setIsScanned(true);
-		logFileRepo.save(logFile);
-				
+		logFileLineService.saveLines(logFile);			
 		
 		return message;
 	}
-	
+		
 	
 	// Static Methods
 	
@@ -108,28 +105,7 @@ public class LogFileService{
 		return file.getContentType();
 	}
 	
-	// Methods
 
-	public void saveLines(LogFile logFile) {
-		FileInputStream inputStream = null;
-		Scanner sc = null;
-		try {
-			inputStream = new FileInputStream(logFile.getPath());
-			sc = new Scanner(inputStream, "UTF-8");
-			while(sc.hasNextLine()) {
-				String line = sc.nextLine();
-				this.lineRepo.save(new LogFileLine(line));
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-//		logFileRepo.getOne(logFile.getId()).setIsScanned(true);
-//		logFileRepo.save(null)
-		
-		
-	}
+	
 	
 }
