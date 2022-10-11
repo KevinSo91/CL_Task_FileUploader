@@ -38,7 +38,7 @@ public class LogFile{
 	private String fileName;
 	private String path;
 	private LocalDateTime uploadTime;
-	private boolean isScanned;
+	private boolean isScanned = false;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="logFile")
@@ -50,16 +50,13 @@ public class LogFile{
 			joinColumns = @JoinColumn(name = "logfile_id"),
 			inverseJoinColumns = @JoinColumn(name = "help_id")
 			)
-	private Set<Help> matches = new HashSet<Help>();
+	private Set<Help> matches = new HashSet<>();
 				
 	
 	// Constructors
 	
 	
-	public LogFile() {
-		this.isScanned = false;
-		this.lines = new HashSet<LogFileLine>();
-		this.matches = new HashSet<Help>();
+	public LogFile() {//		
 	}
 		
 	public LogFile(String user, String email, String info, String fileName, String path, LocalDateTime uploadTime) {
@@ -69,7 +66,7 @@ public class LogFile{
 		this.fileName = fileName;
 		this.path = path;
 		this.uploadTime = uploadTime;
-		this.isScanned = false;
+//		this.isScanned = false;
 	}
 			
 	

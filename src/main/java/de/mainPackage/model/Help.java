@@ -35,7 +35,7 @@ public class Help{
 	private String link;
 	
 	@ManyToMany(mappedBy = "matches")
-	private Set<LogFile> logFiles = new HashSet<LogFile>();
+	private Set<LogFile> logFiles = new HashSet<>();
 
 	
 	// Contructors

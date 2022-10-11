@@ -1,22 +1,17 @@
 package de.mainPackage.service;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import de.mainPackage.model.LogFile;
-import de.mainPackage.model.LogFileLine;
-import de.mainPackage.repository.LogFileLineRepository;
 import de.mainPackage.repository.LogFileRepository;
 
 @Service
@@ -39,6 +34,9 @@ public class LogFileService{
 	
 	// Methods
 	
+	public LogFile createLogFile(LogFile logFile) {
+		return logFileRepo.save(logFile);
+	}
 	
 	public List<LogFile> getAllLogFiles(){
 		return logFileRepo.findAll();
