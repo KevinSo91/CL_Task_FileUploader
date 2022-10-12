@@ -1,10 +1,7 @@
 package de.mainPackage.model;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 
 import javax.persistence.Column;

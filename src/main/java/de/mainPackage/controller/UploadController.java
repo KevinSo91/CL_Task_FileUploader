@@ -81,7 +81,7 @@ public class UploadController {
 		LogFile logfile = logFileService.getLogFileById(logfile_id);
 		Help help = helpService.getHelp(help_id);
 		logfile.addMatch(help);
-//		logFileService.
+		logFileService.createLogFile(logfile);
 		return "redirect:/";
 	}
 	
