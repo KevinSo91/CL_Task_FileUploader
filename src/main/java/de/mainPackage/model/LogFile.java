@@ -40,15 +40,7 @@ public class LogFile{
 	@JsonIgnore
 	@OneToMany(mappedBy="logFile")
 	private Set<LogFileLine> lines = new HashSet<LogFileLine>();
-	
-	@ManyToMany
-	@JoinTable(
-			name = "logfiles_matches",
-			joinColumns = @JoinColumn(name = "logfile_id"),
-			inverseJoinColumns = @JoinColumn(name = "help_id")
-			)
-	private Set<Help> matches = new HashSet<>();
-				
+					
 	
 	// Constructors
 	
@@ -63,7 +55,6 @@ public class LogFile{
 		this.fileName = fileName;
 		this.path = path;
 		this.uploadTime = uploadTime;
-//		this.isScanned = false;
 	}
 			
 	
@@ -134,17 +125,15 @@ public class LogFile{
 		return lines;
 	}
 	
-	public Set<Help> getMatches() {
-		return matches;
-	}
+//	public Set<Help> getMatches() {
+//		return matches;
+//	}
 	
 	
 	// Methods
 		
 	
-	public void addMatch(Help help) {
-		this.matches.add(help);
-	}
+	
 	
 	
 }

@@ -26,8 +26,7 @@ public class UploadController {
 	private LogFileService logFileService;
 	@Autowired
 	private LogFileLineService logFileLineService;
-	@Autowired
-	private HelpService helpService;
+	
 	
 
 	
@@ -73,22 +72,22 @@ public class UploadController {
 		return "";
 	}
 	
-	@PutMapping("/logfile/{logfile_id}/help/{help_id}")
-	public String addHelpToLogfile(
-			@PathVariable int logfile_id,
-			@PathVariable int help_id
-			) {
-		LogFile logfile = logFileService.getLogFileById(logfile_id);
-		Help help = helpService.getHelp(help_id);
-		logfile.addMatch(help);
-		logFileService.createLogFile(logfile);
-		return "redirect:/";
-	}
-	
-	@GetMapping("/matches")
-	public String getAllMatches() {
-		
-		return "matches";
-	}
+//	@PutMapping("/logfile/{logfile_id}/help/{help_id}")
+//	public String addHelpToLogfile(
+//			@PathVariable int logfile_id,
+//			@PathVariable int help_id
+//			) {
+//		LogFile logfile = logFileService.getLogFileById(logfile_id);
+//		Help help = helpService.getHelp(help_id);
+//		logfile.addMatch(help);
+//		logFileService.createLogFile(logfile);
+//		return "redirect:/";
+//	}
+//	
+//	@GetMapping("/matches")
+//	public String getAllMatches() {
+//		
+//		return "matches";
+//	}
 	
 }

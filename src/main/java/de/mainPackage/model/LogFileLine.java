@@ -1,5 +1,8 @@
 package de.mainPackage.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -31,6 +36,13 @@ public class LogFileLine {
 	
 	private long lineNumber;
 	
+	@ManyToMany
+	@JoinTable(
+			name = "logfilelines_matches",
+			joinColumns = @JoinColumn(name = "logfileline_id"),
+			inverseJoinColumns = @JoinColumn(name = "help_id")
+			)
+	private Set<Help> matches = new HashSet<>();
 	
 	// Constructors
 	
@@ -78,6 +90,14 @@ public class LogFileLine {
 
 	public int getId() {
 		return id;
+	}
+	
+	
+	// Methods
+	
+	
+	public void addMatch(Help help) {
+		this.matches.add(help);
 	}
 
 }

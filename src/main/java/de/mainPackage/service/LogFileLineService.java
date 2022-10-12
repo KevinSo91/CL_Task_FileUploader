@@ -32,8 +32,19 @@ public class LogFileLineService {
 	
 	//Methods
 	
+	
+	public LogFileLine createLogFileLine(LogFileLine logFileLine) {
+		return this.lineRepo.save(logFileLine);
+	}
+	
+	
 	public List<LogFileLine> getAllLines() {
 		return lineRepo.findAll();
+	}
+	
+	@SuppressWarnings("deprecation")
+	public LogFileLine getLogFileLineById(int logFileLineId) {
+		return this.lineRepo.getById(logFileLineId);
 	}
 	
 	public void saveLines(LogFile logFile) {
