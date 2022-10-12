@@ -1,32 +1,18 @@
 package de.mainPackage.model;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-@Entity
-@Table(name = "logfiles")
 public class LogFile{	
 	
 	// Attributes
 	
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="logfile_id")
 	private int id;
 	
 	private String person;	
@@ -35,11 +21,10 @@ public class LogFile{
 	private String fileName;
 	private String path;
 	private LocalDateTime uploadTime;
-	private boolean isScanned = false;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="logFile")
-	private Set<LogFileLine> lines = new HashSet<LogFileLine>();
+	private boolean isScanned = false;	
+
+	private ArrayList<String> lines = new ArrayList<String>();
+	private ArrayList<Match> matches = new ArrayList<Match>();
 					
 	
 	// Constructors
@@ -121,14 +106,22 @@ public class LogFile{
 		return id;
 	}
 
-	public Set<LogFileLine> getLines() {
+	public Set<String> getLines() {
 		return lines;
 	}
 	
-//	public Set<Help> getMatches() {
-//		return matches;
-//	}
+	public void addLine(String line) {
+		this.lines.add(line);
+	}
+
+	public Set<Match> getMatches() {
+		return matches;
+	}
 	
+	public void addMatch(Match match) {
+		this.matches.add(match);
+	}
+		
 	
 	// Methods
 		

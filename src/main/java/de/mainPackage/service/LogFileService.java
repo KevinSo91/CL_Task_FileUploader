@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,18 +28,20 @@ public class LogFileService{
 	
 	private static String uploadFolderDefault = ".\\data\\";
 	
+	private ArrayList<LogFile> logFiles = new ArrayList<LogFile>();
+	
 	
 	// Constructors
 	
 	
 	// Methods
 	
-	public LogFile createLogFile(LogFile logFile) {
-		return logFileRepo.save(logFile);
+	public boolean createLogFile(LogFile logFile) {
+		return logFiles.add(logFile);
 	}
 	
-	public List<LogFile> getAllLogFiles(){
-		return logFileRepo.findAll();
+	public ArrayList<LogFile> getAllLogFiles(){
+		return logFiles;
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -85,10 +87,8 @@ public class LogFileService{
 		
 		// Erstelle Eintrag in Tabelle 'logfiles'		
 		LogFile logFile = new LogFile(user, email, info, fileName ,filePath.toString(), LocalDateTime.now());		
-		logFileRepo.save(logFile);		
+		this.logFiles.add(logFile);		
 		
-		// Erstelle Einträge in Tabelle 'logfile_lines' (scan)
-		logFileLineService.saveLines(logFile);			
 		
 		return message;
 	}
