@@ -106,7 +106,7 @@ public class LogFileService{
 				String line = sc.nextLine();
 				logFile.addLine(line);
 				ArrayList<Help> matches = this.helpService.checkLineForMatches(line);
-				if (matches.size() < 0) {
+				if (matches.size() > 0) {
 					for (Help help : matches) {
 						logFile.addMatch(new Match(indexLine, line, help));
 						}					
