@@ -27,18 +27,13 @@ public class Help{
 	
 	@Column(columnDefinition="TEXT")
 	private String helpText;
-	
-	public int getId() {
-		return id;
-	}
 
 	private String link;
 	
-	@ManyToMany(mappedBy = "matches")
-	private Set<LogFileLine> logFileLines = new HashSet<>();
 
 	
 	// Contructors
+	
 	
 	public Help() {		
 	}
@@ -53,6 +48,9 @@ public class Help{
 
 	// Getter / Setter
 	
+	public int getId() {
+		return id;
+	}
 	
 	public String getRegEx() {
 		return regEx;

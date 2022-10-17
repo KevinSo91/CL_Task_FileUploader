@@ -2,10 +2,18 @@ package de.mainPackage.model;
 
 public class Match{
 	
+	// Attributes
+	
+	
 	private int id;
+	
 	private long lineNr;
 	private String lineText;
 	private Help help;
+	
+	
+	
+	// Constructors
 	
 	
 	public Match(long lineNr, String lineText, Help help) {
@@ -14,6 +22,10 @@ public class Match{
 		this.help = help;
 	}
 
+	
+	
+	// Getter / Setter
+	
 
 	public long getLineNr() {
 		return lineNr;
@@ -42,9 +54,6 @@ public class Match{
 	public int getId() {
 		return id;
 	}
-	
-	
-	
 	
 	
 }

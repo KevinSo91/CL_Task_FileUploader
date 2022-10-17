@@ -12,7 +12,7 @@ public class LogFile{
 	
 	// Attributes
 	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String person;	
@@ -21,7 +21,7 @@ public class LogFile{
 	private String fileName;
 	private String path;
 	private LocalDateTime uploadTime;
-	private boolean isScanned = false;	
+//	private boolean isScanned = false;	
 
 	private ArrayList<String> lines = new ArrayList<String>();
 	private ArrayList<Match> matches = new ArrayList<Match>();
@@ -94,19 +94,15 @@ public class LogFile{
 		this.uploadTime = uploadTime;
 	}
 
-	public boolean getIsScanned() {
-		return isScanned;
+	public void setId(int id) {
+		this.id = id;
 	}
-
-	public void setIsScanned(boolean isScanned) {
-		this.isScanned = isScanned;
-	}
-
+	
 	public int getId() {
 		return id;
 	}
 
-	public Set<String> getLines() {
+	public ArrayList<String> getLines() {
 		return lines;
 	}
 	
@@ -114,7 +110,7 @@ public class LogFile{
 		this.lines.add(line);
 	}
 
-	public Set<Match> getMatches() {
+	public ArrayList<Match> getMatches() {
 		return matches;
 	}
 	
