@@ -6,11 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import de.mainPackage.model.Help;
 import de.mainPackage.service.HelpService;
 
 @Controller
+@RequestMapping("/")
 public class HelpController{
 	
 	// Attributes
@@ -27,7 +29,7 @@ public class HelpController{
 	
 	
 	@GetMapping("/help/all")
-	public String getAllHelps(Model model) {
+	public String getAllHelps(Model model, @ModelAttribute("newHelp") Help newHelp) {
 		model.addAttribute("helpList", this.helpService.getAllHelps());
 		return "help";
 	}

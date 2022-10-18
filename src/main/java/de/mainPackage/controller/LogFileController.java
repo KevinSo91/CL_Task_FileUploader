@@ -36,13 +36,14 @@ public class LogFileController {
 	
 	// Methods
 	
-	
+	// Show Logfiles / Upload
 	@GetMapping({"/", "/upload"})
 	public String getUploadPage(Model model) {
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
 		return "upload";
 	}
 	
+	// -> Upload File
 	@PostMapping("/upload")
 	public String uploadFile(@RequestParam("file") MultipartFile file,
 										RedirectAttributes redirectAttributes) {
@@ -61,18 +62,20 @@ public class LogFileController {
 		return "redirect:/uploadStatus";		
 	}	
 	
+	// Show Upload Status
 	@GetMapping("/uploadStatus")
 	public String uploadStatus() {
 		return "uploadStatus";
 	}	
 	
-	@PostMapping("/upload/scan")
-	public String scanFile() {
-		return "";
+	// Show Logfile Lines
+	@GetMapping("/logFile/{logFileId}/lines")
+	public String getLogFileLinesFromLogFile(Model model, @PathVariable int logFileId) {
+		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
+		return "logFileLines";
 	}
 	
-	
-	// Matches
+	// Show LogFile Matches
 	@GetMapping("/logFile/{logFileId}/matches")
 	public String getMatchesFromLogFile(Model model, @PathVariable int logFileId){
 		model.addAttribute("logFileMatches", logFileService.getLogFileById(logFileId).getMatches());

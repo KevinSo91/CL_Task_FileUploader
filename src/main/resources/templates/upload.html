@@ -35,6 +35,7 @@
 					<th>Upload Time</th>
 					<th>User</th>
 					<th>Info</th>
+					<th>Lines Count</th>
 					<th>FAQ Hits</th>					
 				</tr>
 				
@@ -46,6 +47,7 @@
 					<td th:text="${logFile.uploadTime}"></td>
 					<td th:text="${logFile.person}"></td>
 					<td th:text="${logFile.info}"></td>
+					<td th:text="${logFile.lines.size()}"></td>
 					<td th:text="${logFile.matches.size()}"></td>
 					
 				</tr>
@@ -63,7 +65,7 @@
 	
 		<form method="POST" action="/upload" enctype="multipart/form-data">
 		
-			<input type="file" name="file" /> <br/><br/>
+			<input type="file" name="file" /> <br><br>
 			<input type="submit" value="upload"/>
 			
 		</form>
