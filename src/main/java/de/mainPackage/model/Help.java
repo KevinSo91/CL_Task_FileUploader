@@ -1,14 +1,10 @@
 package de.mainPackage.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +22,7 @@ public class Help{
 	private String regEx;
 	
 	@Column(columnDefinition="TEXT")
-	private String helpText;
+	private String text;
 
 	private String link;
 	
@@ -41,7 +37,7 @@ public class Help{
 	public Help(String regEx, String helpText, String link) {
 		super();
 		this.regEx = regEx;
-		this.helpText = helpText;
+		this.text = helpText;
 		this.link = link;
 	}
 	
@@ -60,12 +56,12 @@ public class Help{
 		this.regEx = regEx;
 	}
 
-	public String getHelpText() {
-		return helpText;
+	public String getText() {
+		return text;
 	}
 
-	public void setHelpText(String helpText) {
-		this.helpText = helpText;
+	public void setText(String helpText) {
+		this.text = helpText;
 	}
 
 	public String getLink() {

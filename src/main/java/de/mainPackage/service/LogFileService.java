@@ -101,14 +101,14 @@ public class LogFileService{
 		try {
 			inputStream = new FileInputStream(logFile.getPath());
 			sc = new Scanner(inputStream, "UTF-8");
-			int indexLine = 0;
+			int indexLine = 1;
 			while(sc.hasNextLine()) {
 				String line = sc.nextLine();
 				logFile.addLine(line);
 				ArrayList<Help> matches = this.helpService.checkLineForMatches(line);
 				if (matches.size() > 0) {
 					for (Help help : matches) {
-						logFile.addMatch(new Match(indexLine, line, help));
+						logFile.addMatch(new Match(logFile.getId(), indexLine, line, help));
 						}					
 				}				
 //				logFileLines.add(line);
@@ -116,8 +116,7 @@ public class LogFileService{
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
-				
+		}				
 		
 		this.logFiles.add(logFile);		
 		

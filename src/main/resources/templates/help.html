@@ -41,7 +41,7 @@
 				<tr th:each="help : ${helpList}">					
 					<td th:text="${help.id}"></td>
 					<td th:text="${help.regEx}"></td>
-					<td th:text="${help.helpText}"></td>
+					<td th:text="${help.text}"></td>
 					<td th:text="${help.link}"></td>		
 				</tr>
 			</tbody>
@@ -53,14 +53,34 @@
 		<form method="post" action="#" th:action="@{/help/createTestPattern}">			        
 		    <input type="submit" value="create Test-Pattern" />
 		</form>
-	
+		
 	</div>
 	
 	<br><br>
 	
-	
-	
+	<!-- create new Help -->
+	<div class="container">		
 		
+		<b>Add new Help</b>
+		
+		<!--    
+		<form method="post" action="#" th:action="@{/help/createHelp}" th:object="${newHelp}">
+		
+			<label>regEx </label>
+		    <input type="text" th:field="*{regEx}" />
+		       
+		    <label>Text </label>
+		    <input type="text" th:field="*{text}" />
+		    
+		    <label>link </label>
+		    <input type="text" th:field="*{link}" />
+		        
+		    <input type="submit" value="add" />	   
+		
+		</form>
+		-->
+		
+	</div>
 
 </body>
 

@@ -7,6 +7,7 @@ public class Match{
 	
 	private int id;
 	
+	private int logFileId;
 	private long lineNr;
 	private String lineText;
 	private Help help;
@@ -16,7 +17,7 @@ public class Match{
 	// Constructors
 	
 	
-	public Match(long lineNr, String lineText, Help help) {
+	public Match(int logFileId, long lineNr, String lineText, Help help) {
 		this.lineNr = lineNr;
 		this.lineText = lineText;
 		this.help = help;
@@ -53,6 +54,14 @@ public class Match{
 
 	public int getId() {
 		return id;
+	}
+
+	public int getLogFileId() {
+		return logFileId;
+	}
+
+	public void setLogFileId(int logFileId) {
+		this.logFileId = logFileId;
 	}
 	
 	

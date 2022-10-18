@@ -4,7 +4,7 @@
 <div th:insert="baseStructure/header :: header">  </div>
 
 <head>
-	<title> File Analyzer - All Logfile Lines </title>
+	<title> File Analyzer - All Logfile Matches </title>
 	
 	<!-- Java Script für die Tabellen Ansicht -->
 	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -14,7 +14,7 @@
 	
 	<script>
 		$(document).ready(function() {
-		    $('#table_logFileLines').DataTable();
+		    $('#table_logFileMatches').DataTable();
 		} );
 	</script>
 	<!-- ENDE Java Script für die Tabellen Ansicht -->		
@@ -27,22 +27,27 @@
 	
 	<div class="container">
 		
-		<table id="table_logFileLines" class="table table-bordered table-striped">
+		<table id="table_logFileMatches" class="table table-bordered table-striped">
 			<thead>
 				<tr>
-					<!-- <th>LogFileLine ID</th> -->
-					<th>LogFile Name</th>
-					<th>Line</th>
-					<th>Line Number</th>									
+					<th>LogFile ID</th>
+					<th>Line Nr</th>
+					<th>Line Text</th>
+					<th>regEx</th>		
+					<th>Help Text</th>
+					<th>Help Link</th>
+														
 				</tr>
 				
 			</thead>
 			<tbody>
-				<tr th:each="logFileLine : ${logFileLinesList}">
-					<!-- <td th:text="${logFileLine.id}"></td> -->
-					<td th:text="${logFileLine.logFile.fileName}"></td>
-					<td th:text="${logFileLine.line}"></td>
-					<td th:text="${logFileLine.lineNumber}"></td>		
+				<tr th:each="match : ${logFileMatches}">
+					<td th:text="${match.logFileId}"></td>
+					<td th:text="${match.lineNr}"></td>
+					<td th:text="${match.lineText}"></td>
+					<td th:text="${match.help.regEx}"></td>
+					<td th:text="${match.help.text}"></td>
+					<td th:text="${match.help.link}"></td>		
 				</tr>
 			</tbody>
 		</table>

@@ -2,10 +2,6 @@ package de.mainPackage.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Set;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 
 public class LogFile{	
