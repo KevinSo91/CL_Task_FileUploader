@@ -36,28 +36,32 @@ public class LogFileController {
 	
 	// Methods
 	
+	
 	// Show Logfiles / Upload
 	@GetMapping({"/", "/upload"})
 	public String getUploadPage(Model model) {
+		model.addAttribute("activePage", "upload");
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
-		return "upload";
+		return "logFiles";
 	}
 	
 	// -> Upload File
 	@PostMapping("/upload")
 	public String uploadFile(@RequestParam("file") MultipartFile file,
-										RedirectAttributes redirectAttributes) {
+										RedirectAttributes redirectAttributes,
+										@RequestParam("info") String info) {
 		
 		// Prüfe Datei auf Datei-Typ und Größe
 		System.out.println(LogFileService.checkLogFileType(file));
 		System.out.println(LogFileService.checkLogFileSize(file));
 
 		// Speichere Datei in Ordner mit aktuellem Datum
-		String message = this.logFileService.uploadLogFile(file, "user1", LocalDate.now().toString(), "user1@mail.com", "Test Info");
+		String message = this.logFileService.uploadLogFile(file, LocalDate.now().toString(), info);
 				
 		redirectAttributes.addFlashAttribute("message", message);
 		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());
 		redirectAttributes.addFlashAttribute("file_Size", file.getSize());
+		redirectAttributes.addFlashAttribute("file_Info", info);
 				
 		return "redirect:/uploadStatus";		
 	}	
@@ -71,6 +75,7 @@ public class LogFileController {
 	// Show Logfile Lines
 	@GetMapping("/logfile/{logFileId}/lines")
 	public String getLogFileLinesFromLogFile(Model model, @PathVariable int logFileId) {
+//		model.addAttribute("activePage", "lines");
 		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
 		return "logFileLines";
 	}
@@ -78,6 +83,7 @@ public class LogFileController {
 	// Show LogFile Matches
 	@GetMapping("/logfile/{logFileId}/matches")
 	public String getMatchesFromLogFile(Model model, @PathVariable int logFileId){
+//		model.addAttribute("activePage", "matches");
 		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
 		return "logFileMatches";
 	}

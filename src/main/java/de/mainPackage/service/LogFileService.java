@@ -56,10 +56,8 @@ public class LogFileService{
 	
 	
 	// LogFile hochladen
-	public String uploadLogFile(MultipartFile file, 
-								String user,
+	public String uploadLogFile(MultipartFile file,
 								String folder, 
-								String email, 
 								String info) {		
 		// return message
 		String message = "";
@@ -89,7 +87,7 @@ public class LogFileService{
 		}
 		
 		// Erstelle LogFile Objekt
-		LogFile logFile = new LogFile(user, email, info, fileName ,filePath.toString(), LocalDateTime.now());
+		LogFile logFile = new LogFile(info, fileName ,filePath.toString(), LocalDateTime.now());
 		
 		// Setze ID auf die nächste verfügbare Ganzzahl (abhängig von Anzahl der bestehenden LogFiles)
 		logFile.setId(logFiles.size());

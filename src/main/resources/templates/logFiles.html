@@ -2,6 +2,7 @@
 <html lang="eng" xmlns:th="http://www.thymeleaf.org">
 
 <div th:insert="baseStructure/header :: header">  </div>
+<div th:insert="baseStructure/navbar :: navbar">  </div>
 
 <head>
 	<title> File Uploader - Upload File </title>
@@ -28,6 +29,7 @@
 	<div class="container">
 		
 		<table id="table_logFiles" class="table table-bordered table-striped">
+		
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -36,9 +38,9 @@
 					<th>Info</th>
 					<th>Lines Count</th>
 					<th>FAQ Hits</th>					
-				</tr>
-				
+				</tr>				
 			</thead>
+			
 			<tbody>
 				<tr th:each="logFile : ${logFilesList}">
 					<td th:text="${logFile.id}"></td>
@@ -49,6 +51,7 @@
 					<td th:text="${logFile.matches.size()}"></td>					
 				</tr>
 			</tbody>
+			
 		</table>
 	
 	</div>
@@ -63,6 +66,8 @@
 		<form method="POST" action="/upload" enctype="multipart/form-data">
 		
 			<input type="file" name="file" /> <br><br>
+			<span>additional info: </span>
+			<input type="text" name="info" /><br><br>
 			<input type="submit" value="upload"/>
 			
 		</form>

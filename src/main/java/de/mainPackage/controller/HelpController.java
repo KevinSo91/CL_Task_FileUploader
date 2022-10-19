@@ -30,6 +30,7 @@ public class HelpController{
 	
 	@GetMapping("/help/all")
 	public String getAllHelps(Model model, @ModelAttribute("newHelp") Help newHelp) {
+		model.addAttribute("activePage", "help");
 		model.addAttribute("helpList", this.helpService.getAllHelps());
 		return "help";
 	}

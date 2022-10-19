@@ -14,18 +14,17 @@ public class LogFile{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	private String person;	
-	private String email;	
+		
 	private String info;
 	private String fileName;
 	private String path;
 	private LocalDateTime uploadTime;
-//	private boolean isScanned = false;	
+//	private boolean isScanned = false;
 
 	private ArrayList<String> lines = new ArrayList<String>();
 	private ArrayList<Match> matches = new ArrayList<Match>();
 					
+
 	
 	// Constructors
 	
@@ -33,34 +32,18 @@ public class LogFile{
 	public LogFile() {//		
 	}
 		
-	public LogFile(String user, String email, String info, String fileName, String path, LocalDateTime uploadTime) {
-		this.person = user;
-		this.email = email;
+	public LogFile(String info, String fileName, String path, LocalDateTime uploadTime) {
+		
 		this.info = info;
 		this.fileName = fileName;
 		this.path = path;
 		this.uploadTime = uploadTime;
 	}
-			
+	
+	
 	
 	// Getter / Setter
-	
-	
-	public String getPerson() {
-		return person;
-	}
-
-	public void setPerson(String person) {
-		this.person = person;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+		
 
 	public String getInfo() {
 		return info;
