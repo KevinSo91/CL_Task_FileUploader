@@ -26,6 +26,10 @@
 	<br><br>
 	
 	<div class="container">
+	
+		<h1>Matches:</h1>
+		<h3><span th:text="${logFile.fileName}"></span></h3>
+		<br>
 		
 		<table id="table_logFileMatches" class="table table-bordered table-striped">
 			<thead>
@@ -41,8 +45,8 @@
 				
 			</thead>
 			<tbody>
-				<tr th:each="match : ${logFileMatches}">
-					<td th:text="${match.logFileId}"></td>
+				<tr th:each="match : ${logFile.matches}">
+					<td th:text="${logFile.id}"></td>
 					<td th:text="${match.lineNr}"></td>
 					<td th:text="${match.lineText}"></td>
 					<td th:text="${match.help.regEx}"></td>

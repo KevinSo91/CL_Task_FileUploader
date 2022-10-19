@@ -3,12 +3,16 @@ package de.mainPackage.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 
 public class LogFile{	
 	
 	// Attributes
-	
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String person;	

@@ -69,16 +69,16 @@ public class LogFileController {
 	}	
 	
 	// Show Logfile Lines
-	@GetMapping("/logFile/{logFileId}/lines")
+	@GetMapping("/logfile/{logFileId}/lines")
 	public String getLogFileLinesFromLogFile(Model model, @PathVariable int logFileId) {
 		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
 		return "logFileLines";
 	}
 	
 	// Show LogFile Matches
-	@GetMapping("/logFile/{logFileId}/matches")
+	@GetMapping("/logfile/{logFileId}/matches")
 	public String getMatchesFromLogFile(Model model, @PathVariable int logFileId){
-		model.addAttribute("logFileMatches", logFileService.getLogFileById(logFileId).getMatches());
+		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
 		return "logFileMatches";
 	}
 	

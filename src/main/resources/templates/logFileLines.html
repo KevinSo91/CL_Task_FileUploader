@@ -27,8 +27,10 @@
 	
 	<div class="container">
 		
-		<b th:text="${logFile.fileName}"></b>
-		<br><br>
+		<h1>Text Lines:</h1>
+		<h3><span th:text="${logFile.fileName}"></span></h3>
+		<br>
+		
 		<table id="table_logFileLines" class="table table-bordered table-striped">
 			<thead>
 				<tr>
@@ -39,7 +41,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="line,iter : ${logFile.lines}">
-					<td th:text="${iter.index}"></td>					
+					<td th:text="${(iter.index)+1}"></td>					
 					<td th:text="${line}"></td>
 					
 				</tr>
