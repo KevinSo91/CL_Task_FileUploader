@@ -107,9 +107,8 @@ public class LogFileService{
 				if (matches.size() > 0) {
 					for (Help help : matches) {
 						logFile.addMatch(new Match(logFile.getId(), indexLine, line, help));
-						}					
+					}					
 				}				
-//				logFileLines.add(line);
 				indexLine++;
 			}
 		} catch (FileNotFoundException e) {
