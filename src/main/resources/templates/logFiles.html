@@ -72,9 +72,89 @@
 			
 		</form>
 		
-	</div>	
+	</div>
 	
+	<br><br>
 		
+	<!-- Ansicht Zeilen -->
+	<div class="container">
+		<form method="GET" action="/upload">
+			<input type="text" name="zeilenId">
+			<input type="submit" value="getLines"/>
+		</form>
+	</div>
+	
+	
+	<div class="container" th:if="${logFileZeilen != NULL}">
+		<!-- 
+		<h3>Show Lines</h3>
+		<span th:text="${logFileZeilen.fileName}"></span>
+		 -->
+		
+		<h1>Text Lines:</h1>
+		<h3><span th:text="${logFileZeilen.fileName}"></span></h3>
+		<br>
+		
+		<table id="table_logFileLines" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Line Nr</th>					
+					<th>Line Text</th>				
+				</tr>
+				
+			</thead>
+			<tbody>
+				<tr th:each="line,iter : ${logFileZeilen.lines}">
+					<td th:text="${(iter.index)+1}"></td>					
+					<td th:text="${line}"></td>
+					
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
+	
+	<!-- Ansicht Matches -->
+	<div class="container">
+		<form method="GET" action="/upload">
+			<input type="text" name="matchesId">
+			<input type="submit" value="getMatches"/>
+		</form>
+	</div>
+	
+	
+	<div class="container" th:if="${logFileMatches != NULL}">
+		
+		<h1>Matches:</h1>
+		<h3><span th:text="${logFileMatches.fileName}"></span></h3>
+		<br>
+		
+		<table id="table_logFileMatches" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>LogFile ID</th>
+					<th>Line Nr</th>
+					<th>Line Text</th>
+					<th>regEx</th>		
+					<th>Help Text</th>
+					<th>Help Link</th>
+														
+				</tr>
+				
+			</thead>
+			<tbody>
+				<tr th:each="match : ${logFileMatches.matches}">
+					<td th:text="${logFileMatches.id}"></td>
+					<td th:text="${match.lineNr}"></td>
+					<td th:text="${match.lineText}"></td>
+					<td th:text="${match.help.regEx}"></td>
+					<td th:text="${match.help.text}"></td>
+					<td th:text="${match.help.link}"></td>		
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
 
 </body>
 

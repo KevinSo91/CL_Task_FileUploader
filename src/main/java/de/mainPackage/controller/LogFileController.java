@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.mainPackage.model.LogFile;
 import de.mainPackage.service.LogFileService;
 
 @Controller
@@ -39,9 +40,19 @@ public class LogFileController {
 	
 	// Show Logfiles / Upload
 	@GetMapping({"/", "/upload"})
-	public String getUploadPage(Model model) {
+	public String getUploadPage(Model model 
+								,@RequestParam(value = "zeilenId", required=false) Integer logFileIdLines,
+								 @RequestParam(value = "matchesId", required=false) Integer logFileIdMatches
+								) {
 		model.addAttribute("activePage", "upload");
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
+		if(logFileIdLines != null) {
+			model.addAttribute("logFileZeilen", this.logFileService.getLogFileById(logFileIdLines.intValue()));
+		}
+		if(logFileIdMatches != null) {
+			model.addAttribute("logFileMatches", this.logFileService.getLogFileById(logFileIdMatches.intValue()));
+		}
+		
 		return "logFiles";
 	}
 	
@@ -75,7 +86,6 @@ public class LogFileController {
 	// Show Logfile Lines
 	@GetMapping("/logfile/{logFileId}/lines")
 	public String getLogFileLinesFromLogFile(Model model, @PathVariable int logFileId) {
-//		model.addAttribute("activePage", "lines");
 		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
 		return "logFileLines";
 	}
@@ -83,7 +93,6 @@ public class LogFileController {
 	// Show LogFile Matches
 	@GetMapping("/logfile/{logFileId}/matches")
 	public String getMatchesFromLogFile(Model model, @PathVariable int logFileId){
-//		model.addAttribute("activePage", "matches");
 		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
 		return "logFileMatches";
 	}
