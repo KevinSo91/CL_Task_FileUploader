@@ -1,13 +1,18 @@
 package de.mainPackage.service;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,14 +58,18 @@ public class LogFileService{
 		return logFiles;
 	}
 	
+	public void deleteLogFile(int logFileId) {
+//	--->TODO: DeleteFile()
+		this.logFiles.remove(logFileId);
+	}
 	
 	
-	// LogFile hochladen
+	// LogFile hochladen, lokal speichern, Objekt erstellen
 	public String uploadLogFile(MultipartFile file,
 								String folder, 
 								String info) {		
-		// return message
-		String message = "";
+		
+		String message = ""; // return message
 		
 		String fileName = file.getOriginalFilename();
 		Path directoryPath = Paths.get(uploadFolderDefault + "\\" + folder);
@@ -75,6 +84,8 @@ public class LogFileService{
 				message = "Directory Creation failed";
 			}
 		}
+		
+//	---> TODO: Prüfe, ob Datei mit gleichem Namen bereits vorhanden (Benutzer entscheidet / Laufindex (i))
 		
 		// Schreibe Datei in Verzeichnis		
 		try {
@@ -92,36 +103,43 @@ public class LogFileService{
 		// Setze ID auf die nächste verfügbare Ganzzahl (abhängig von Anzahl der bestehenden LogFiles)
 		logFile.setId(logFiles.size());
 		
-		// Speichere Zeilen als String in LogFile.lines ArrayList
-		FileInputStream inputStream = null;
-		Scanner sc = null;
-//		ArrayList<String> logFileLines = new ArrayList<String>();
-		try {
-			inputStream = new FileInputStream(logFile.getPath());
-			sc = new Scanner(inputStream, "UTF-8");
-			int indexLine = 1;
-			while(sc.hasNextLine()) {
-				String line = sc.nextLine();
-				logFile.addLine(line);
-				ArrayList<Help> matches = this.helpService.checkLineForMatches(line);
-				if (matches.size() > 0) {
-					for (Help help : matches) {
-						logFile.addMatch(new Match(logFile.getId(), indexLine, line, help));
-					}					
-				}				
-				indexLine++;
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}				
-		
-		this.logFiles.add(logFile);		
-		
+		this.logFiles.add(logFile);			
 		
 		return message;
 	}
 	
+	// Schreibe die Zeilen aus dem File in die ArrayList 'lines' 
+	public void saveLogFileLinesInArray(LogFile logFile) {
+		try {
+			Reader reader = new FileReader(new File(logFile.getPath()));
+			BufferedReader buffReader = new BufferedReader(reader);
+			String line;
+			while((line = buffReader.readLine()) != null) {
+				logFile.addLine(line);
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
+	// Prüfe die Zeilen aus 'lines' gegen das FAQ und schreibe Matches in ArrayList 'matches' 
+	public void checkLogFileMatches(LogFile logFile) {
+		int lineIndex = 1;
+		for(Iterator<String> i = logFile.getLines().iterator(); i.hasNext();) {
+			String line = i.next();
+			ArrayList<Help> matches = this.helpService.checkLineForMatches(line);
+			if (matches.size() > 0) {
+				for (Help help : matches) {
+					logFile.addMatch(new Match(logFile.getId(), lineIndex, line, help));
+				}					
+			}
+			lineIndex++;
+		}
+	}
 	
 	// Static Methods
 	
