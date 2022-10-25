@@ -7,7 +7,7 @@
 <head>
 	<title> File Uploader - Upload File </title>
 	
-	<!-- Java Script für die Tabellen Ansicht -->
+	<!-- Java Script DataTables für die Tabellen Ansicht -->
 	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -28,14 +28,14 @@
 		    $('#table_logFileMatches').DataTable();
 		} );
 	</script>
-	<!-- ENDE Java Script für die Tabellen Ansicht -->		
+	<!-- ENDE Java Script DataTables für die Tabellen Ansicht -->		
 </head>
 
 
 <body>
 
 	<br><br>
-	
+	<!-- Tabelle Logfiles -->
 	<div class="container">
 		
 		<table id="table_logFiles" class="table table-bordered table-striped">
@@ -57,8 +57,12 @@
 					<td th:text="${logFile.fileName}"></td>					
 					<td th:text="${logFile.uploadTime}"></td>
 					<td th:text="${logFile.info}"></td>
-					<td th:text="${logFile.lines.size()}"></td>
-					<td th:text="${logFile.matches.size()}"></td>					
+					<td><a th:href="@{/(zeilenId=${logFile.id})}" th:text="${logFile.lines.size()}"></a></td>
+					<!-- Soll nur als Link angezeigt werden, wenn Matches vorhanden sind -->
+					<td th:switch="${logFile.matches.size()}">
+						<span th:case="0" th:text="${logFile.matches.size()}"></span>
+						<a th:case="*" th:href="@{/(matchesId=${logFile.id})}" th:text="${logFile.matches.size()}"></a>						
+					</td>					
 				</tr>
 			</tbody>
 			
@@ -68,6 +72,8 @@
 	
 	<br><br>
 	
+	
+	<!-- Upload Form -->
 	<div class="container">
 	
 		<h2> Upload File </h2>
@@ -85,24 +91,11 @@
 	</div>
 	
 	<br><br>
-		
-	<!-- Ansicht Zeilen -->
-	<div class="container">
-		<form method="GET" action="/upload">
-			id:
-			<input type="text" name="zeilenId">
-			<input type="submit" value="getLines"/>
-		</form>
-		<br><br>
-	</div>
 	
 	
+	<!-- Tabelle Lines -->
 	<div class="container" th:if="${logFileZeilen != NULL}">
-		<!-- 
-		<h3>Show Lines</h3>
-		<span th:text="${logFileZeilen.fileName}"></span>
-		 -->
-		
+				
 		<h1>Text Lines:</h1>
 		<h3>File: <span th:text="${logFileZeilen.fileName}"></span></h3>
 		<br>
@@ -122,20 +115,13 @@
 				</tr>
 			</tbody>
 		</table>
-		<br><br>
-	</div>
+		
+	</div>	
 	
-	<!-- Ansicht Matches -->
-	<div class="container">
-		<form method="GET" action="/upload">
-			id:
-			<input type="text" name="matchesId">
-			<input type="submit" value="getMatches"/>
-		</form>
-		<br><br>
-	</div>
+	<br><br>
 	
 	
+	<!-- Tabelle Matches -->
 	<div class="container" th:if="${logFileMatches != NULL}">
 		
 		<h1>Matches:</h1>
@@ -150,10 +136,8 @@
 					<th>Line Text</th>
 					<th>regEx</th>		
 					<th>Help Text</th>
-					<th>Help Link</th>
-														
-				</tr>
-				
+					<th>Help Link</th>														
+				</tr>				
 			</thead>
 			<tbody>
 				<tr th:each="match : ${logFileMatches.matches}">
@@ -166,7 +150,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<br><br>
+				
 	</div>
 
 <br><br>

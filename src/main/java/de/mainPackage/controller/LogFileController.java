@@ -46,6 +46,7 @@ public class LogFileController {
 								) {
 		model.addAttribute("activePage", "upload");
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
+		// Abhängig von den RequestParams werden die Zeilen oder Matches einer Logfile angezeigt
 		if(logFileIdLines != null) {
 			model.addAttribute("logFileZeilen", this.logFileService.getLogFileById(logFileIdLines.intValue()));
 		}
