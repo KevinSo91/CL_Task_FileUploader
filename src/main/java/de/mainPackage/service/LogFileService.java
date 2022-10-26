@@ -51,18 +51,35 @@ public class LogFileService{
 		return logFiles.add(logFile);
 	}
 	
-	@SuppressWarnings("deprecation")
 	public LogFile getLogFileById(int logFileId) {
-		return this.logFiles.get(logFileId);
+		for(LogFile logFile : this.logFiles) {
+			if(logFile.getId() == logFileId) {
+				return logFile;
+			}
+			
+		}
+//----->TODO: Optional ?
+		return new LogFile();
 	}	
 	
 	public ArrayList<LogFile> getAllLogFiles(){
 		return logFiles;
 	}
 	
-	public void deleteLogFile(int logFileId) {
-//	--->TODO: DeleteFile()
-		this.logFiles.remove(logFileId);
+	public String deleteLogFile(int logFileId) {
+//----->TODO: DeleteFile()
+		LogFile logFileToDelete = null;
+		String fileName = null;
+		// Prüfe Logfiles auf passende ID
+		for(LogFile logFile : this.logFiles) {
+			if(logFile.getId() == logFileId) {
+				logFileToDelete = logFile;
+				fileName = logFile.getFileName();
+			}
+		}
+		this.logFiles.remove(logFileToDelete);
+		
+		return fileName;
 	}
 	
 	
@@ -87,7 +104,7 @@ public class LogFileService{
 			}
 		}
 		
-//	---> TODO: Prüfe, ob Datei mit gleichem Namen bereits vorhanden (Benutzer entscheidet / Laufindex (i))
+//-----> TODO: Prüfe, ob Datei mit gleichem Namen bereits vorhanden (Benutzer entscheidet / Laufindex (i))
 		
 		// Schreibe Datei in Verzeichnis		
 		try {
@@ -112,10 +129,11 @@ public class LogFileService{
 	}
 	
 	// Schreibe die Zeilen aus dem File in die ArrayList 'lines' 
-	public void saveLogFileLinesInArray(LogFile logFile) {
+	public void saveLogFileLinesInArray(LogFile logFile) throws IOException {
+		BufferedReader buffReader = null;
 		try {
 			Reader reader = new FileReader(new File(logFile.getPath()));
-			BufferedReader buffReader = new BufferedReader(reader);
+			buffReader = new BufferedReader(reader);
 			String line;
 			while((line = buffReader.readLine()) != null) {
 				logFile.addLine(line);
@@ -125,6 +143,10 @@ public class LogFileService{
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}finally {
+			if(buffReader != null) {
+				buffReader.close();
+			}
 		}
 		
 	}

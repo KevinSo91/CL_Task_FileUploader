@@ -1,5 +1,6 @@
 package de.mainPackage.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,7 @@ public class LogFileController {
 	public String uploadFile(@RequestParam("file") MultipartFile file,
 							@RequestParam("info") String info,
 							RedirectAttributes redirectAttributes
-							) {
+							) throws IOException {
 		
 //		// Prüfe Datei auf Datei-Typ und Größe
 //		System.out.println(LogFileService.checkLogFileType(file));
@@ -85,9 +86,8 @@ public class LogFileController {
 	// Delete LogFile
 	@PostMapping("/logfile/delete")
 	public String deleteLogFilePost(@RequestParam int fileId,
-									RedirectAttributes redirectAttributes) {
-		String fileName = this.logFileService.getLogFileById(fileId).getFileName();
-		this.logFileService.deleteLogFile(fileId);
+									RedirectAttributes redirectAttributes) {		
+		String fileName = this.logFileService.deleteLogFile(fileId);
 		String message = "You successfully deleted '" + fileName + "'";
 		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/logfile/delete/deleteStatus";
