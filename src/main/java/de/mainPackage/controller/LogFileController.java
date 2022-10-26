@@ -81,14 +81,23 @@ public class LogFileController {
 		return "redirect:/uploadStatus";		
 	}	
 	
-	
-	// Delete LogFile
-	@DeleteMapping("logfile/{logFileId}/delete")
-	public String deleteLogFile(@PathVariable int logFileId) {		
-		this.logFileService.deleteLogFile(logFileId);
-		return "redirect:/";
-	}
 		
+	// Delete LogFile
+	@PostMapping("/logfile/delete")
+	public String deleteLogFilePost(@RequestParam int fileId,
+									RedirectAttributes redirectAttributes) {
+		String fileName = this.logFileService.getLogFileById(fileId).getFileName();
+		this.logFileService.deleteLogFile(fileId);
+		String message = "You successfully deleted '" + fileName + "'";
+		redirectAttributes.addFlashAttribute("message", message);
+		return "redirect:/logfile/delete/deleteStatus";
+	}			
+	
+	// Show Delete Status
+	@GetMapping("/logfile/delete/deleteStatus")
+	public String deleteStatus() {
+		return "deleteStatus";
+	}	
 		
 	// Show Upload Status
 	@GetMapping("/uploadStatus")
@@ -96,14 +105,21 @@ public class LogFileController {
 		return "uploadStatus";
 	}	
 	
-	// Show Logfile Lines
+	// Delete LogFile (PathVariable)
+	@PostMapping("logfile/{logFileId}/delete")
+	public String deleteLogFile(@PathVariable int logFileId) {		
+		this.logFileService.deleteLogFile(logFileId);
+		return "deleteStatus";
+	}	
+		
+	// Show Logfile Lines (PathVariable)
 	@GetMapping("/logfile/{logFileId}/lines")
 	public String getLogFileLinesFromLogFile(Model model, @PathVariable int logFileId) {
 		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
 		return "logFileLines";
 	}
 	
-	// Show LogFile Matches
+	// Show LogFile Matches (PathVariable)
 	@GetMapping("/logfile/{logFileId}/matches")
 	public String getMatchesFromLogFile(Model model, @PathVariable int logFileId){
 		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));

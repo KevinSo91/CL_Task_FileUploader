@@ -36,6 +36,8 @@ public class LogFileService{
 	
 	private ArrayList<LogFile> logFiles = new ArrayList<LogFile>();
 	
+	private int nextLogFileId = 0;
+	
 	
 	
 	// Constructors
@@ -100,8 +102,9 @@ public class LogFileService{
 		// Erstelle LogFile Objekt
 		LogFile logFile = new LogFile(info, fileName ,filePath.toString(), LocalDateTime.now());
 		
-		// Setze ID auf die nächste verfügbare Ganzzahl (abhängig von Anzahl der bestehenden LogFiles)
-		logFile.setId(logFiles.size());
+		// Setze ID und erhöhe 'nextId'
+		logFile.setId(this.nextLogFileId);
+		nextLogFileId++;
 		
 		this.logFiles.add(logFile);			
 		

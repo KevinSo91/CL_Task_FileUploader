@@ -67,7 +67,11 @@
 					</td>
 					<!-- TODO: Scan (again) Button -->
 					<!-- Remove Button -->
-					<td><a th:href="@{/logfiles/{id}/delete(id=${logFile.id})}">delete</a></td>					
+					<td>
+						<form method="POST" th:action="@{/logfile/delete(fileId=${logFile.id})}">
+							<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+						</form>
+					</td>					
 				</tr>
 			</tbody>
 			
@@ -132,7 +136,7 @@
 	<div class="container" th:if="${logFileMatches != NULL}">
 		
 		<h2>Matches:</h2>
-		<h3><span th:text="${logFileMatches.fileName}"></span></h3>
+		<h3>File: <span th:text="${logFileMatches.fileName}"></span></h3>
 		<br>
 		
 		<table id="table_logFileMatches" class="table table-bordered table-striped">
