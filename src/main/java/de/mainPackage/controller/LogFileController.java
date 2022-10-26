@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.mainPackage.model.LogFile;
 import de.mainPackage.service.LogFileService;
 
 @Controller
@@ -70,10 +71,11 @@ public class LogFileController {
 //		System.out.println(LogFileService.checkLogFileSize(file));
 
 		// Speichere Datei in Ordner mit aktuellem Datum
-		String message = this.logFileService.uploadLogFile(file, LocalDate.now().toString(), info);
-		this.logFileService.saveLogFileLinesInArray(this.logFileService.getLogFileById(this.logFileService.getAllLogFiles().size()-1));
-		this.logFileService.checkLogFileMatches(this.logFileService.getLogFileById(this.logFileService.getAllLogFiles().size()-1));
-				
+		LogFile logFile = this.logFileService.uploadLogFile(file, LocalDate.now().toString(), info);
+		this.logFileService.saveLogFileLinesInArray(logFile);
+		this.logFileService.checkLogFileMatches(logFile);
+		String message = "You successfully uploaded '" + logFile.getFileName() + "'";
+		
 		redirectAttributes.addFlashAttribute("message", message);
 		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());
 		redirectAttributes.addFlashAttribute("file_Size", file.getSize());

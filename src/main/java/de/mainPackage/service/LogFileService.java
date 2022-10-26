@@ -84,11 +84,11 @@ public class LogFileService{
 	
 	
 	// LogFile hochladen, lokal speichern, Objekt erstellen
-	public String uploadLogFile(MultipartFile file,
+	public LogFile uploadLogFile(MultipartFile file,
 								String folder, 
 								String info) {		
 		
-		String message = ""; // return message
+//		String message = ""; // return message
 		
 		String fileName = file.getOriginalFilename();
 		Path directoryPath = Paths.get(uploadFolderDefault + "\\" + folder);
@@ -100,7 +100,7 @@ public class LogFileService{
 				Files.createDirectories(directoryPath);
 			} catch (IOException e) {
 				e.printStackTrace();
-				message = "Directory Creation failed";
+//				message = "Directory Creation failed";
 			}
 		}
 		
@@ -110,10 +110,10 @@ public class LogFileService{
 		try {
 			byte[] bytes = file.getBytes();	
 			Files.write(filePath, bytes);			
-			message = "You successfully uploaded '" + fileName + "'";					
+//			message = "You successfully uploaded '" + fileName + "'";					
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
-			message = "Upload failed";
+//			message = "Upload failed";
 		}
 		
 		// Erstelle LogFile Objekt
@@ -125,7 +125,7 @@ public class LogFileService{
 		
 		this.logFiles.add(logFile);			
 		
-		return message;
+		return logFile;
 	}
 	
 	// Schreibe die Zeilen aus dem File in die ArrayList 'lines' 
