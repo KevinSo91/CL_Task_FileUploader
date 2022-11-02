@@ -47,13 +47,13 @@ public class LogFileController {
 								 @RequestParam(value = "matchesId", required=false) Integer logFileIdMatches
 								) {
 		model.addAttribute("activePage", "upload");
-		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
+		model.addAttribute("logFilesList", logFileService.getAllLogFilesRepo());
 		// Abhängig von den RequestParams werden die Zeilen oder Matches einer Logfile angezeigt
 		if(logFileIdLines != null) {
-			model.addAttribute("logFileZeilen", this.logFileService.getLogFileById(logFileIdLines.intValue()));
+			model.addAttribute("logFileZeilen", this.logFileService.getLogFileByIdRepo(logFileIdLines.intValue()).get());
 		}
 		if(logFileIdMatches != null) {
-			model.addAttribute("logFileMatches", this.logFileService.getLogFileById(logFileIdMatches.intValue()));
+			model.addAttribute("logFileMatches", this.logFileService.getLogFileByIdRepo(logFileIdMatches.intValue()).get());
 		}
 		
 		return "logFiles";
@@ -69,11 +69,13 @@ public class LogFileController {
 //		// Prüfe Datei auf Datei-Typ und Größe
 //		System.out.println(LogFileService.checkLogFileType(file));
 //		System.out.println(LogFileService.checkLogFileSize(file));
-
+		
+//		TODO: Prüfe lokale Speicherkapazität
+		
 		// Speichere Datei in Ordner mit aktuellem Datum
-		LogFile logFile = this.logFileService.uploadLogFile(file, LocalDate.now().toString(), info);
-		this.logFileService.saveLogFileLinesInArray(logFile);
-		this.logFileService.checkLogFileMatches(logFile);
+		LogFile logFile = this.logFileService.uploadLogFileRepo(file, LocalDate.now().toString(), info);
+		this.logFileService.saveLogFileLinesInArrayRepo(logFile);
+		this.logFileService.checkLogFileMatchesRepo(logFile);
 		String message = "You successfully uploaded '" + logFile.getFileName() + "'";
 		
 		redirectAttributes.addFlashAttribute("message", message);
@@ -89,7 +91,7 @@ public class LogFileController {
 	@PostMapping("/logfile/delete")
 	public String deleteLogFilePost(@RequestParam int fileId,
 									RedirectAttributes redirectAttributes) {		
-		String fileName = this.logFileService.deleteLogFile(fileId);
+		String fileName = this.logFileService.deleteLogFileRepo(fileId);
 		String message = "You successfully deleted '" + fileName + "'";
 		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/logfile/delete/deleteStatus";
@@ -110,21 +112,21 @@ public class LogFileController {
 	// Delete LogFile (PathVariable)
 	@PostMapping("logfile/{logFileId}/delete")
 	public String deleteLogFile(@PathVariable int logFileId) {		
-		this.logFileService.deleteLogFile(logFileId);
+		this.logFileService.deleteLogFileRepo(logFileId);
 		return "deleteStatus";
 	}	
 		
 	// Show Logfile Lines (PathVariable)
 	@GetMapping("/logfile/{logFileId}/lines")
 	public String getLogFileLinesFromLogFile(Model model, @PathVariable int logFileId) {
-		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
+		model.addAttribute("logFile", this.logFileService.getLogFileByIdRepo(logFileId));
 		return "logFileLines";
 	}
 	
 	// Show LogFile Matches (PathVariable)
 	@GetMapping("/logfile/{logFileId}/matches")
 	public String getMatchesFromLogFile(Model model, @PathVariable int logFileId){
-		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
+		model.addAttribute("logFile", this.logFileService.getLogFileByIdRepo(logFileId));
 		return "logFileMatches";
 	}
 	

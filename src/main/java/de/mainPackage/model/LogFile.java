@@ -3,11 +3,15 @@ package de.mainPackage.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-
+@Entity
+@Table(name="logfiles")
 public class LogFile{	
 	
 	// Attributes
@@ -21,7 +25,9 @@ public class LogFile{
 	private LocalDateTime uploadTime;
 //	private boolean isScanned = false;
 
+//	@Transient
 	private ArrayList<String> lines = new ArrayList<String>();
+//	@Transient
 	private ArrayList<Match> matches = new ArrayList<Match>();
 					
 
