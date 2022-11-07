@@ -34,6 +34,12 @@ public class Help{
 	public Help() {		
 	}
 	
+	public Help(String regEx, String helpText) {
+		super();
+		this.regEx = regEx;
+		this.text = helpText;		
+	}
+	
 	public Help(String regEx, String helpText, String link) {
 		super();
 		this.regEx = regEx;

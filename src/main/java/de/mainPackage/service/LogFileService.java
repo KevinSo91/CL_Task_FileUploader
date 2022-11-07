@@ -25,9 +25,7 @@ import de.mainPackage.model.Match;
 
 @Service
 public class LogFileService{	
-	
-	
-	// Attributes
+
 	
 	@Autowired
 	private HelpService helpService;
@@ -40,34 +38,29 @@ public class LogFileService{
 	
 	
 	
-	// Constructors
-	
-	
-	
-	// Methods
-	
 	
 	public boolean createLogFile(LogFile logFile) {
 		return logFiles.add(logFile);
 	}
 	
+//----->TODO: Optional ?
 	public LogFile getLogFileById(int logFileId) {
 		for(LogFile logFile : this.logFiles) {
 			if(logFile.getId() == logFileId) {
 				return logFile;
-			}
-			
+			}			
 		}
-//----->TODO: Optional ?
 		return new LogFile();
 	}	
+	
 	
 	public ArrayList<LogFile> getAllLogFiles(){
 		return logFiles;
 	}
 	
-	public String deleteLogFile(int logFileId) {
-//----->TODO: DeleteFile()
+	
+	public String deleteLogFile(int logFileId) {		
+
 		LogFile logFileToDelete = null;
 		String fileName = null;
 		// Prüfe Logfiles auf passende ID
@@ -76,6 +69,12 @@ public class LogFileService{
 				logFileToDelete = logFile;
 				fileName = logFile.getFileName();
 			}
+		}
+		// Lösche Datei
+		try {
+			Files.deleteIfExists(Paths.get(logFileToDelete.getPath()));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		this.logFiles.remove(logFileToDelete);
 		
@@ -105,6 +104,14 @@ public class LogFileService{
 		}
 		
 //-----> TODO: Prüfe, ob Datei mit gleichem Namen bereits vorhanden (Benutzer entscheidet / Laufindex (i))
+		else {
+			int i = 1;
+			while(Files.exists(filePath)) {
+				filePath = Paths.get(filePath + "(" + i +")");
+				fileName = fileName + "(" + i +")";
+				i++;
+			}
+		}
 		
 		// Schreibe Datei in Verzeichnis		
 		try {
@@ -127,6 +134,7 @@ public class LogFileService{
 		
 		return logFile;
 	}
+	
 	
 	// Schreibe die Zeilen aus dem File in die ArrayList 'lines' 
 	public void saveLogFileLinesInArray(LogFile logFile) throws IOException {
@@ -151,6 +159,7 @@ public class LogFileService{
 		
 	}
 	
+	
 	// Prüfe die Zeilen aus 'lines' gegen das FAQ und schreibe Matches in ArrayList 'matches' 
 	public void checkLogFileMatches(LogFile logFile) {
 		int lineIndex = 1;
@@ -164,9 +173,7 @@ public class LogFileService{
 			}
 			lineIndex++;
 		}
-	}
-	
-	// Static Methods
+	}	
 	
 	
 	public static long checkLogFileSize(MultipartFile file) {		

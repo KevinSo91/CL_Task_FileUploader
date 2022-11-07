@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.boot.context.embedded.tomcat.*;
 
 @SpringBootApplication
-public class FileUploaderApplication {
+public class LogFileAnalyzer {
 	
 	public static void main(String[] args) {
-		SpringApplication.run(FileUploaderApplication.class, args);
+		SpringApplication.run(LogFileAnalyzer.class, args);
 	}
 	
 }

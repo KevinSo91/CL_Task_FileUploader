@@ -20,25 +20,16 @@ import de.mainPackage.service.LogFileService;
 @Controller
 public class LogFileController {
 	
-	// Attributes
-	
-	
 	@Autowired
 	private LogFileService logFileService;
 	
-	
-
-	// Constructors
 	
 	
 	public LogFileController(LogFileService logFileService) {
 		this.logFileService = logFileService;
 	}
 	
-	
-	
-	// Methods
-	
+
 	
 	// Show Logfiles / Upload
 	@GetMapping({"/", "/upload"})
