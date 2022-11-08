@@ -76,6 +76,7 @@ public class LogFileService{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		// Lösche Object
 		this.logFiles.remove(logFileToDelete);
 		
 		return fileName;
@@ -184,7 +185,7 @@ public class LogFileService{
 		return file.getContentType();
 	}
 	
-
+	
 	
 	
 }

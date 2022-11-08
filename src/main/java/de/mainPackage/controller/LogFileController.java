@@ -2,6 +2,8 @@ package de.mainPackage.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,12 +34,12 @@ public class LogFileController {
 
 	
 	// Show Logfiles / Upload
-	@GetMapping({"/", "/upload"})
+	@GetMapping({"/", "/logfiles/all"})
 	public String getUploadPage(Model model 
 								,@RequestParam(value = "zeilenId", required=false) Integer logFileIdLines,
 								 @RequestParam(value = "matchesId", required=false) Integer logFileIdMatches
 								) {
-		model.addAttribute("activePage", "upload");
+		model.addAttribute("activePage", "logfiles");
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
 		// Abhängig von den RequestParams werden die Zeilen oder Matches einer Logfile angezeigt
 		if(logFileIdLines != null) {
@@ -50,52 +52,72 @@ public class LogFileController {
 		return "logFiles";
 	}
 	
-	// Upload File
-	@PostMapping("/upload")
+	
+	// Upload LogFile
+	@PostMapping("/logfiles/upload")
 	public String uploadFile(@RequestParam("file") MultipartFile file,
 							@RequestParam("info") String info,
 							RedirectAttributes redirectAttributes
 							) throws IOException {
 		
-//		// Prüfe Datei auf Datei-Typ und Größe
-//		System.out.println(LogFileService.checkLogFileType(file));
-//		System.out.println(LogFileService.checkLogFileSize(file));
+//--->	TODO: Prüfe: Datei ausgewählt? -> Datei-Typ und Größe
 
 		// Speichere Datei in Ordner mit aktuellem Datum
 		LogFile logFile = this.logFileService.uploadLogFile(file, LocalDate.now().toString(), info);
+		// Schreibe Zeilen in ArrayList 'lines'
 		this.logFileService.saveLogFileLinesInArray(logFile);
+		// Prüfe gegen DB auf Treffer-Pattern
 		this.logFileService.checkLogFileMatches(logFile);
-		String message = "You successfully uploaded '" + logFile.getFileName() + "'";
 		
-		redirectAttributes.addFlashAttribute("message", message);
+		String messageSuccess = "You successfully uploaded '" + logFile.getFileName() + "'";
+		
+		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);
 		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());
 		redirectAttributes.addFlashAttribute("file_Size", file.getSize());
 		redirectAttributes.addFlashAttribute("file_Info", info);
 				
-		return "redirect:/uploadStatus";		
+		return "redirect:/logfiles/all";
 	}	
 	
-		
+	
 	// Delete LogFile
 	@PostMapping("/logfile/delete")
 	public String deleteLogFilePost(@RequestParam int fileId,
 									RedirectAttributes redirectAttributes) {		
 		String fileName = this.logFileService.deleteLogFile(fileId);
-		String message = "You successfully deleted '" + fileName + "'";
-		redirectAttributes.addFlashAttribute("message", message);
-		return "redirect:/logfile/delete/deleteStatus";
+		String messageSuccess = "You successfully deleted '" + fileName + "'";
+		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);
+		return "redirect:/logfiles/all";
+	}
+
+
+	// Delete All Logfiles (On EXIT)
+	@PostMapping("logfiles/delete/all")
+	public String deleteAllLogFiles(RedirectAttributes redirectAttributes) {
+		List<Integer> listIds = new ArrayList<Integer>();
+		for(LogFile logFile : this.logFileService.getAllLogFiles()) {
+			listIds.add(logFile.getId());
+		}
+		for(int id : listIds) {
+			this.logFileService.deleteLogFile(id);
+		}
+		redirectAttributes.addFlashAttribute("messageSuccess", "successfully deleted all (" + listIds.size() + ") Logfiles");
+		return "redirect:/logfiles/all";
 	}
 	
+	
+	// Scan Logfile for Matches
 	@PostMapping("/logfile/scan")
 	public String scanLogFilePost(@RequestParam int fileId,
 									RedirectAttributes redirectAttributes) {
 		LogFile logFile = this.logFileService.getLogFileById(fileId);
 		logFile.deleteAllMatches();
 		this.logFileService.checkLogFileMatches(logFile);
-		String message = "You successfully deleted '" + logFile.getFileName() + "'";
-		redirectAttributes.addFlashAttribute("message", message);
-		return "redirect:/upload";
+		String messageSuccess = "You successfully scanned '" + logFile.getFileName() + "'";
+		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);
+		return "redirect:/logfiles/all";
 	}		
+	
 	
 	// Show Delete Status
 	@GetMapping("/logfile/delete/deleteStatus")

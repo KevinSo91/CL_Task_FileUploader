@@ -36,6 +36,13 @@
 	
 	<div class="alert alert-primary" role="alert" th:text="${messageSuccess}" th:if="${messageSuccess}"></div>
 	<div class="alert alert-danger" role="alert" th:text="${messageError}" th:if="${messageError}"></div>
+	
+	<!-- EXIT Button --> 
+	<div class="container text-right">
+		<form method="POST" th:action="@{/logfiles/delete/all}">
+			<button type="submit" name="deleteAll" class="btn btn-danger" title="Delete All Logfile Objects & Files">EXIT</button>
+		</form>		
+	</div>
 
 	<br><br>
 	<!-- Tabelle Logfiles -->
@@ -63,12 +70,12 @@
 					<td th:text="${logFile.uploadTime}"></td>
 					<td th:text="${logFile.info}"></td>
 					<!-- Show Lines -->
-					<td><a th:href="@{/(zeilenId=${logFile.id})}" th:text="${logFile.lines.size()}"></a></td>
+					<td><a th:href="@{/logfiles/all(zeilenId=${logFile.id})}" th:text="${logFile.lines.size()}"></a></td>
 					<!--  -->
 					<!-- Show Matches (Soll nur als Link angezeigt werden, wenn Matches vorhanden sind) -->
 					<td th:switch="${logFile.matches.size()}">
 						<span th:case="0" th:text="${logFile.matches.size()}"></span>
-						<a th:case="*" th:href="@{/(matchesId=${logFile.id})}" th:text="${logFile.matches.size()}"></a>						
+						<a th:case="*" th:href="@{/logfiles/all(matchesId=${logFile.id})}" th:text="${logFile.matches.size()}"></a>						
 					</td>					
 					<!-- Remove Button -->
 					<td>
@@ -98,7 +105,7 @@
 		<h3> Upload File </h3>
 		<br>
 	
-		<form method="POST" action="/upload" enctype="multipart/form-data">
+		<form method="POST" action="/logfiles/upload" enctype="multipart/form-data">
 		
 			<input type="file" name="file" /> <br><br>
 			<span>additional info: </span>

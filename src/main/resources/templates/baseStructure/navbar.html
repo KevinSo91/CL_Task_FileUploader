@@ -11,8 +11,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li th:class="${activePage == 'upload'} ? 'nav-item active' : 'nav-item'">
-                <a class="nav-link" th:href="@{http://localhost:10100/upload}">LogFiles<span class="sr-only">(current)</span></a>
+            <li th:class="${activePage == 'logfiles'} ? 'nav-item active' : 'nav-item'">
+                <a class="nav-link" th:href="@{http://localhost:10100/logfiles/all}">LogFiles<span class="sr-only">(current)</span></a>
             </li>
             <li th:class="${activePage == 'help'} ? 'nav-item active' : 'nav-item'">
                 <a class="nav-link" th:href="@{http://localhost:10100/help/all}">FAQ</a>
