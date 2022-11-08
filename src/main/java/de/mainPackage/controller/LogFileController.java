@@ -84,7 +84,18 @@ public class LogFileController {
 		String message = "You successfully deleted '" + fileName + "'";
 		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/logfile/delete/deleteStatus";
-	}			
+	}
+	
+	@PostMapping("/logfile/scan")
+	public String scanLogFilePost(@RequestParam int fileId,
+									RedirectAttributes redirectAttributes) {
+		LogFile logFile = this.logFileService.getLogFileById(fileId);
+		logFile.deleteAllMatches();
+		this.logFileService.checkLogFileMatches(logFile);
+		String message = "You successfully deleted '" + logFile.getFileName() + "'";
+		redirectAttributes.addFlashAttribute("message", message);
+		return "redirect:/upload";
+	}		
 	
 	// Show Delete Status
 	@GetMapping("/logfile/delete/deleteStatus")

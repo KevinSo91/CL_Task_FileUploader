@@ -100,11 +100,10 @@ public class LogFile{
 	public void addMatch(Match match) {
 		this.matches.add(match);
 	}
-		
 	
-	// Methods
-		
-	
+	public void deleteAllMatches() {
+		this.matches.clear();
+	}
 	
 	
 	
