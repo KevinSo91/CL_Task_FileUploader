@@ -14,13 +14,15 @@ import de.mainPackage.repository.HelpRepository;
 @Service
 public class HelpService{
 	
-	// Attributes
-	
 	@Autowired
 	private HelpRepository helpRepo;
 	
 	
-	// Methods
+	
+	public void createHelp(Help help) {
+		this.helpRepo.save(help);
+	}
+	
 	@SuppressWarnings("deprecation")
 	public Help getHelpById(int id) {
 		return this.helpRepo.getById(id);
@@ -28,17 +30,10 @@ public class HelpService{
 	
 	public List<Help> getAllHelps(){
 		return this.helpRepo.findAll();
-	}
+	}	
 	
-	@SuppressWarnings("deprecation")
-	public Help getHelp(int help_id) {
-		return this.helpRepo.getById(help_id);
-	}
 	
-	public void createHelp(Help help) {
-		this.helpRepo.save(help);
-	}
-	
+	// Prüfe Logfile-Eintrag gegen FAQ
 	public ArrayList<Help> checkLineForMatches(String line){
 		// Liste aller Hilfen aus FAQ
 		List<Help> helpList = this.helpRepo.findAll();
@@ -54,7 +49,8 @@ public class HelpService{
 		return matchedHelpList;
 	}
 	
-	// TEST
+	
+	// TEST-Patterns
 	public void createTestHelps() {
 		ArrayList<Help> helpList = new ArrayList<Help>();
 		helpList.add(new Help(".* INFO .*", "Hilfestellung 01 - Dieser Eintrag ist eine Information", "www.link1.de"));

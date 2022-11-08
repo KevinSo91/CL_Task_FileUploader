@@ -95,9 +95,11 @@ public class LogFileController {
 	@PostMapping("logfiles/delete/all")
 	public String deleteAllLogFiles(RedirectAttributes redirectAttributes) {
 		List<Integer> listIds = new ArrayList<Integer>();
+		// Schreibt die IDs aller Logfiles in die Liste 'listIds'
 		for(LogFile logFile : this.logFileService.getAllLogFiles()) {
 			listIds.add(logFile.getId());
 		}
+		// Lösche alle Logfiles/Dateien
 		for(int id : listIds) {
 			this.logFileService.deleteLogFile(id);
 		}

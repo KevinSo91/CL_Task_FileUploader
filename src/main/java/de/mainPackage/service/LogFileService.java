@@ -156,8 +156,7 @@ public class LogFileService{
 			if(buffReader != null) {
 				buffReader.close();
 			}
-		}
-		
+		}		
 	}
 	
 	
