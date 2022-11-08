@@ -40,7 +40,9 @@
 	<br><br>
 	<!-- Tabelle Logfiles -->
 	<div class="container">
-		<h2>Logfiles</h2>
+	
+		<h1 align="center">Logfiles</h1>
+		
 		<table id="table_logFiles" class="table table-bordered table-striped">
 		
 			<thead>
@@ -62,19 +64,19 @@
 					<td th:text="${logFile.info}"></td>
 					<!-- Show Lines -->
 					<td><a th:href="@{/(zeilenId=${logFile.id})}" th:text="${logFile.lines.size()}"></a></td>
-					<!-- Show Matches -->
-					<!-- Soll nur als Link angezeigt werden, wenn Matches vorhanden sind -->
+					<!--  -->
+					<!-- Show Matches (Soll nur als Link angezeigt werden, wenn Matches vorhanden sind) -->
 					<td th:switch="${logFile.matches.size()}">
 						<span th:case="0" th:text="${logFile.matches.size()}"></span>
 						<a th:case="*" th:href="@{/(matchesId=${logFile.id})}" th:text="${logFile.matches.size()}"></a>						
-					</td>
-					<!-- TODO: Scan (again) Button -->
+					</td>					
 					<!-- Remove Button -->
 					<td>
 						<form method="POST" th:action="@{/logfile/delete(fileId=${logFile.id})}">
 							<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
 						</form>
 					</td>
+					<!-- Scan Button -->
 					<td>
 						<form method="POST" th:action="@{/logfile/scan(fileId=${logFile.id})}">
 							<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
@@ -91,7 +93,7 @@
 	
 	
 	<!-- Upload Form -->
-	<div class="container">
+	<div class="container" style="border:1px solid #cecece">
 	
 		<h3> Upload File </h3>
 		<br>
