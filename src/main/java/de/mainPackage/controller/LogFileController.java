@@ -55,7 +55,7 @@ public class LogFileController {
 	
 	// Upload LogFile
 	@PostMapping("/logfiles/upload")
-	public String uploadFile(@RequestParam("file") MultipartFile file,
+	public String uploadFile(@RequestParam("uploadFile") MultipartFile file,
 							@RequestParam("info") String info,
 							RedirectAttributes redirectAttributes
 							) throws IOException {
@@ -64,6 +64,12 @@ public class LogFileController {
 
 		// Speichere Datei in Ordner mit aktuellem Datum
 		LogFile logFile = this.logFileService.uploadLogFile(file, LocalDate.now().toString(), info);
+		// Fall: Kein File ausgewählt
+		
+		if(!LogFileService.validateFile(file).equals("ok")) {
+			redirectAttributes.addFlashAttribute("messageUploadError", "No File chosen");
+			return "redirect:/logfiles/all";
+		}
 		// Schreibe Zeilen in ArrayList 'lines'
 		this.logFileService.saveLogFileLinesInArray(logFile);
 		// Prüfe gegen DB auf Treffer-Pattern

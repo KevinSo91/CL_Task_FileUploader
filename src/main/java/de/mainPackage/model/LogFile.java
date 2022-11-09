@@ -10,23 +10,22 @@ import javax.persistence.Id;
 
 public class LogFile{	
 	
-	// Attributes
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 		
 	private String info;
 	private String fileName;
 	private String path;
 	private LocalDateTime uploadTime;
-//	private boolean isScanned = false;
 
 	private ArrayList<String> lines = new ArrayList<String>();
 	private ArrayList<Match> matches = new ArrayList<Match>();
 					
 
 	
-	// Constructors
+	
 	
 	
 	public LogFile() {//		

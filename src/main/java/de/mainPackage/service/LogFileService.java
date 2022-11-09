@@ -90,6 +90,16 @@ public class LogFileService{
 		
 //		String message = ""; // return message
 		
+//		// Check if File is Empty
+//		if(file.isEmpty()) {
+//			
+//			return new LogFile();
+//		}
+		
+		if(!validateFile(file).equals("ok")) {
+			return new LogFile();
+		}
+		
 		String fileName = file.getOriginalFilename();
 		Path directoryPath = Paths.get(uploadFolderDefault + "\\" + folder);
 		Path filePath = Paths.get(uploadFolderDefault + "\\" + folder + "\\" + fileName);
@@ -175,6 +185,15 @@ public class LogFileService{
 		}
 	}	
 	
+	
+	public static String validateFile(MultipartFile file) {
+		String returnMessage = "ok";
+		if(file == null || file.isEmpty() || file.toString().equals("")) {
+			returnMessage = "No file chosen";
+		}
+		
+		return returnMessage;
+	}
 	
 	public static long checkLogFileSize(MultipartFile file) {		
 		return file.getSize();
