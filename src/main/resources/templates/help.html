@@ -51,13 +51,17 @@
 					<td th:text="${help.link}"></td>
 					<!-- Edit Button -->
 					<td>					
-						<form method="GET" th:action="@{/help/updateHelpForm(helpToUpdateId=${help.id})}">
-							<button type="submit" name="update" value="" class="btn btn-primary">edit</button>
+						<form method="POST" th:action="@{/help/updateHelpForm(helpToUpdateId=${help.id})}">
+							<button type="submit" class="btn btn-primary">edit</button>
 						</form>					 
 					</td>
+					<!-- delete Button -->
 					<td>
-						<a th:href="@{/help/updateHelpForm(helpToUpdateId=${help.id})}">edit</a>
-					</td>	
+						<form method="POST" th:action="@{/help/deleteHelp(helpToDeleteId=${help.id})}">
+							<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+						</form>
+					</td>			
+						
 				</tr>
 			</tbody>
 		</table>

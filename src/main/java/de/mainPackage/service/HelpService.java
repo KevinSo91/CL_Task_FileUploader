@@ -38,11 +38,19 @@ public class HelpService{
 	}	
 	
 //	@Transactional
-	public Help updateHelp(Help oldHelp, String regEx, String helpText, String link) {
+	public Help updateHelp(int HelpId, String regEx, String helpText, String link) {
+		Help oldHelp = this.getHelpById(HelpId);
 		oldHelp.setRegEx(regEx);
 		oldHelp.setHelpText(helpText);
 		oldHelp.setLink(link);
 		return this.helpRepo.save(oldHelp);
+	}
+	
+//	@Transactional
+	public String deleteHelp(int helpToDeleteId) {
+		String message = "";
+		this.helpRepo.deleteById(helpToDeleteId);
+		return message;
 	}
 	
 	// Prüfe Logfile-Eintrag gegen FAQ

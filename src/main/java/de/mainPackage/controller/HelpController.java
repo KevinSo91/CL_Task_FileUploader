@@ -39,27 +39,50 @@ public class HelpController{
 		return "redirect:/help/all";
 	}
 	
-	@GetMapping("/help/updateHelpForm")
-	public String getUpdateHelp(Model model, @RequestParam("helpToUpdateId") Integer helpToUpdateId
-								, @ModelAttribute("helpUpdated") Help helpUpdated
-								) {
-		model.addAttribute("helpToUpdate", this.helpService.getHelpById(helpToUpdateId));		
-		
-		//redirectAttributes
+	@PostMapping("/help/deleteHelp")
+	public String deleteHelp(Model model, @RequestParam("helpToDeleteId") int helpToDeleteId) {
+		this.helpService.deleteHelp(helpToDeleteId);
+		return "redirect:/help/all";
+	}
+	
+	@PostMapping("/help/updateHelpForm")
+	public String getUpdateHelp(Model model, @RequestParam("helpToUpdateId") int helpToUpdateId) {
+		Help helpToUpdate = this.helpService.getHelpById(helpToUpdateId);
+		model.addAttribute("helpToUpdate", helpToUpdate);
+		model.addAttribute("id", helpToUpdateId);
+		model.addAttribute("regEx", helpToUpdate.getRegEx());
+		model.addAttribute("helpText", helpToUpdate.getHelpText());
+		model.addAttribute("link", helpToUpdate.getLink());
 		return "updateHelp";
 	}
 	
 	
 	@PostMapping("/help/updateHelp")
-	public String updateHelp(Model model, @ModelAttribute("helpUpdated") Help helpUpdated) {
-		Help helpToEdit = this.helpService.getHelpById(helpUpdated.getId());		
+	public String updateHelp(Model model
+							, @RequestParam(value="helpId") int helpId
+							, @RequestParam(value="regEx", required=false) String helpRegEx
+							, @RequestParam(value="helpText", required=false) String helpText
+							, @RequestParam(value="link", required=false) String link
+							) {
 		
-		this.helpService.updateHelp(helpToEdit, helpUpdated.getRegEx(), helpUpdated.getHelpText(), helpUpdated.getLink());
+		this.helpService.updateHelp(helpId, helpRegEx, helpText, link);
 		
-		model.addAttribute("activePage", "help");
-		model.addAttribute("helpList", this.helpService.getAllHelps());
-		return "help";
+		return "redirect:/help/all";
 	}
+	
+//	@PostMapping("/help/updateHelp")
+//	public String updateHelp(Model model, @ModelAttribute("helpToUpdate") Help helpUpdated
+//							) {
+//		
+//		this.helpService.updateHelp(helpUpdated.getId(), helpUpdated.getRegEx(), helpUpdated.getHelpText(), helpUpdated.getLink());
+//		
+//		return "redirect:/help/all";
+//	}
+	
+	
+	
+	
+	
 	
 //	@GetMapping("/help/update")
 //	public String getUpdateHelpPage(Model model, @RequestParam(value="helpToEditId") Integer helpToEditId)

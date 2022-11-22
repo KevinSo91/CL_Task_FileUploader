@@ -32,23 +32,25 @@
 			</tbody>
 		</table>
 	 </div>
+	
 	 
 	<div>
 			 
-		<form method="POST" action="#" th:action="@{/help/updateHelp}" th:object="${helpUpdated}">
-		
+		<form method="POST" action="#" th:action="@{/help/updateHelp}">
+			 
 			<label>id </label>
-		    <input type="text" th:field="*{id}" th:value="${id}" />
-		     
+		    <input type="text" name="helpId" th:value="${id}" readonly/>
+		    <a style="color:#FF0000">not editable</a>
+		    <br/>		    
 			<label>regEx </label>
-		    <input type="text" th:field="*{regEx}" value="${helpToUpdate.regEx}" />
-		      
+		    <input type="text" name="regEx" th:value="${regEx}" />
+		     <br/>
 		    <label>Help Text </label>
-		    <input type="text" th:field="*{helpText}" value="${helpToUpdate.helpText}" />
-		    
+		    <input type="text" name="helpText" th:value="${helpText}" />
+		    <br/>
 		    <label>link </label>
-		    <input type="text" th:field="*{link}" th:value="${link}" />
-		        
+		    <input type="text" name="link" th:value="${link}" />
+		    <br/>  
 		    <input type="submit" value="save" />	  
 		    
 		</form>
