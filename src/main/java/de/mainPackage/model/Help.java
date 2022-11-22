@@ -22,7 +22,7 @@ public class Help{
 	private String regEx;
 	
 	@Column(columnDefinition="TEXT")
-	private String text;
+	private String helpText;
 
 	private String link;
 	
@@ -37,13 +37,13 @@ public class Help{
 	public Help(String regEx, String helpText) {
 		super();
 		this.regEx = regEx;
-		this.text = helpText;		
+		this.helpText = helpText;		
 	}
 	
 	public Help(String regEx, String helpText, String link) {
 		super();
 		this.regEx = regEx;
-		this.text = helpText;
+		this.helpText = helpText;
 		this.link = link;
 	}
 	
@@ -62,12 +62,12 @@ public class Help{
 		this.regEx = regEx;
 	}
 
-	public String getText() {
-		return text;
+	public String getHelpText() {
+		return helpText;
 	}
 
-	public void setText(String helpText) {
-		this.text = helpText;
+	public void setHelpText(String helpText) {
+		this.helpText = helpText;
 	}
 
 	public String getLink() {

@@ -7,8 +7,13 @@ import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.mainPackage.model.Help;
+import de.mainPackage.model.LogFile;
 import de.mainPackage.repository.HelpRepository;
 
 @Service
@@ -32,6 +37,13 @@ public class HelpService{
 		return this.helpRepo.findAll();
 	}	
 	
+//	@Transactional
+	public Help updateHelp(Help oldHelp, String regEx, String helpText, String link) {
+		oldHelp.setRegEx(regEx);
+		oldHelp.setHelpText(helpText);
+		oldHelp.setLink(link);
+		return this.helpRepo.save(oldHelp);
+	}
 	
 	// Prüfe Logfile-Eintrag gegen FAQ
 	public ArrayList<Help> checkLineForMatches(String line){

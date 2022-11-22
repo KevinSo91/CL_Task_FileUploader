@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+
+<div th:insert="baseStructure/header :: header">  </div>
+<div th:insert="baseStructure/navbar :: navbar">  </div>
+
+<head>
+	<title> File Analyzer - Update Help </title>			
+</head>
+
+
+<body>
+
+	<div>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>					
+					<th>ID</th>
+					<th>Treffer-Pattern</th>
+					<th>Hilfestellung</th>
+					<th>Link</th>									
+				</tr>					
+			</thead>
+			
+			<tbody>
+				<tr>					
+					<td th:text="${helpToUpdate.id}"></td>
+					<td th:text="${helpToUpdate.regEx}"></td>
+					<td th:text="${helpToUpdate.helpText}"></td>
+					<td th:text="${helpToUpdate.link}"></td>							
+				</tr>
+			</tbody>
+		</table>
+	 </div>
+	 
+	<div>
+			 
+		<form method="POST" action="#" th:action="@{/help/updateHelp}" th:object="${helpUpdated}">
+		
+			<label>id </label>
+		    <input type="text" th:field="*{id}" th:value="${id}" />
+		     
+			<label>regEx </label>
+		    <input type="text" th:field="*{regEx}" value="${helpToUpdate.regEx}" />
+		      
+		    <label>Help Text </label>
+		    <input type="text" th:field="*{helpText}" value="${helpToUpdate.helpText}" />
+		    
+		    <label>link </label>
+		    <input type="text" th:field="*{link}" th:value="${link}" />
+		        
+		    <input type="submit" value="save" />	  
+		    
+		</form>
+	</div>	
+	
+
+</body>
+
+
+</html>

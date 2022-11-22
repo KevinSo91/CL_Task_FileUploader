@@ -24,11 +24,14 @@
 
 <body>
 
+	<div class="alert alert-primary" role="alert" th:text="${messageSuccess}" th:if="${messageSuccess}"></div>
+
 	<br><br>
 	
 	<div class="container">
 	
 		<h1 align="center">FAQ</h1>
+		<br>
 		
 		<table id="table_helps" class="table table-bordered table-striped">
 			<thead>
@@ -44,17 +47,50 @@
 				<tr th:each="help : ${helpList}">					
 					<td th:text="${help.id}"></td>
 					<td th:text="${help.regEx}"></td>
-					<td th:text="${help.text}"></td>
-					<td th:text="${help.link}"></td>		
+					<td th:text="${help.helpText}"></td>
+					<td th:text="${help.link}"></td>
+					<!-- Edit Button -->
+					<td>					
+						<form method="GET" th:action="@{/help/updateHelpForm(helpToUpdateId=${help.id})}">
+							<button type="submit" name="update" value="" class="btn btn-primary">edit</button>
+						</form>					 
+					</td>
+					<td>
+						<a th:href="@{/help/updateHelpForm(helpToUpdateId=${help.id})}">edit</a>
+					</td>	
 				</tr>
 			</tbody>
 		</table>
 		
 		<br><br>
 		
+	</div>
+	
+	<!-- Edit Form -->
+	<!-- 
+	<div class="container" th:if="${helpToEdit}">
+		<form method="POST" action="#" th:action="@{help/edit}" th:object="${newHelpToEdit}">
+		
+			<label>regEx </label>
+		    <input type="text" th:field="*{regEx}" value="${helpToEdit.regEx}" />
+		       
+		    <label>Help Text </label>
+		    <input type="text" th:field="*{helpText}" value="${helpToEdit.helpText}" />
+		    
+		    <label>link </label>
+		    <input type="text" th:field="*{link}" value="${helpToEdit.info}" />
+		        
+		    <input type="submit" value="save" />	  
+		    
+		</form>
+	</div>
+	-->
+	
+	<!-- Create Test-Patterns -->
+	<div class="container">		
 		
 		<form method="post" action="#" th:action="@{/help/createTestPattern}">			        
-		    <input type="submit" value="create Test-Pattern" />
+		    <input type="submit" value="create Test-Patterns" />
 		</form>
 		
 	</div>
@@ -73,7 +109,7 @@
 		    <input type="text" th:field="*{regEx}" />
 		       
 		    <label>Help Text </label>
-		    <input type="text" th:field="*{text}" />
+		    <input type="text" th:field="*{helpText}" />
 		    
 		    <label>link </label>
 		    <input type="text" th:field="*{link}" />
