@@ -34,16 +34,16 @@
 
 <body>	
 	
-	<div class="alert alert-primary" role="alert" th:text="${messageSuccess}" th:if="${messageSuccess}"></div>
-	<div class="alert alert-danger" role="alert" th:text="${messageError}" th:if="${messageError}"></div>
+	<div th:if="${messageSuccess}" class="alert alert-primary" role="alert" th:text="${messageSuccess}"></div>
+	<div th:if="${messageError}" class="alert alert-danger" role="alert" th:text="${messageError}"></div>
 	
 	<!-- EXIT Button --> 
 	<div class="container text-right">
 		<form method="POST" th:action="@{/logfiles/delete/all}">
-			<button type="submit" name="deleteAll" class="btn btn-danger" title="Delete All Logfile Objects & Files">EXIT</button>
+			<button type="submit" name="deleteAll" class="btn btn-danger" title="Delete All Logfile Objects & Files">Delete all Logfiles</button>
 		</form>		
 	</div>
-
+	
 	<br><br>
 	<!-- Tabelle Logfiles -->
 	<div class="container">

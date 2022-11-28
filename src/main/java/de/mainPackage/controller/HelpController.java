@@ -35,18 +35,21 @@ public class HelpController{
 	
 	@PostMapping("/help/createHelp")
 	public String createNewHelp(Model model, @ModelAttribute("newHelp") Help newHelp) {
+		model.addAttribute("activePage", "help");
 		this.helpService.createHelp(newHelp);
 		return "redirect:/help/all";
 	}
 	
 	@PostMapping("/help/deleteHelp")
 	public String deleteHelp(Model model, @RequestParam("helpToDeleteId") int helpToDeleteId) {
+		model.addAttribute("activePage", "help");
 		this.helpService.deleteHelp(helpToDeleteId);
 		return "redirect:/help/all";
 	}
 	
 	@PostMapping("/help/updateHelpForm")
 	public String getUpdateHelp(Model model, @RequestParam("helpToUpdateId") int helpToUpdateId) {
+		model.addAttribute("activePage", "help");
 		Help helpToUpdate = this.helpService.getHelpById(helpToUpdateId);
 		model.addAttribute("helpToUpdate", helpToUpdate);
 		model.addAttribute("id", helpToUpdateId);
@@ -64,7 +67,7 @@ public class HelpController{
 							, @RequestParam(value="helpText", required=false) String helpText
 							, @RequestParam(value="link", required=false) String link
 							) {
-		
+		model.addAttribute("activePage", "help");
 		this.helpService.updateHelp(helpId, helpRegEx, helpText, link);
 		
 		return "redirect:/help/all";

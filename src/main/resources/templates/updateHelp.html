@@ -11,7 +11,7 @@
 
 <body>
 
-	<div>
+	<div style="margin-left: 30px">
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>					
@@ -34,25 +34,21 @@
 	 </div>
 	
 	 
-	<div>
-			 
-		<form method="POST" action="#" th:action="@{/help/updateHelp}">
-			 
-			<label>id </label>
-		    <input type="text" name="helpId" th:value="${id}" readonly/>
-		    <a style="color:#FF0000">not editable</a>
+	<div style="margin-left: 30px">			 
+		<form method="POST" action="#" th:action="@{/help/updateHelp}">	
+		    <input type="hidden" name="helpId" th:value="${id}" readonly />
 		    <br/>		    
-			<label>regEx </label>
+			<label>RegEx </label>
 		    <input type="text" name="regEx" th:value="${regEx}" />
 		     <br/>
 		    <label>Help Text </label>
 		    <input type="text" name="helpText" th:value="${helpText}" />
 		    <br/>
-		    <label>link </label>
+		    <label>Link </label>
 		    <input type="text" name="link" th:value="${link}" />
-		    <br/>  
-		    <input type="submit" value="save" />	  
-		    
+		    <br/>
+		    <br/> 
+		    <input class="btn btn-primary" type="submit" value="save changes" /> 
 		</form>
 	</div>	
 	
