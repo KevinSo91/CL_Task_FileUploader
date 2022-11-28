@@ -20,7 +20,7 @@ public class CustomRunner implements CommandLineRunner{
 				".*\\[\"Bitte geben Sie einen Wert in das erforderliche Feld \\\\u0027Diese Anfrage stellen für:\\\\u0027 ein\\.\\\\u0027\"].*", 
 				"Lösung: \r\n"
 				+ "die wahrscheinlichste Ursache ist eine Abweichung zwischen Loginnamen im Portal und in der Konnektor Datenbank.\r\n"
-				+ "in diesem Fall: Username Portal: henry.koerner@volksbank-pirna.de ; Username lt. springIntern: koernerh\r\n"
+				+ "in diesem Fall: Username Portal: henry.mustermann@volksbank-musterstadt.de ; Username lt. springIntern: mustermannt\r\n"
 				+ "\r\n"
 				+ "Hier muss im Anschluss die SpringIntern Datenbank geupdated werden. Bloß nicht das Portal! Da der Kunde die Änderung nicht automatisch mitbekommt und sich dann nicht mehr einloggen kann."
 				));

@@ -3,11 +3,9 @@ package de.mainPackage.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
 
-
+@Getter
 public class LogFile{	
 	
 	
@@ -44,33 +42,33 @@ public class LogFile{
 	// Getter / Setter
 		
 
-	public String getInfo() {
-		return info;
-	}
+//	public String getInfo() {
+//		return info;
+//	}
 
 	public void setInfo(String info) {
 		this.info = info;
 	}
 
-	public String getFileName() {
-		return fileName;
-	}
+//	public String getFileName() {
+//		return fileName;
+//	}
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
 
-	public String getPath() {
-		return path;
-	}
+//	public String getPath() {
+//		return path;
+//	}
 
 	public void setPath(String path) {
 		this.path = path;
 	}
 
-	public LocalDateTime getUploadTime() {
-		return uploadTime;
-	}
+//	public LocalDateTime getUploadTime() {
+//		return uploadTime;
+//	}
 
 	public void setUploadTime(LocalDateTime uploadTime) {
 		this.uploadTime = uploadTime;

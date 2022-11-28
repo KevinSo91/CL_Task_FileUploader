@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +17,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.mainPackage.model.LogFile;
 import de.mainPackage.service.LogFileService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class LogFileController {
 	
@@ -58,7 +59,7 @@ public class LogFileController {
 	public String uploadFile(@RequestParam("uploadFile") MultipartFile file,
 							@RequestParam("info") String info,
 							RedirectAttributes redirectAttributes
-							) throws IOException {
+							) throws IOException {		
 		
 //--->	TODO: Prüfe: Datei ausgewählt? -> Datei-Typ und Größe
 
@@ -75,13 +76,14 @@ public class LogFileController {
 		// Prüfe gegen DB auf Treffer-Pattern
 		this.logFileService.checkLogFileMatches(logFile);
 		
-		String messageSuccess = "You successfully uploaded '" + logFile.getFileName() + "'";
+		String messageSuccess = "successfully uploaded '" + logFile.getFileName() + "'";
 		
 		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);
 		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());
 		redirectAttributes.addFlashAttribute("file_Size", file.getSize());
 		redirectAttributes.addFlashAttribute("file_Info", info);
-				
+		
+		
 		return "redirect:/logfiles/all";
 	}	
 	
@@ -91,8 +93,9 @@ public class LogFileController {
 	public String deleteLogFilePost(@RequestParam int fileId,
 									RedirectAttributes redirectAttributes) {		
 		String fileName = this.logFileService.deleteLogFile(fileId);
-		String messageSuccess = "You successfully deleted '" + fileName + "'";
+		String messageSuccess = "successfully deleted '" + fileName + "'";
 		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);
+		
 		return "redirect:/logfiles/all";
 	}
 

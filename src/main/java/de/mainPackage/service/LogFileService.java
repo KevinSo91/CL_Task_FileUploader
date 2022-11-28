@@ -2,7 +2,6 @@ package de.mainPackage.service;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,7 +12,6 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 import de.mainPackage.model.Help;
 import de.mainPackage.model.LogFile;
 import de.mainPackage.model.Match;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class LogFileService{	
 
 	
@@ -61,15 +61,11 @@ public class LogFileService{
 	
 	public String deleteLogFile(int logFileId) {		
 
-		LogFile logFileToDelete = null;
-		String fileName = null;
-		// Prüfe Logfiles auf passende ID
-		for(LogFile logFile : this.logFiles) {
-			if(logFile.getId() == logFileId) {
-				logFileToDelete = logFile;
-				fileName = logFile.getFileName();
-			}
-		}
+		log.info(String.format("deleting logfile '%s'...", this.getLogFileById(logFileId).getFileName()));
+		
+		LogFile logFileToDelete = this.getLogFileById(logFileId);
+		String fileName = logFileToDelete.getFileName();
+		
 		// Lösche Datei
 		try {
 			Files.deleteIfExists(Paths.get(logFileToDelete.getPath()));
@@ -79,6 +75,8 @@ public class LogFileService{
 		// Lösche Object
 		this.logFiles.remove(logFileToDelete);
 		
+		log.info(String.format("successfully deleted logfile '%s'", logFileToDelete.getFileName()));
+		
 		return fileName;
 	}
 	
@@ -87,7 +85,7 @@ public class LogFileService{
 	public LogFile uploadLogFile(MultipartFile file,
 								String folder, 
 								String info) {		
-		
+		log.info(String.format("uploading logfile '%s'...", file.getOriginalFilename()));
 //		String message = ""; // return message
 		
 //		// Check if File is Empty
@@ -141,7 +139,9 @@ public class LogFileService{
 		logFile.setId(this.nextLogFileId);
 		nextLogFileId++;
 		
-		this.logFiles.add(logFile);			
+		this.logFiles.add(logFile);	
+		
+		log.info(String.format("successfully uploaded logfile '%s'", fileName));
 		
 		return logFile;
 	}
