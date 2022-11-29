@@ -2,6 +2,9 @@ package de.mainPackage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,5 +17,12 @@ public class LogFileAnalyzer {
 		log.info("LogFileAnalyzer started");
 		
 	}
+	
+}
+
+@Configuration
+@EnableScheduling
+@ConditionalOnProperty(name = "scheduling.enable", matchIfMissing = true)
+class SchedulingConfiguration{
 	
 }

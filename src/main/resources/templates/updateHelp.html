@@ -5,11 +5,14 @@
 <div th:insert="baseStructure/navbar :: navbar">  </div>
 
 <head>
-	<title> File Analyzer - Update Help </title>			
+
+	<title> File Analyzer - Update Help </title>
+				
 </head>
 
 
-<body>	  
+<body>	
+  
 	<div style="margin-left: 30px">				 
 		<form method="POST" action="#" th:action="@{/help/updateHelp}">
 			<input type="hidden" name="helpId" th:value="${id}" readonly />
@@ -27,8 +30,8 @@
 				<tbody>
 					<tr>					
 						<td th:text="${helpToUpdate.id}"></td>
-						<td><textarea name="regEx" th:text="${regEx}" cols="50" class="form-control"></textarea></td>
-						<td><textarea name="helpText" th:text="${helpText}" cols="100" class="form-control"></textarea></td>
+						<td><textarea id="regExInput" name="regEx" th:text="${regEx}" cols="50" class="form-control"></textarea></td>
+						<td><textarea id="helpTestInput" name="helpText" th:text="${helpText}" cols="100" class="form-control"></textarea></td>
 						<td><input type="text" name="link" th:value="${link}" class="form-control" placeholder="Enter Link for more Information"/></td>
 						<td><input class="btn btn-primary" type="submit" value="save changes" /></td>							
 					</tr>

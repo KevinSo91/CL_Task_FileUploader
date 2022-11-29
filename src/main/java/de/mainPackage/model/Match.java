@@ -1,5 +1,8 @@
 package de.mainPackage.model;
 
+import lombok.Data;
+
+@Data
 public class Match{
 	
 	// Attributes
@@ -23,46 +26,5 @@ public class Match{
 		this.help = help;
 	}
 
-	
-	
-	// Getter / Setter
-	
-
-	public long getLineNr() {
-		return lineNr;
-	}
-
-	public void setLineNr(long lineNr) {
-		this.lineNr = lineNr;
-	}
-
-	public String getLineText() {
-		return lineText;
-	}
-
-	public void setLineText(String lineText) {
-		this.lineText = lineText;
-	}
-
-	public Help getHelp() {
-		return help;
-	}
-
-	public void setHelp(Help help) {
-		this.help = help;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public int getLogFileId() {
-		return logFileId;
-	}
-
-	public void setLogFileId(int logFileId) {
-		this.logFileId = logFileId;
-	}
-	
 	
 }

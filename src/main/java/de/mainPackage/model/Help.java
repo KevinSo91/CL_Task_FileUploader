@@ -7,13 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
+
 @Entity
 @Table (name="faq")
+@Data
 public class Help{
 	
 	// Attributes
 	
 	@Id
+	@Setter(AccessLevel.PROTECTED)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="help_id")
 	private int id;

@@ -3,9 +3,12 @@ package de.mainPackage.controller;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +29,12 @@ public class LogFileController {
 	@Autowired
 	private LogFileService logFileService;
 	
+	@Value("${deleteAllLogFiles.cron}")
+	private final String cron;
 	
 	
 	public LogFileController(LogFileService logFileService) {
+		this.cron = "${deleteAllLogFiles.cron}";
 		this.logFileService = logFileService;
 	}
 	
@@ -164,5 +170,21 @@ public class LogFileController {
 	}
 	
 	
+	
+	// Schedule
+	
+	@Scheduled(cron = "${deleteAllLogFiles.cron}")
+	public void deleteAllLogFiles() {
+		List<Integer> listIds = new ArrayList<Integer>();
+		// Schreibt die IDs aller Logfiles in die Liste 'listIds'
+		for(LogFile logFile : this.logFileService.getAllLogFiles()) {
+			listIds.add(logFile.getId());
+		}
+		// Lösche alle Logfiles/Dateien
+		for(int id : listIds) {
+			this.logFileService.deleteLogFile(id);
+		}
+		log.info("All LogFiles Deleted By Schedule");
+	}
 	
 }
