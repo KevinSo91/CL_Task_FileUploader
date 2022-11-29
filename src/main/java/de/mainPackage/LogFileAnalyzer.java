@@ -22,6 +22,7 @@ public class LogFileAnalyzer {
 
 @Configuration
 @EnableScheduling
+// Falls Scheduling disabled werden soll, muss dies in der Property explizit angegeben werden
 @ConditionalOnProperty(name = "scheduling.enable", matchIfMissing = true)
 class SchedulingConfiguration{
 	
