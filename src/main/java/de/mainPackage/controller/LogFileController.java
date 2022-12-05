@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,6 @@ public class LogFileController {
 	
 	@Autowired
 	private LogFileService logFileService;
-	
 	
 	
 	public LogFileController(LogFileService logFileService) {
@@ -165,7 +165,7 @@ public class LogFileController {
 	
 	// Schedule
 	
-	@Scheduled(cron = "${deleteAllLogFiles.cron}")
+	@Scheduled(cron = "${logfiles.delete.cron}")
 	public void deleteAllLogFiles() {
 		List<Integer> listIds = new ArrayList<Integer>();
 		// Schreibt die IDs aller Logfiles in die Liste 'listIds'
@@ -178,7 +178,7 @@ public class LogFileController {
 		}		
 		// Lösche Dateien in Default-Folder
 		try {
-			boolean result = FileSystemUtils.deleteRecursively(Paths.get(this.logFileService.getUploadFolderDefault()));
+			boolean result = FileSystemUtils.deleteRecursively(Paths.get(this.logFileService.getConfigProperties().getDefaultDirectory()));
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}

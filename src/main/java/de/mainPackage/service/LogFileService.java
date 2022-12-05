@@ -14,35 +14,37 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import de.mainPackage.config.ConfigProperties;
 import de.mainPackage.model.Help;
 import de.mainPackage.model.LogFile;
 import de.mainPackage.model.Match;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@Data
 public class LogFileService{	
 
 	
 	@Autowired
 	private HelpService helpService;
 	
-	private static String uploadFolderDefault = "${logfiles.defaultDir}";
+	@Autowired
+	private ConfigProperties configProperties;
+	
+	@Value("${logfiles.defaultDirectory}")
+	private String defaultDir;
 	
 	private ArrayList<LogFile> logFiles = new ArrayList<LogFile>();
 	
 	private int nextLogFileId = 0;
 	
 	
-	
-	
-	public String getUploadFolderDefault() {
-		return uploadFolderDefault;
-	}
-
 	
 	
 	
@@ -93,6 +95,7 @@ public class LogFileService{
 								String folder, 
 								String info) {		
 		log.info(String.format("uploading logfile '%s'...", file.getOriginalFilename()));
+		
 //		String message = ""; // return message
 		
 //		// Check if File is Empty
@@ -106,10 +109,8 @@ public class LogFileService{
 		}
 		
 		String fileName = file.getOriginalFilename();
-		Path directoryPath = Paths.get(uploadFolderDefault + "\\" + folder);
-		Path filePath = Paths.get(uploadFolderDefault + "\\" + folder + "\\" + fileName);
-		
-		log.info(filePath.toString());
+		Path directoryPath = Paths.get(configProperties.getDefaultDirectory() + "\\" + folder);
+		Path filePath = Paths.get(configProperties.getDefaultDirectory() + "\\" + folder + "\\" + fileName);
 		
 		// Falls Verzeichnis nicht existiert -> Erstelle Verzeichnis
 		if(!Files.exists(directoryPath)) {
