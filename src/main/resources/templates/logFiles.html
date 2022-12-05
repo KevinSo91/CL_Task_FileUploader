@@ -7,6 +7,9 @@
 <head>
 	<title> File Uploader - Upload File </title>
 	
+	<!-- custom css -->
+	<link rel="stylesheet" type="text/css" href="/css/test.css"/>
+	
 	<!-- Java Script DataTables für die Tabellen Ansicht -->
 	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 	
@@ -37,7 +40,8 @@
 	<div th:if="${messageSuccess}" class="alert alert-success" role="alert" th:text="${messageSuccess}"></div>
 	<div th:if="${messageError}" class="alert alert-danger" role="alert" th:text="${messageError}"></div>
 	
-	<!-- EXIT Button --> 
+	
+	<!-- Button: Delete All Logfiles --> 
 	<div class="container text-right">
 		<form method="POST" th:action="@{/logfiles/delete/all}">
 			<button type="submit" name="deleteAll" class="btn btn-danger" title="Delete All Logfile Objects & Files">Delete all Logfiles</button>
@@ -80,7 +84,7 @@
 					</td>					
 					<!-- Remove Button -->
 					<td>
-						<form method="POST" th:action="@{/logfile/delete(fileId=${logFile.id})}">
+						<form method="POST" th:action="@{/logfiles/delete(fileId=${logFile.id})}">
 							<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
 						</form>
 					</td>
@@ -113,7 +117,7 @@
 			<input type="text" name="info" /><br><br>
 			<button type="submit" value="upload" class="btn btn-primary">upload</button>
 			<!-- Message -->
-			<div class="alert alert-danger" role="alert" th:text="${messageUploadError}" th:if="${messageUploadError}"></div>
+			<div class="alert alert-danger noFile" role="alert" th:text="${messageUploadError}" th:if="${messageUploadError}"></div>
 			
 		</form>
 		<br>

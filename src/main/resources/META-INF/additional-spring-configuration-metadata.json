@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "deleteAllLogFiles.cron",
+    "type": "java.lang.String",
+    "description": "Enter a cron-Expression to schedule the Deletion of all LogFile Objects"
+  },
+  {
+    "name": "deleteAllLogFiles.cron",
+    "type": "java.lang.String",
+    "description": "A description for 'deleteAllLogFiles.cron'"
+  },
+  {
+    "name": "logfiles.defaultDir",
+    "type": "java.lang.String",
+    "description": "A description for 'logfiles.defaultDir'"
+  }
+]}

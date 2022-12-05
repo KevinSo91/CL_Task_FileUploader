@@ -30,12 +30,19 @@ public class LogFileService{
 	@Autowired
 	private HelpService helpService;
 	
-	private static String uploadFolderDefault = ".\\data\\";
+	private static String uploadFolderDefault = "${logfiles.defaultDir}";
 	
 	private ArrayList<LogFile> logFiles = new ArrayList<LogFile>();
 	
 	private int nextLogFileId = 0;
 	
+	
+	
+	
+	public String getUploadFolderDefault() {
+		return uploadFolderDefault;
+	}
+
 	
 	
 	
@@ -101,6 +108,8 @@ public class LogFileService{
 		String fileName = file.getOriginalFilename();
 		Path directoryPath = Paths.get(uploadFolderDefault + "\\" + folder);
 		Path filePath = Paths.get(uploadFolderDefault + "\\" + folder + "\\" + fileName);
+		
+		log.info(filePath.toString());
 		
 		// Falls Verzeichnis nicht existiert -> Erstelle Verzeichnis
 		if(!Files.exists(directoryPath)) {
