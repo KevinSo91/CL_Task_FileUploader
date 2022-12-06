@@ -45,8 +45,9 @@ public class HelpService{
 		oldHelp.setRegEx(regEx);
 		oldHelp.setHelpText(helpText);
 		oldHelp.setLink(link);
+		Help newHelp = this.helpRepo.save(oldHelp);
 		log.info(String.format("Successfully updated Help (id=%s)" , helpId));
-		return this.helpRepo.save(oldHelp);
+		return newHelp;
 	}
 	
 	@Transactional
