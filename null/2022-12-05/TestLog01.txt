@@ -1,7 +1,0 @@
-2022-09-13 09:30 test start
-testZeile02
-testZeile03 ERROR 
-testZeile04
-2022-09-13 09:34 testZeile 05
-testZeile06
-testZeile07

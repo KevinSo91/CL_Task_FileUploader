@@ -29,24 +29,22 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Data
 public class LogFileService{	
-
 	
 	@Autowired
 	private HelpService helpService;
 	
-	@Autowired
-	private ConfigProperties configProperties;
+//	@Autowired
+//	private ConfigProperties configProperties;
 	
 	@Value("${logfiles.defaultDirectory}")
-	private String defaultDir;
+	private String defaultDirectoy;
 	
 	private ArrayList<LogFile> logFiles = new ArrayList<LogFile>();
 	
 	private int nextLogFileId = 0;
 	
 	
-	
-	
+		
 	
 	public boolean createLogFile(LogFile logFile) {
 		return logFiles.add(logFile);
@@ -95,7 +93,7 @@ public class LogFileService{
 								String folder, 
 								String info) {		
 		log.info(String.format("uploading logfile '%s'...", file.getOriginalFilename()));
-		
+				
 //		String message = ""; // return message
 		
 //		// Check if File is Empty
@@ -109,8 +107,8 @@ public class LogFileService{
 		}
 		
 		String fileName = file.getOriginalFilename();
-		Path directoryPath = Paths.get(configProperties.getDefaultDirectory() + "\\" + folder);
-		Path filePath = Paths.get(configProperties.getDefaultDirectory() + "\\" + folder + "\\" + fileName);
+		Path directoryPath = Paths.get(defaultDirectoy + "\\" + folder);
+		Path filePath = Paths.get(defaultDirectoy + "\\" + folder + "\\" + fileName);
 		
 		// Falls Verzeichnis nicht existiert -> Erstelle Verzeichnis
 		if(!Files.exists(directoryPath)) {

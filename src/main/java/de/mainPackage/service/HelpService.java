@@ -1,5 +1,6 @@
 package de.mainPackage.service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -8,49 +9,53 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.mainPackage.model.Help;
-import de.mainPackage.model.LogFile;
 import de.mainPackage.repository.HelpRepository;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class HelpService{
 	
 	@Autowired
 	private HelpRepository helpRepo;
 	
 	
-	
-	public void createHelp(Help help) {
-		this.helpRepo.save(help);
+	@Transactional
+	public Help createHelp(Help help) {
+		log.info("Creating new Help...");
+		Help newHelp = this.helpRepo.save(help);
+		log.info("New Help created (id=" + newHelp.getId() + ")" );
+		return newHelp;
 	}
-	
-	@SuppressWarnings("deprecation")
+		
 	public Help getHelpById(int id) {
-		return this.helpRepo.getById(id);
+		return this.helpRepo.getReferenceById(id);
 	}
 	
 	public List<Help> getAllHelps(){
 		return this.helpRepo.findAll();
 	}	
 	
-//	@Transactional
-	public Help updateHelp(int HelpId, String regEx, String helpText, String link) {
-		Help oldHelp = this.getHelpById(HelpId);
+	@Transactional
+	public Help updateHelp(int helpId, String regEx, String helpText, String link) {
+		log.info("Updating Help (id=" + helpId + ") ..." );
+		Help oldHelp = this.getHelpById(helpId);
 		oldHelp.setRegEx(regEx);
 		oldHelp.setHelpText(helpText);
 		oldHelp.setLink(link);
+		log.info("Successfully updated Help (id=" + helpId + ")" );
 		return this.helpRepo.save(oldHelp);
 	}
 	
-//	@Transactional
-	public String deleteHelp(int helpToDeleteId) {
-		String message = "";
+	@Transactional
+	public Help deleteHelp(int helpToDeleteId) {
+		Help HelpToDelete = this.helpRepo.getReferenceById(helpToDeleteId);
+		log.info("Deleting Help (id=" + HelpToDelete.getId() + ") ..." );
 		this.helpRepo.deleteById(helpToDeleteId);
-		return message;
+		log.info("Help successfully deleted (id=" + HelpToDelete.getId() + ")" );
+		return HelpToDelete;
 	}
 	
 	// Prüfe Logfile-Eintrag gegen FAQ

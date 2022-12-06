@@ -32,6 +32,8 @@ public class LogFileController {
 	@Autowired
 	private LogFileService logFileService;
 	
+	@Value("${logfiles.defaultDirectory}")
+	private String defaultDirectoy;
 	
 	public LogFileController(LogFileService logFileService) {
 		this.logFileService = logFileService;
@@ -42,8 +44,8 @@ public class LogFileController {
 	// Show Logfiles / Upload
 	@GetMapping({"/", "/all"})
 	public String getUploadPage(Model model 
-								,@RequestParam(value = "zeilenId", required=false) Integer logFileIdLines,
-								 @RequestParam(value = "matchesId", required=false) Integer logFileIdMatches
+								,@RequestParam(value = "showLinesForLogfileId", required=false) Integer logFileIdLines,
+								 @RequestParam(value = "showMatchesForLogfileId", required=false) Integer logFileIdMatches
 								) {
 		model.addAttribute("activePage", "logfiles");
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
@@ -85,7 +87,7 @@ public class LogFileController {
 		String messageSuccess = "successfully uploaded '" + logFile.getFileName() + "'";
 		
 		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);
-		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());
+		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());		
 		redirectAttributes.addFlashAttribute("file_Size", file.getSize());
 		redirectAttributes.addFlashAttribute("file_Info", info);
 		
@@ -119,6 +121,7 @@ public class LogFileController {
 			this.logFileService.deleteLogFile(id);
 		}
 		redirectAttributes.addFlashAttribute("messageSuccess", "successfully deleted all (" + listIds.size() + ") Logfiles");
+		log.info("Deleting all Logfiles...");
 		return "redirect:/logfiles/all";
 	}
 	
@@ -136,30 +139,30 @@ public class LogFileController {
 	}		
 	
 	
-	
+//	--------------------------------------------------------------------------------------------------------------------
 	
 	// Methods with Pathvariables
 	
-	// Delete LogFile (PathVariable)
-	@PostMapping("/{logFileId}/delete")
-	public String deleteLogFile(@PathVariable int logFileId) {		
-		this.logFileService.deleteLogFile(logFileId);
-		return "deleteStatus";
-	}	
-		
-	// Show Logfile Lines (PathVariable)
-	@GetMapping("/{logFileId}/lines")
-	public String getLogFileLinesFromLogFile(Model model, @PathVariable int logFileId) {
-		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
-		return "logFileLines";
-	}
-	
-	// Show LogFile Matches (PathVariable)
-	@GetMapping("/{logFileId}/matches")
-	public String getMatchesFromLogFile(Model model, @PathVariable int logFileId){
-		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
-		return "logFileMatches";
-	}
+//	// Delete LogFile (PathVariable)
+//	@PostMapping("/{logFileId}/delete")
+//	public String deleteLogFile(@PathVariable int logFileId) {		
+//		this.logFileService.deleteLogFile(logFileId);
+//		return "deleteStatus";
+//	}	
+//		
+//	// Show Logfile Lines (PathVariable)
+//	@GetMapping("/{logFileId}/lines")
+//	public String getLogFileLinesFromLogFile(Model model, @PathVariable int logFileId) {
+//		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
+//		return "logFileLines";
+//	}
+//	
+//	// Show LogFile Matches (PathVariable)
+//	@GetMapping("/{logFileId}/matches")
+//	public String getMatchesFromLogFile(Model model, @PathVariable int logFileId){
+//		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
+//		return "logFileMatches";
+//	}
 	
 	
 	
@@ -178,7 +181,7 @@ public class LogFileController {
 		}		
 		// Lösche Dateien in Default-Folder
 		try {
-			boolean result = FileSystemUtils.deleteRecursively(Paths.get(this.logFileService.getConfigProperties().getDefaultDirectory()));
+			boolean result = FileSystemUtils.deleteRecursively(Paths.get(this.defaultDirectoy));
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}
