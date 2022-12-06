@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import de.mainPackage.config.ConfigProperties;
 import de.mainPackage.model.Help;
 import de.mainPackage.model.LogFile;
 import de.mainPackage.model.Match;
@@ -31,10 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 public class LogFileService{	
 	
 	@Autowired
-	private HelpService helpService;
-	
-//	@Autowired
-//	private ConfigProperties configProperties;
+	private HelpService helpService;	
 	
 	@Value("${logfiles.defaultDirectory}")
 	private String defaultDirectoy;
@@ -50,7 +46,6 @@ public class LogFileService{
 		return logFiles.add(logFile);
 	}
 	
-//----->TODO: Optional ?
 	public LogFile getLogFileById(int logFileId) {
 		for(LogFile logFile : this.logFiles) {
 			if(logFile.getId() == logFileId) {

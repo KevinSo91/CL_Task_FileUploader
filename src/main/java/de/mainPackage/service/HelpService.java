@@ -26,7 +26,7 @@ public class HelpService{
 	public Help createHelp(Help help) {
 		log.info("Creating new Help...");
 		Help newHelp = this.helpRepo.save(help);
-		log.info("New Help created (id=" + newHelp.getId() + ")" );
+		log.info(String.format("New Help created (id=%s)" , newHelp.getId()));
 		return newHelp;
 	}
 		
@@ -40,21 +40,21 @@ public class HelpService{
 	
 	@Transactional
 	public Help updateHelp(int helpId, String regEx, String helpText, String link) {
-		log.info("Updating Help (id=" + helpId + ") ..." );
+		log.info(String.format("Updating Help (id=%s) ..." , helpId));
 		Help oldHelp = this.getHelpById(helpId);
 		oldHelp.setRegEx(regEx);
 		oldHelp.setHelpText(helpText);
 		oldHelp.setLink(link);
-		log.info("Successfully updated Help (id=" + helpId + ")" );
+		log.info(String.format("Successfully updated Help (id=%s)" , helpId));
 		return this.helpRepo.save(oldHelp);
 	}
 	
 	@Transactional
 	public Help deleteHelp(int helpToDeleteId) {
 		Help HelpToDelete = this.helpRepo.getReferenceById(helpToDeleteId);
-		log.info("Deleting Help (id=" + HelpToDelete.getId() + ") ..." );
+		log.info(String.format("Deleting Help (id=%s) ..." , HelpToDelete.getId()));
 		this.helpRepo.deleteById(helpToDeleteId);
-		log.info("Help successfully deleted (id=" + HelpToDelete.getId() + ")" );
+		log.info(String.format("Help successfully deleted (id=%s)", HelpToDelete.getId()));
 		return HelpToDelete;
 	}
 	
