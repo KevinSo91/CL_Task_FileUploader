@@ -34,14 +34,10 @@ public class LogFileController {
 	
 	@Value("${logfiles.defaultDirectory}")
 	private String defaultDirectoy;
-	
-	public LogFileController(LogFileService logFileService) {
-		this.logFileService = logFileService;
-	}
-	
+		
 
 	
-	// Show Logfiles / Upload
+	// Show Logfiles & Upload Form
 	@GetMapping({"/", "/all"})
 	public String getUploadPage(Model model 
 								,@RequestParam(value = "showLinesForLogfileId", required=false) Integer showLinesForLogfileId,
@@ -51,7 +47,7 @@ public class LogFileController {
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
 		// Abhängig von den RequestParams werden die Zeilen oder Matches einer Logfile angezeigt
 		if(showLinesForLogfileId != null) {
-			model.addAttribute("logFileZeilen", this.logFileService.getLogFileById(showLinesForLogfileId.intValue()));
+			model.addAttribute("logFileLines", this.logFileService.getLogFileById(showLinesForLogfileId.intValue()));
 		}
 		if(showMatchesForLogfileId != null) {
 			model.addAttribute("logFileMatches", this.logFileService.getLogFileById(showMatchesForLogfileId.intValue()));
@@ -72,7 +68,7 @@ public class LogFileController {
 
 		// Fall: Kein File ausgewählt		
 		if(!LogFileService.validateFile(file).equals("ok")) {
-			redirectAttributes.addFlashAttribute("messageNoFileError", "No File chosen");
+			redirectAttributes.addFlashAttribute("messageNoFileError", "No File selected");
 			return "redirect:/logfiles/all";
 		}
 		

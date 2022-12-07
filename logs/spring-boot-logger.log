@@ -2237,3 +2237,577 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 2022-12-07 11:20:25,954 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-1] deleting logfile 'testFile.txt'...
 2022-12-07 11:20:25,957 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-1] successfully deleted logfile 'testFile.txt'
 2022-12-07 11:20:33,035 INFO de.mainPackage.controller.LogFileController [http-nio-10100-exec-4] Deleting all Logfiles...
+2022-12-07 11:20:33,036 INFO de.mainPackage.controller.LogFileController [http-nio-10100-exec-4] Successfully deleted all (0) Logfiles
+2022-12-07 12:41:30,879 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-12-07 12:41:30,912 INFO org.apache.juli.logging.DirectJDKLog [Thread-32] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:41:30,913 INFO org.apache.juli.logging.DirectJDKLog [Thread-32] Stopping service [Tomcat]
+2022-12-07 12:41:30,915 INFO org.apache.juli.logging.DirectJDKLog [Thread-32] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-07 12:41:30,926 WARN org.apache.juli.logging.DirectJDKLog [Thread-32] The web application [ROOT] appears to have started a thread named [HikariPool-8 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 12:41:30,928 INFO org.apache.juli.logging.DirectJDKLog [Thread-32] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:41:30,934 INFO org.apache.juli.logging.DirectJDKLog [Thread-32] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:41:30,940 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-32] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 12:41:30,943 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-32] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 12:41:31,149 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-32] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 12:41:31,153 INFO com.zaxxer.hikari.HikariDataSource [Thread-32] HikariPool-8 - Shutdown initiated...
+2022-12-07 12:41:31,156 INFO com.zaxxer.hikari.HikariDataSource [Thread-32] HikariPool-8 - Shutdown completed.
+2022-12-07 12:41:31,347 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 12:41:31,347 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 12:41:31,835 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 12:41:31,850 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 15 ms. Found 1 JPA repository interfaces.
+2022-12-07 12:41:31,970 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 12:41:31,970 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:41:31,972 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 12:41:31,973 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 12:41:32,009 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 12:41:32,009 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 658 ms
+2022-12-07 12:41:32,038 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-9 - Starting...
+2022-12-07 12:41:32,042 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-9 - Start completed.
+2022-12-07 12:41:32,043 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 12:41:32,092 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 12:41:32,097 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 12:41:32,130 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 12:41:32,131 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 12:41:32,242 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 12:41:32,466 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 12:41:32,470 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 12:41:32,494 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:41:32,503 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 12:41:32,520 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.24 seconds (JVM running for 5329.537)
+2022-12-07 12:41:32,526 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 12:41:32,534 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 12:41:32,535 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 12:41:32,537 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 12:41:41,228 INFO org.apache.juli.logging.DirectJDKLog [http-nio-10100-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-07 12:41:41,229 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-10100-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-07 12:41:41,233 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-10100-exec-1] Completed initialization in 4 ms
+2022-12-07 12:41:52,010 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-4] uploading logfile 'testFile.txt'...
+2022-12-07 12:41:52,014 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-4] successfully uploaded logfile 'testFile.txt'
+2022-12-07 12:41:57,856 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-7] uploading logfile 'testFile2.txt'...
+2022-12-07 12:41:57,864 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-7] successfully uploaded logfile 'testFile2.txt'
+2022-12-07 12:42:37,745 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-5] deleting logfile 'testFile2.txt'...
+2022-12-07 12:42:37,750 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-5] successfully deleted logfile 'testFile2.txt'
+2022-12-07 12:42:41,272 INFO de.mainPackage.controller.LogFileController [http-nio-10100-exec-8] Deleting all Logfiles...
+2022-12-07 12:42:41,272 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-8] deleting logfile 'testFile.txt'...
+2022-12-07 12:42:41,274 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-8] successfully deleted logfile 'testFile.txt'
+2022-12-07 12:42:41,275 INFO de.mainPackage.controller.LogFileController [http-nio-10100-exec-8] Successfully deleted all (1) Logfiles
+2022-12-07 12:42:53,980 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-3] Deleting Help (id=4) ...
+2022-12-07 12:42:53,992 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-3] Help successfully deleted (id=4)
+2022-12-07 12:42:54,489 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-5] Deleting Help (id=3) ...
+2022-12-07 12:42:54,493 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-5] Help successfully deleted (id=3)
+2022-12-07 12:42:55,008 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-7] Deleting Help (id=2) ...
+2022-12-07 12:42:55,010 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-7] Help successfully deleted (id=2)
+2022-12-07 12:49:39,886 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-12-07 12:49:39,899 INFO org.apache.juli.logging.DirectJDKLog [Thread-36] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:49:39,900 INFO org.apache.juli.logging.DirectJDKLog [Thread-36] Stopping service [Tomcat]
+2022-12-07 12:49:39,900 INFO org.apache.juli.logging.DirectJDKLog [Thread-36] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-07 12:49:39,904 WARN org.apache.juli.logging.DirectJDKLog [Thread-36] The web application [ROOT] appears to have started a thread named [HikariPool-9 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 12:49:39,904 INFO org.apache.juli.logging.DirectJDKLog [Thread-36] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:49:39,907 INFO org.apache.juli.logging.DirectJDKLog [Thread-36] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:49:39,909 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-36] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 12:49:39,909 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-36] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 12:49:40,118 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-36] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 12:49:40,120 INFO com.zaxxer.hikari.HikariDataSource [Thread-36] HikariPool-9 - Shutdown initiated...
+2022-12-07 12:49:40,121 INFO com.zaxxer.hikari.HikariDataSource [Thread-36] HikariPool-9 - Shutdown completed.
+2022-12-07 12:49:40,286 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 12:49:40,286 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 12:49:40,803 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 12:49:40,811 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 1 JPA repository interfaces.
+2022-12-07 12:49:40,989 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 12:49:40,990 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:49:40,990 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 12:49:40,990 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 12:49:41,023 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 12:49:41,023 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 733 ms
+2022-12-07 12:49:41,076 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-10 - Starting...
+2022-12-07 12:49:41,078 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-10 - Start completed.
+2022-12-07 12:49:41,079 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 12:49:41,166 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 12:49:41,179 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 12:49:41,243 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 12:49:41,244 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 12:49:41,382 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 12:49:41,666 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 12:49:41,671 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 12:49:41,697 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:49:41,702 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 12:49:41,711 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.481 seconds (JVM running for 5818.727)
+2022-12-07 12:49:41,717 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 12:49:41,720 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 12:49:41,722 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 12:49:41,723 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 12:51:51,864 INFO org.apache.juli.logging.DirectJDKLog [http-nio-10100-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-07 12:51:51,866 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-10100-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-07 12:51:51,869 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-10100-exec-1] Completed initialization in 3 ms
+2022-12-07 12:51:57,894 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-3] Updating Help (id=1) ...
+2022-12-07 12:51:57,897 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-3] Successfully updated Help (id=1)
+2022-12-07 12:53:11,508 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-12-07 12:53:11,519 INFO org.apache.juli.logging.DirectJDKLog [Thread-40] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:53:11,519 INFO org.apache.juli.logging.DirectJDKLog [Thread-40] Stopping service [Tomcat]
+2022-12-07 12:53:11,519 INFO org.apache.juli.logging.DirectJDKLog [Thread-40] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-07 12:53:11,523 WARN org.apache.juli.logging.DirectJDKLog [Thread-40] The web application [ROOT] appears to have started a thread named [HikariPool-10 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 12:53:11,524 INFO org.apache.juli.logging.DirectJDKLog [Thread-40] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:53:11,526 INFO org.apache.juli.logging.DirectJDKLog [Thread-40] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:53:11,528 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-40] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 12:53:11,529 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-40] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 12:53:11,730 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-40] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 12:53:11,731 INFO com.zaxxer.hikari.HikariDataSource [Thread-40] HikariPool-10 - Shutdown initiated...
+2022-12-07 12:53:11,732 INFO com.zaxxer.hikari.HikariDataSource [Thread-40] HikariPool-10 - Shutdown completed.
+2022-12-07 12:53:11,884 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 12:53:11,884 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 12:53:12,310 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 12:53:12,328 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 17 ms. Found 1 JPA repository interfaces.
+2022-12-07 12:53:12,484 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 12:53:12,487 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:53:12,487 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 12:53:12,487 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 12:53:12,513 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 12:53:12,514 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 626 ms
+2022-12-07 12:53:12,536 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-11 - Starting...
+2022-12-07 12:53:12,539 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-11 - Start completed.
+2022-12-07 12:53:12,539 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 12:53:12,609 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 12:53:12,619 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 12:53:12,679 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 12:53:12,681 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 12:53:12,793 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 12:53:13,006 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 12:53:13,012 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 12:53:13,046 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:53:13,054 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 12:53:13,072 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.253 seconds (JVM running for 6030.089)
+2022-12-07 12:53:13,082 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 12:53:13,088 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 12:53:13,090 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 12:53:13,090 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 12:53:44,521 INFO org.apache.juli.logging.DirectJDKLog [http-nio-10100-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-07 12:53:44,522 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-10100-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-07 12:53:44,524 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-10100-exec-1] Completed initialization in 2 ms
+2022-12-07 12:53:46,981 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-3] Updating Help (id=1) ...
+2022-12-07 12:53:46,985 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-3] Successfully updated Help (id=1)
+2022-12-07 12:56:45,435 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2022-12-07 12:56:45,454 INFO org.apache.juli.logging.DirectJDKLog [Thread-44] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:56:45,456 INFO org.apache.juli.logging.DirectJDKLog [Thread-44] Stopping service [Tomcat]
+2022-12-07 12:56:45,456 INFO org.apache.juli.logging.DirectJDKLog [Thread-44] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-07 12:56:45,464 WARN org.apache.juli.logging.DirectJDKLog [Thread-44] The web application [ROOT] appears to have started a thread named [HikariPool-11 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 12:56:45,465 INFO org.apache.juli.logging.DirectJDKLog [Thread-44] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:56:45,470 INFO org.apache.juli.logging.DirectJDKLog [Thread-44] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:56:45,474 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-44] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 12:56:45,475 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-44] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 12:56:45,677 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-44] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 12:56:45,680 INFO com.zaxxer.hikari.HikariDataSource [Thread-44] HikariPool-11 - Shutdown initiated...
+2022-12-07 12:56:45,681 INFO com.zaxxer.hikari.HikariDataSource [Thread-44] HikariPool-11 - Shutdown completed.
+2022-12-07 12:56:45,850 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 12:56:45,850 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 12:56:46,321 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 12:56:46,329 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 1 JPA repository interfaces.
+2022-12-07 12:56:46,462 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 12:56:46,462 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:56:46,463 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 12:56:46,463 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 12:56:46,479 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 12:56:46,480 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 625 ms
+2022-12-07 12:56:46,526 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-12 - Starting...
+2022-12-07 12:56:46,529 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-12 - Start completed.
+2022-12-07 12:56:46,529 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 12:56:46,581 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 12:56:46,593 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 12:56:46,652 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 12:56:46,652 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 12:56:46,771 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 12:56:47,069 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 12:56:47,074 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 12:56:47,103 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 12:56:47,106 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 12:56:47,117 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.318 seconds (JVM running for 6244.133)
+2022-12-07 12:56:47,122 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 12:56:47,127 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 12:56:47,129 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 12:56:47,129 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 13:01:33,236 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-12-07 13:01:33,255 INFO org.apache.juli.logging.DirectJDKLog [Thread-48] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:01:33,255 INFO org.apache.juli.logging.DirectJDKLog [Thread-48] Stopping service [Tomcat]
+2022-12-07 13:01:33,264 WARN org.apache.juli.logging.DirectJDKLog [Thread-48] The web application [ROOT] appears to have started a thread named [HikariPool-12 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 13:01:33,265 INFO org.apache.juli.logging.DirectJDKLog [Thread-48] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:01:33,270 INFO org.apache.juli.logging.DirectJDKLog [Thread-48] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:01:33,274 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-48] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:01:33,275 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-48] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 13:01:33,483 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-48] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 13:01:33,485 INFO com.zaxxer.hikari.HikariDataSource [Thread-48] HikariPool-12 - Shutdown initiated...
+2022-12-07 13:01:33,488 INFO com.zaxxer.hikari.HikariDataSource [Thread-48] HikariPool-12 - Shutdown completed.
+2022-12-07 13:01:33,657 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 13:01:33,658 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 13:01:34,129 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 13:01:34,136 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 1 JPA repository interfaces.
+2022-12-07 13:01:34,259 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 13:01:34,260 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:01:34,260 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 13:01:34,260 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 13:01:34,277 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 13:01:34,277 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 614 ms
+2022-12-07 13:01:34,305 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-13 - Starting...
+2022-12-07 13:01:34,308 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-13 - Start completed.
+2022-12-07 13:01:34,309 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 13:01:34,395 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 13:01:34,403 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 13:01:34,435 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 13:01:34,436 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:01:34,577 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 13:01:34,833 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 13:01:34,836 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 13:01:34,855 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:01:34,864 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 13:01:34,883 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.286 seconds (JVM running for 6531.899)
+2022-12-07 13:01:34,889 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 13:01:34,894 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 13:01:34,896 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 13:01:34,897 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 13:03:24,723 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2022-12-07 13:03:24,754 INFO org.apache.juli.logging.DirectJDKLog [Thread-52] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:24,755 INFO org.apache.juli.logging.DirectJDKLog [Thread-52] Stopping service [Tomcat]
+2022-12-07 13:03:24,761 WARN org.apache.juli.logging.DirectJDKLog [Thread-52] The web application [ROOT] appears to have started a thread named [HikariPool-13 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 13:03:24,763 INFO org.apache.juli.logging.DirectJDKLog [Thread-52] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:24,768 INFO org.apache.juli.logging.DirectJDKLog [Thread-52] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:24,773 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-52] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:03:24,773 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-52] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 13:03:24,976 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-52] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 13:03:24,977 INFO com.zaxxer.hikari.HikariDataSource [Thread-52] HikariPool-13 - Shutdown initiated...
+2022-12-07 13:03:24,979 INFO com.zaxxer.hikari.HikariDataSource [Thread-52] HikariPool-13 - Shutdown completed.
+2022-12-07 13:03:25,101 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 13:03:25,102 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 13:03:25,501 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 13:03:25,515 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interfaces.
+2022-12-07 13:03:25,676 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 13:03:25,676 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:25,677 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 13:03:25,677 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 13:03:25,773 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 13:03:25,773 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 667 ms
+2022-12-07 13:03:25,820 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-14 - Starting...
+2022-12-07 13:03:25,824 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-14 - Start completed.
+2022-12-07 13:03:25,826 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 13:03:25,891 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 13:03:25,898 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 13:03:25,949 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 13:03:25,950 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:03:26,066 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 13:03:26,324 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 13:03:26,327 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 13:03:26,343 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:26,348 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 13:03:26,360 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.294 seconds (JVM running for 6643.377)
+2022-12-07 13:03:26,370 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 13:03:26,375 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 13:03:26,379 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 13:03:26,379 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 13:03:47,158 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-12-07 13:03:47,183 INFO org.apache.juli.logging.DirectJDKLog [Thread-56] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:47,183 INFO org.apache.juli.logging.DirectJDKLog [Thread-56] Stopping service [Tomcat]
+2022-12-07 13:03:47,189 WARN org.apache.juli.logging.DirectJDKLog [Thread-56] The web application [ROOT] appears to have started a thread named [HikariPool-14 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 13:03:47,191 INFO org.apache.juli.logging.DirectJDKLog [Thread-56] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:47,194 INFO org.apache.juli.logging.DirectJDKLog [Thread-56] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:47,198 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-56] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:03:47,198 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-56] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 13:03:47,405 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-56] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 13:03:47,407 INFO com.zaxxer.hikari.HikariDataSource [Thread-56] HikariPool-14 - Shutdown initiated...
+2022-12-07 13:03:47,409 INFO com.zaxxer.hikari.HikariDataSource [Thread-56] HikariPool-14 - Shutdown completed.
+2022-12-07 13:03:47,540 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 13:03:47,541 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 13:03:47,975 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 13:03:47,991 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interfaces.
+2022-12-07 13:03:48,117 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 13:03:48,119 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:48,120 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 13:03:48,120 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 13:03:48,156 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 13:03:48,156 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 610 ms
+2022-12-07 13:03:48,203 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-15 - Starting...
+2022-12-07 13:03:48,206 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-15 - Start completed.
+2022-12-07 13:03:48,206 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 13:03:48,280 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 13:03:48,287 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 13:03:48,337 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 13:03:48,338 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:03:48,439 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 13:03:48,692 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 13:03:48,698 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 13:03:48,723 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:03:48,727 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 13:03:48,741 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.247 seconds (JVM running for 6665.757)
+2022-12-07 13:03:48,752 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 13:03:48,759 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 13:03:48,762 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 13:03:48,763 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 13:04:45,318 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-12-07 13:04:45,357 INFO org.apache.juli.logging.DirectJDKLog [Thread-60] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:04:45,358 INFO org.apache.juli.logging.DirectJDKLog [Thread-60] Stopping service [Tomcat]
+2022-12-07 13:04:45,365 WARN org.apache.juli.logging.DirectJDKLog [Thread-60] The web application [ROOT] appears to have started a thread named [HikariPool-15 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 13:04:45,366 INFO org.apache.juli.logging.DirectJDKLog [Thread-60] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:04:45,370 INFO org.apache.juli.logging.DirectJDKLog [Thread-60] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:04:45,372 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-60] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:04:45,373 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-60] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 13:04:45,581 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-60] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 13:04:45,582 INFO com.zaxxer.hikari.HikariDataSource [Thread-60] HikariPool-15 - Shutdown initiated...
+2022-12-07 13:04:45,584 INFO com.zaxxer.hikari.HikariDataSource [Thread-60] HikariPool-15 - Shutdown completed.
+2022-12-07 13:04:45,747 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 13:04:45,747 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 13:04:46,162 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 13:04:46,171 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 8 ms. Found 1 JPA repository interfaces.
+2022-12-07 13:04:46,325 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 13:04:46,326 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:04:46,327 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 13:04:46,327 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 13:04:46,367 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 13:04:46,367 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 616 ms
+2022-12-07 13:04:46,417 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-16 - Starting...
+2022-12-07 13:04:46,420 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-16 - Start completed.
+2022-12-07 13:04:46,420 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 13:04:46,476 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 13:04:46,490 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 13:04:46,529 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 13:04:46,530 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:04:46,666 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 13:04:46,941 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 13:04:46,950 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 13:04:46,984 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:04:46,988 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 13:04:46,998 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.305 seconds (JVM running for 6724.014)
+2022-12-07 13:04:47,003 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 13:04:47,008 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 13:04:47,011 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 13:04:47,011 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 13:12:10,437 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-12-07 13:12:10,458 INFO org.apache.juli.logging.DirectJDKLog [Thread-64] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:12:10,459 INFO org.apache.juli.logging.DirectJDKLog [Thread-64] Stopping service [Tomcat]
+2022-12-07 13:12:10,466 WARN org.apache.juli.logging.DirectJDKLog [Thread-64] The web application [ROOT] appears to have started a thread named [HikariPool-16 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 13:12:10,468 INFO org.apache.juli.logging.DirectJDKLog [Thread-64] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:12:10,472 INFO org.apache.juli.logging.DirectJDKLog [Thread-64] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:12:10,476 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-64] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:12:10,477 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-64] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 13:12:10,686 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-64] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 13:12:10,687 INFO com.zaxxer.hikari.HikariDataSource [Thread-64] HikariPool-16 - Shutdown initiated...
+2022-12-07 13:12:10,689 INFO com.zaxxer.hikari.HikariDataSource [Thread-64] HikariPool-16 - Shutdown completed.
+2022-12-07 13:12:10,804 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 13:12:10,804 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 13:12:11,202 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 13:12:11,208 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 1 JPA repository interfaces.
+2022-12-07 13:12:11,347 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 13:12:11,349 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:12:11,350 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 13:12:11,351 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 13:12:11,398 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 13:12:11,398 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 587 ms
+2022-12-07 13:12:11,443 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-17 - Starting...
+2022-12-07 13:12:11,446 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-17 - Start completed.
+2022-12-07 13:12:11,446 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 13:12:11,503 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 13:12:11,515 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 13:12:11,578 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 13:12:11,579 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:12:11,682 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 13:12:11,910 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 13:12:11,913 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 13:12:11,938 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:12:11,943 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 13:12:11,958 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.198 seconds (JVM running for 7168.973)
+2022-12-07 13:12:11,968 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 13:12:11,978 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 13:12:11,981 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 13:12:11,982 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 13:12:17,012 INFO org.apache.juli.logging.DirectJDKLog [http-nio-10100-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-07 13:12:17,013 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-10100-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-07 13:12:17,018 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-10100-exec-1] Completed initialization in 5 ms
+2022-12-07 13:13:01,323 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-9] uploading logfile 'testFile.txt'...
+2022-12-07 13:13:01,331 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-9] successfully uploaded logfile 'testFile.txt'
+2022-12-07 13:19:27,377 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-3] uploading logfile 'testFile.txt'...
+2022-12-07 13:19:27,383 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-3] successfully uploaded logfile 'testFile.txt(1)'
+2022-12-07 13:20:06,402 INFO de.mainPackage.controller.LogFileController [http-nio-10100-exec-6] Deleting all Logfiles...
+2022-12-07 13:20:06,404 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-6] deleting logfile 'testFile.txt'...
+2022-12-07 13:20:06,406 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-6] successfully deleted logfile 'testFile.txt'
+2022-12-07 13:20:06,406 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-6] deleting logfile 'testFile.txt(1)'...
+2022-12-07 13:20:06,407 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-6] successfully deleted logfile 'testFile.txt(1)'
+2022-12-07 13:20:06,407 INFO de.mainPackage.controller.LogFileController [http-nio-10100-exec-6] Successfully deleted all (2) Logfiles
+2022-12-07 13:20:53,267 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-4] Updating Help (id=4) ...
+2022-12-07 13:20:53,272 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-4] Successfully updated Help (id=4)
+2022-12-07 13:24:44,212 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-12-07 13:24:44,227 INFO org.apache.juli.logging.DirectJDKLog [Thread-68] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:24:44,228 INFO org.apache.juli.logging.DirectJDKLog [Thread-68] Stopping service [Tomcat]
+2022-12-07 13:24:44,228 INFO org.apache.juli.logging.DirectJDKLog [Thread-68] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-07 13:24:44,234 WARN org.apache.juli.logging.DirectJDKLog [Thread-68] The web application [ROOT] appears to have started a thread named [HikariPool-17 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 13:24:44,235 INFO org.apache.juli.logging.DirectJDKLog [Thread-68] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:24:44,238 INFO org.apache.juli.logging.DirectJDKLog [Thread-68] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:24:44,240 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-68] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:24:44,240 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-68] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 13:24:44,442 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-68] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 13:24:44,443 INFO com.zaxxer.hikari.HikariDataSource [Thread-68] HikariPool-17 - Shutdown initiated...
+2022-12-07 13:24:44,444 INFO com.zaxxer.hikari.HikariDataSource [Thread-68] HikariPool-17 - Shutdown completed.
+2022-12-07 13:24:44,591 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 13:24:44,592 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 13:24:45,140 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 13:24:45,158 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 16 ms. Found 1 JPA repository interfaces.
+2022-12-07 13:24:45,310 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 13:24:45,311 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:24:45,311 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 13:24:45,312 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 13:24:45,331 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 13:24:45,331 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 734 ms
+2022-12-07 13:24:45,376 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-18 - Starting...
+2022-12-07 13:24:45,382 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-18 - Start completed.
+2022-12-07 13:24:45,383 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 13:24:45,468 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 13:24:45,477 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 13:24:45,522 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 13:24:45,523 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:24:45,657 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 13:24:45,993 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 13:24:46,001 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 13:24:46,053 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:24:46,060 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 13:24:46,084 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.555 seconds (JVM running for 7923.1)
+2022-12-07 13:24:46,094 INFO de.mainPackage.service.HelpService [restartedMain] Creating new Help...
+2022-12-07 13:24:46,102 INFO de.mainPackage.service.HelpService [restartedMain] New Help created (id=1)
+2022-12-07 13:24:46,104 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-12-07 13:24:46,105 INFO de.mainPackage.LogFileAnalyzer [restartedMain] LogFileAnalyzer started
+2022-12-07 13:56:04,125 INFO org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-12-07 13:56:04,144 INFO org.apache.juli.logging.DirectJDKLog [Thread-72] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:56:04,144 INFO org.apache.juli.logging.DirectJDKLog [Thread-72] Stopping service [Tomcat]
+2022-12-07 13:56:04,147 WARN org.apache.juli.logging.DirectJDKLog [Thread-72] The web application [ROOT] appears to have started a thread named [HikariPool-18 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-07 13:56:04,147 INFO org.apache.juli.logging.DirectJDKLog [Thread-72] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:56:04,151 INFO org.apache.juli.logging.DirectJDKLog [Thread-72] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:56:04,153 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-72] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:56:04,153 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-72] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-07 13:56:04,356 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-72] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-07 13:56:04,358 INFO com.zaxxer.hikari.HikariDataSource [Thread-72] HikariPool-18 - Shutdown initiated...
+2022-12-07 13:56:04,360 INFO com.zaxxer.hikari.HikariDataSource [Thread-72] HikariPool-18 - Shutdown completed.
+2022-12-07 13:56:04,529 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting LogFileAnalyzer using Java 17.0.1 on DESKTOP-8LJJBOH with PID 10184 (C:\Users\user1\git\CL_Task_FileUploader\target\classes started by user1 in C:\Users\user1\git\CL_Task_FileUploader)
+2022-12-07 13:56:04,529 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-12-07 13:56:05,056 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-07 13:56:05,074 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 16 ms. Found 1 JPA repository interfaces.
+2022-12-07 13:56:05,308 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 10100 (http)
+2022-12-07 13:56:05,309 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:56:05,309 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-12-07 13:56:05,309 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-07 13:56:05,325 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-12-07 13:56:05,326 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 786 ms
+2022-12-07 13:56:05,353 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-19 - Starting...
+2022-12-07 13:56:05,356 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-19 - Start completed.
+2022-12-07 13:56:05,357 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-12-07 13:56:05,394 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-07 13:56:05,404 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-07 13:56:05,458 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-07 13:56:05,460 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-07 13:56:05,628 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-07 13:56:05,980 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-12-07 13:56:05,983 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-12-07 13:56:05,999 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-10100"]
+2022-12-07 13:56:06,004 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 10100 (http) with context path ''
+2022-12-07 13:56:06,015 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started LogFileAnalyzer in 1.552 seconds (JVM running for 9803.031)

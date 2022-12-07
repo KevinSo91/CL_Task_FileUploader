@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.mainPackage.model.Help;
 import de.mainPackage.service.HelpService;
@@ -50,7 +51,6 @@ public class HelpController{
 		Help helpToUpdate = this.helpService.getHelpById(helpToUpdateId);
 		System.out.println(helpToUpdate.toString());
 		model.addAttribute("helpToUpdate", helpToUpdate);
-//		model.addAttribute("id", helpToUpdateId);
 		model.addAttribute("id", helpToUpdate.getId());
 		model.addAttribute("regEx", helpToUpdate.getRegEx());
 		model.addAttribute("helpText", helpToUpdate.getHelpText());
@@ -59,19 +59,21 @@ public class HelpController{
 	}	
 	
 	@PostMapping("/updateHelp")
-	public String updateHelp(Model model
+	public String updateHelp(Model model, RedirectAttributes redirectAttributes
 							, @RequestParam(value="helpId") int helpId
-							, @RequestParam(value="regEx", required=false) String helpRegEx
-							, @RequestParam(value="helpText", required=false) String helpText
-							, @RequestParam(value="link", required=false) String helpLink
+							, @RequestParam(value="regEx", required=false) String newRegEx
+							, @RequestParam(value="helpText", required=false) String newHelpText
+							, @RequestParam(value="link", required=false) String newLink
 							) {
-		this.helpService.updateHelp(helpId, helpRegEx, helpText, helpLink);
+		this.helpService.updateHelp(helpId, newRegEx, newHelpText, newLink);
+		redirectAttributes.addAttribute("messageSuccess", String.format("Successfully updated Help (id=%s)", helpId));
 		return "redirect:/faq/all";
 	}
 	
 	
 	
-	// TESTING
+	// ---------------------------- TESTING -------------------------
+	
 	@PostMapping("/createTestPattern")
 	public String createTestPattern() {
 		helpService.createTestHelps();

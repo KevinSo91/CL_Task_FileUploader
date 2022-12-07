@@ -113,13 +113,12 @@
 		<form method="POST" action="/logfiles/upload" enctype="multipart/form-data">
 		
 			<input type="file" name="uploadFile" accept="application/octet-stream|text/plain"
-				class="all" th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" /> <br><br>
+				class="all" th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" />
+			<!-- Info for User if no file has been selected -->
+			<span style="color:red" th:if="${messageNoFileError}">No File selected</span> <br><br>
 			<span>additional info: </span>
 			<input type="text" name="info" /><br><br>
-			<button type="submit" value="upload" class="btn btn-primary">upload</button>
-			<!-- Message -->
-			<div class="alert alert-danger noFile" role="alert" th:text="${messageNoFileError}" th:if="${messageNoFileError}"></div>
-			
+			<button type="submit" value="upload" class="btn btn-primary">upload</button>						
 		</form>
 		<br>
 	</div>
@@ -128,7 +127,7 @@
 	
 	
 	<!-- Tabelle Lines -->
-	<div class="container" th:if="${logFileZeilen != NULL}">
+	<div class="container" th:if="${logFileLines != NULL}">
 				
 		<h2>Text Lines:</h2>
 		<h3>File: <span th:text="${logFileZeilen.fileName}"></span></h3>

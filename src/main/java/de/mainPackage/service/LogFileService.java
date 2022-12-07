@@ -88,15 +88,8 @@ public class LogFileService{
 								String folder, 
 								String info) {		
 		log.info(String.format("uploading logfile '%s'...", file.getOriginalFilename()));
-				
-//		String message = ""; // return message
 		
-//		// Check if File is Empty
-//		if(file.isEmpty()) {
-//			
-//			return new LogFile();
-//		}
-		
+		// Prüfe, ob File vorhanden und gültig
 		if(!validateFile(file).equals("ok")) {
 			return new LogFile();
 		}
@@ -111,7 +104,6 @@ public class LogFileService{
 				Files.createDirectories(directoryPath);
 			} catch (IOException e) {
 				e.printStackTrace();
-//				message = "Directory Creation failed";
 			}
 		}
 		
@@ -128,11 +120,9 @@ public class LogFileService{
 		// Schreibe Datei in Verzeichnis		
 		try {
 			byte[] bytes = file.getBytes();	
-			Files.write(filePath, bytes);			
-//			message = "You successfully uploaded '" + fileName + "'";					
+			Files.write(filePath, bytes);					
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
-//			message = "Upload failed";
 		}
 		
 		// Erstelle LogFile Objekt
@@ -142,6 +132,7 @@ public class LogFileService{
 		logFile.setId(this.nextLogFileId);
 		nextLogFileId++;
 		
+		// Füge Logfile Objekt der Liste 'logFiles' hinzu
 		this.logFiles.add(logFile);	
 		
 		log.info(String.format("successfully uploaded logfile '%s'", fileName));
@@ -196,17 +187,6 @@ public class LogFileService{
 		}
 		
 		return returnMessage;
-	}
-	
-	public static long checkLogFileSize(MultipartFile file) {		
-		return file.getSize();
-	}
-	
-	public static String checkLogFileType(MultipartFile file) {	
-		return file.getContentType();
-	}
-	
-	
-	
+	}	
 	
 }
