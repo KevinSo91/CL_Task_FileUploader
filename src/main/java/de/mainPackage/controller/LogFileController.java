@@ -44,17 +44,17 @@ public class LogFileController {
 	// Show Logfiles / Upload
 	@GetMapping({"/", "/all"})
 	public String getUploadPage(Model model 
-								,@RequestParam(value = "showLinesForLogfileId", required=false) Integer logFileIdLines,
-								 @RequestParam(value = "showMatchesForLogfileId", required=false) Integer logFileIdMatches
+								,@RequestParam(value = "showLinesForLogfileId", required=false) Integer showLinesForLogfileId,
+								 @RequestParam(value = "showMatchesForLogfileId", required=false) Integer showMatchesForLogfileId
 								) {
 		model.addAttribute("activePage", "logfiles");
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
 		// Abhängig von den RequestParams werden die Zeilen oder Matches einer Logfile angezeigt
-		if(logFileIdLines != null) {
-			model.addAttribute("logFileZeilen", this.logFileService.getLogFileById(logFileIdLines.intValue()));
+		if(showLinesForLogfileId != null) {
+			model.addAttribute("logFileZeilen", this.logFileService.getLogFileById(showLinesForLogfileId.intValue()));
 		}
-		if(logFileIdMatches != null) {
-			model.addAttribute("logFileMatches", this.logFileService.getLogFileById(logFileIdMatches.intValue()));
+		if(showMatchesForLogfileId != null) {
+			model.addAttribute("logFileMatches", this.logFileService.getLogFileById(showMatchesForLogfileId.intValue()));
 		}
 		
 		return "logFiles";
@@ -72,25 +72,19 @@ public class LogFileController {
 
 		// Fall: Kein File ausgewählt		
 		if(!LogFileService.validateFile(file).equals("ok")) {
-			redirectAttributes.addFlashAttribute("messageUploadError", "No File chosen");
+			redirectAttributes.addFlashAttribute("messageNoFileError", "No File chosen");
 			return "redirect:/logfiles/all";
 		}
 		
 		// Speichere Datei in Ordner mit aktuellem Datum
-		LogFile logFile = this.logFileService.uploadLogFile(file, LocalDate.now().toString(), info);
-				
+		LogFile logFile = this.logFileService.uploadLogFile(file, LocalDate.now().toString(), info);				
 		// Schreibe Zeilen in ArrayList 'lines'
 		this.logFileService.saveLogFileLinesInArray(logFile);
 		// Prüfe gegen DB auf Treffer-Pattern
 		this.logFileService.checkLogFileMatches(logFile);
 		
-		String messageSuccess = "successfully uploaded '" + logFile.getFileName() + "'";
-		
-		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);
-		redirectAttributes.addFlashAttribute("file_Type", file.getContentType());		
-		redirectAttributes.addFlashAttribute("file_Size", file.getSize());
-		redirectAttributes.addFlashAttribute("file_Info", info);
-		
+		String messageSuccess = String.format("Successfully uploaded '%s'", logFile.getFileName());		
+		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);			
 		
 		return "redirect:/logfiles/all";
 	}	
@@ -98,12 +92,11 @@ public class LogFileController {
 	
 	// Delete LogFile
 	@PostMapping("/delete")
-	public String deleteLogFilePost(@RequestParam int fileId,
+	public String deleteLogFile(@RequestParam int fileId,
 									RedirectAttributes redirectAttributes) {		
 		String fileName = this.logFileService.deleteLogFile(fileId);
-		String messageSuccess = "successfully deleted '" + fileName + "'";
-		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);
-		
+		String messageSuccess = String.format("Successfully deleted '%s'", fileName);
+		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);		
 		return "redirect:/logfiles/all";
 	}
 
@@ -115,20 +108,22 @@ public class LogFileController {
 		// Schreibt die IDs aller Logfiles in die Liste 'listIds'
 		for(LogFile logFile : this.logFileService.getAllLogFiles()) {
 			listIds.add(logFile.getId());
-		}
+		}		
+		log.info("Deleting all Logfiles...");		
 		// Lösche alle Logfiles/Dateien
 		for(int id : listIds) {
 			this.logFileService.deleteLogFile(id);
 		}
-		redirectAttributes.addFlashAttribute("messageSuccess", "successfully deleted all (" + listIds.size() + ") Logfiles");
-		log.info("Deleting all Logfiles...");
+		String messageSuccess = String.format("Successfully deleted all (%s) Logfiles", listIds.size());
+		log.info(messageSuccess);		
+		redirectAttributes.addFlashAttribute("messageSuccess", messageSuccess);		
 		return "redirect:/logfiles/all";
 	}
 	
 	
 	// Scan Logfile for Matches
 	@PostMapping("/scan")
-	public String scanLogFilePost(@RequestParam int fileId,
+	public String scanLogFile(@RequestParam int fileId,
 									RedirectAttributes redirectAttributes) {
 		LogFile logFile = this.logFileService.getLogFileById(fileId);
 		logFile.deleteAllMatches();
@@ -138,31 +133,6 @@ public class LogFileController {
 		return "redirect:/logfiles/all";
 	}		
 	
-	
-//	--------------------------------------------------------------------------------------------------------------------
-	
-	// Methods with Pathvariables
-	
-//	// Delete LogFile (PathVariable)
-//	@PostMapping("/{logFileId}/delete")
-//	public String deleteLogFile(@PathVariable int logFileId) {		
-//		this.logFileService.deleteLogFile(logFileId);
-//		return "deleteStatus";
-//	}	
-//		
-//	// Show Logfile Lines (PathVariable)
-//	@GetMapping("/{logFileId}/lines")
-//	public String getLogFileLinesFromLogFile(Model model, @PathVariable int logFileId) {
-//		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
-//		return "logFileLines";
-//	}
-//	
-//	// Show LogFile Matches (PathVariable)
-//	@GetMapping("/{logFileId}/matches")
-//	public String getMatchesFromLogFile(Model model, @PathVariable int logFileId){
-//		model.addAttribute("logFile", this.logFileService.getLogFileById(logFileId));
-//		return "logFileMatches";
-//	}
 	
 	
 	
@@ -184,8 +154,7 @@ public class LogFileController {
 			boolean result = FileSystemUtils.deleteRecursively(Paths.get(this.defaultDirectoy));
 		} catch (IOException e) {			
 			e.printStackTrace();
-		}
-		
+		}		
 		log.info("All LogFiles Deleted By Schedule");
 	}
 	

@@ -1,0 +1,22 @@
+{"properties": [  
+  {
+    "name": "logfiles.defaultDir",
+    "type": "java.lang.String",
+    "description": "A description for 'logfiles.defaultDir'"
+  },
+  {
+    "name": "logfiles.defaultDirectory",
+    "type": "java.lang.String",
+    "description": "Default Directory Path for uploaded Logfiles"
+  },  
+  {
+    "name": "logfiles.delete.cron",
+    "type": "java.lang.String",
+    "description": "Schedule for deleting all Logfiles"
+  },
+  {
+    "name": "logfiles.defaultDirectory",
+    "type": "java.lang.String",
+    "description": "A description for 'logfiles.defaultDirectory'"
+  }
+]}

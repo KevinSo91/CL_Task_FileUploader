@@ -1,0 +1,30 @@
+Ist-Situation
+
+- Es liegen Logfiles in Form von Text-Dateien vor
+- Die Files haben keine feste Größe und können viele verschiedene Informationen und Logeinträge enthalten
+- In den Log-Einträgen stehen u.a. Informationen über aufgetretene Fehler mit entsprechendem Fehlercode
+
+Soll-Situation
+
+- Es besteht eine Datenbank mit Fehlercodes und entsprechender Hilfestellung / weiterführender Link (Die DB kann um weitere Einträge zu Fehlercodes erweitert werden)
+- Mittels einer Webanwendung sollen Logfiles hochgeladen und innerhalb der Anwendung zwischengespeichert werden (vor upload: Prüfung auf gültige Datei)
+- Die Logfiles sollen nach Fehlercodes (Treffer-Pattern) gescannt werden und die vorkommenden Fehlercodes gegen die DB abgeglichen werden
+- Wenn in der DB ein Eintrag zu einem Fehlercode besteht, soll die entsprechende Hilfestellung / weiterführender Link zurückgegeben werden
+- Wenn zu einem Fehlercode noch kein Eintrag besteht, soll auch eine Meldung darüber ausgegeben werden (evtl. Möglichkeit zur Weiterleitung, um neuen Eintrag in DB zu erstellen)
+
+Mögliche Probleme / Zu beachten (Ideen für Lösungsansätze)
+
+- Große Dateien / Datenmengen -> Zwischenspeicher muss ausreichend Speicherplatz zur Verfügung haben (ggf. Dateien splitten ?)
+- Dateien könnten verschlüsselt sein -> ByteCode kann evtl. nicht verwendet werden
+- Virenprogramm könnte die Datei als Bedrohung erkennen (Linux als Plattform?)
+- Zugriffsrechte müssen vorhanden sein um die Datei temporär zu speichern und zu lesen
+
+
+
+
+
+
+Programmiersprache: Java
+Framework: Spring Boot
+Datenbank: PostgreSQL, H2
+Plattform: Windows, Linux?

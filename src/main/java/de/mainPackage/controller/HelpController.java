@@ -16,7 +16,7 @@ import de.mainPackage.service.HelpService;
 
 
 @Controller
-@RequestMapping("/help")
+@RequestMapping("/faq")
 public class HelpController{
 	
 	
@@ -27,26 +27,26 @@ public class HelpController{
 	
 	@GetMapping({"/", "/all"})
 	public String getAllHelps(Model model, @ModelAttribute("newHelp") Help newHelp) {
-		model.addAttribute("activePage", "help");
+		model.addAttribute("activePage", "faq");
 		model.addAttribute("helpList", this.helpService.getAllHelps());
-		return "help";
+		return "faq";
 	}
 	
 	@PostMapping("/createHelp")
 	public String createNewHelp(Model model, @ModelAttribute("newHelp") Help newHelp) {
 		this.helpService.createHelp(newHelp);		
-		return "redirect:/help/all";
+		return "redirect:/faq/all";
 	}
 	
 	@PostMapping("/deleteHelp")
 	public String deleteHelp(Model model, @RequestParam("helpToDeleteId") int helpToDeleteId) {
 		this.helpService.deleteHelp(helpToDeleteId);
-		return "redirect:/help/all";
+		return "redirect:/faq/all";
 	}
 	
 	@PostMapping("/updateHelpForm")
 	public String getUpdateHelpForm(Model model, @RequestParam("helpToUpdateId") int helpToUpdateId) {
-		model.addAttribute("activePage", "help");
+		model.addAttribute("activePage", "faq");
 		Help helpToUpdate = this.helpService.getHelpById(helpToUpdateId);
 		System.out.println(helpToUpdate.toString());
 		model.addAttribute("helpToUpdate", helpToUpdate);
@@ -66,7 +66,7 @@ public class HelpController{
 							, @RequestParam(value="link", required=false) String helpLink
 							) {
 		this.helpService.updateHelp(helpId, helpRegEx, helpText, helpLink);
-		return "redirect:/help/all";
+		return "redirect:/faq/all";
 	}
 	
 	
@@ -75,7 +75,7 @@ public class HelpController{
 	@PostMapping("/createTestPattern")
 	public String createTestPattern() {
 		helpService.createTestHelps();
-		return "redirect:/help/all";
+		return "redirect:/faq/all";
 	}
 	
 	

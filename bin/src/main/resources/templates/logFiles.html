@@ -5,7 +5,7 @@
 <div th:insert="baseStructure/navbar :: navbar">  </div>
 
 <head>
-	<title> Logfile Analyzer - Manage Logfiles </title>
+	<title> File Uploader - Upload File </title>
 	
 	<!-- custom css -->
 	<link rel="stylesheet" type="text/css" href="/css/test.css"/>
@@ -107,18 +107,18 @@
 	<!-- Upload Form -->
 	<div class="container" style="border:1px solid #cecece">
 		<br>
-		<h3> Upload Logfile </h3>
+		<h3> Upload File </h3>
 		<br>
 	
 		<form method="POST" action="/logfiles/upload" enctype="multipart/form-data">
 		
 			<input type="file" name="uploadFile" accept="application/octet-stream|text/plain"
-				class="all" th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" /> <br><br>
+				class="all" th:classappend="${messageUploadError != NULL ? 'noFileFormColor' : 'all'}" /> <br><br>
 			<span>additional info: </span>
 			<input type="text" name="info" /><br><br>
 			<button type="submit" value="upload" class="btn btn-primary">upload</button>
 			<!-- Message -->
-			<div class="alert alert-danger noFile" role="alert" th:text="${messageNoFileError}" th:if="${messageNoFileError}"></div>
+			<div class="alert alert-danger noFile" role="alert" th:text="${messageUploadError}" th:if="${messageUploadError}"></div>
 			
 		</form>
 		<br>
