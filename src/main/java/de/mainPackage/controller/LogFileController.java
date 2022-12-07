@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -147,7 +146,7 @@ public class LogFileController {
 		}		
 		// Lösche Dateien in Default-Folder
 		try {
-			boolean result = FileSystemUtils.deleteRecursively(Paths.get(this.defaultDirectoy));
+			FileSystemUtils.deleteRecursively(Paths.get(this.defaultDirectoy));
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}		

@@ -75,8 +75,9 @@ public class HelpService{
 		return matchedHelpList;
 	}
 	
+	// ---------------------------- TESTING -------------------------
 	
-	// TEST-Patterns
+	// TEST-Patterns erstellen
 	public void createTestHelps() {
 		ArrayList<Help> helpList = new ArrayList<Help>();
 		helpList.add(new Help(".* INFO .*", "Hilfestellung 01 - Dieser Eintrag ist eine Information", "www.link1.de"));

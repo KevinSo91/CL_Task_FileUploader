@@ -33,12 +33,20 @@ public class HelpController{
 		return "faq";
 	}
 	
+	
+	@GetMapping("/createHelpForm")
+	public String getCreateNewHelpForm(Model model, @ModelAttribute("newHelp") Help newHelp) {
+		
+		return "createHelp";
+	}
+	
+	
 	@PostMapping("/createHelp")
 	public String createNewHelp(Model model, @ModelAttribute("newHelp") Help newHelp) {
 		this.helpService.createHelp(newHelp);		
 		return "redirect:/faq/all";
-	}
-	
+	}	
+		
 	@PostMapping("/deleteHelp")
 	public String deleteHelp(Model model, @RequestParam("helpToDeleteId") int helpToDeleteId) {
 		this.helpService.deleteHelp(helpToDeleteId);
@@ -79,8 +87,6 @@ public class HelpController{
 		helpService.createTestHelps();
 		return "redirect:/faq/all";
 	}
-	
-	
 	
 	
 }

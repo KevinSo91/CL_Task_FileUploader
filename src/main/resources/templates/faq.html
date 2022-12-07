@@ -84,27 +84,10 @@
 	<br><br>
 	
 	<!-- create new Help -->
-	<div class="container" style="border:1px solid #cecece">		
-		
-		<b>Add new Help</b>
-		<br><br>		
-		    
-		<form method="post" action="#" th:action="@{/faq/createHelp}" th:object="${newHelp}">
-		
-			<label>regEx </label>
-		    <input type="text" th:field="*{regEx}" />
-		       
-		    <label>Help Text </label>
-		    <input type="text" th:field="*{helpText}" />
-		    
-		    <label>link </label>
-		    <input type="text" th:field="*{link}" />
-		        
-		    <input type="submit" value="add" />	   
-		
+	<div class="container">		
+		<form method="GET" th:action="@{/faq/createHelpForm}">
+			<button type="submit" class="btn btn-success">Create New Help</button>
 		</form>
-		
-		
 	</div>	
 	<br>
 
