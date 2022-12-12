@@ -35,21 +35,22 @@ public class HelpController{
 	
 	
 	@GetMapping("/createHelpForm")
-	public String getCreateNewHelpForm(Model model, @ModelAttribute("newHelp") Help newHelp) {
-		
+	public String getCreateNewHelpForm(Model model, @ModelAttribute("newHelp") Help newHelp) {		
 		return "createHelp";
 	}
 	
 	
 	@PostMapping("/createHelp")
-	public String createNewHelp(Model model, @ModelAttribute("newHelp") Help newHelp) {
-		this.helpService.createHelp(newHelp);		
+	public String createNewHelp(Model model, @ModelAttribute("newHelp") Help newHelp, RedirectAttributes redirectAttributes) {
+		this.helpService.createHelp(newHelp);
+		redirectAttributes.addFlashAttribute("messageSuccess", String.format("Successfully created Help (id=%s)", newHelp.getId()));
 		return "redirect:/faq/all";
 	}	
 		
 	@PostMapping("/deleteHelp")
-	public String deleteHelp(Model model, @RequestParam("helpToDeleteId") int helpToDeleteId) {
-		this.helpService.deleteHelp(helpToDeleteId);
+	public String deleteHelp(Model model, @RequestParam("helpToDeleteId") int helpToDeleteId, RedirectAttributes redirectAttributes) {
+		Help helpToDelete = this.helpService.deleteHelp(helpToDeleteId);
+		redirectAttributes.addFlashAttribute("messageSuccess", String.format("Successfully deleted Help (id=%s)", helpToDelete.getId()));
 		return "redirect:/faq/all";
 	}
 	
@@ -57,7 +58,6 @@ public class HelpController{
 	public String getUpdateHelpForm(Model model, @RequestParam("helpToUpdateId") int helpToUpdateId) {
 		model.addAttribute("activePage", "faq");
 		Help helpToUpdate = this.helpService.getHelpById(helpToUpdateId);
-		System.out.println(helpToUpdate.toString());
 		model.addAttribute("helpToUpdate", helpToUpdate);
 		model.addAttribute("id", helpToUpdate.getId());
 		model.addAttribute("regEx", helpToUpdate.getRegEx());
@@ -74,7 +74,7 @@ public class HelpController{
 							, @RequestParam(value="link", required=false) String newLink
 							) {
 		this.helpService.updateHelp(helpId, newRegEx, newHelpText, newLink);
-		redirectAttributes.addAttribute("messageSuccess", String.format("Successfully updated Help (id=%s)", helpId));
+		redirectAttributes.addFlashAttribute("messageSuccess", String.format("Successfully updated Help (id=%s)", helpId));
 		return "redirect:/faq/all";
 	}
 	
@@ -86,6 +86,11 @@ public class HelpController{
 	public String createTestPattern() {
 		helpService.createTestHelps();
 		return "redirect:/faq/all";
+	}
+	
+	@GetMapping("/test")	
+	public String test(){
+		return "test";
 	}
 	
 	

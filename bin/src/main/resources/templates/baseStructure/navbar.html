@@ -14,8 +14,8 @@
             <li th:class="${activePage == 'logfiles'} ? 'nav-item active' : 'nav-item'">
                 <a class="nav-link" th:href="@{http://localhost:10100/logfiles/all}">LogFiles<span class="sr-only">(current)</span></a>
             </li>
-            <li th:class="${activePage == 'help'} ? 'nav-item active' : 'nav-item'">
-                <a class="nav-link" th:href="@{http://localhost:10100/help/all}">FAQ</a>
+            <li th:class="${activePage == 'faq'} ? 'nav-item active' : 'nav-item'">
+                <a class="nav-link" th:href="@{http://localhost:10100/faq/all}">FAQ</a>
             </li>   
         </ul>
     </div>

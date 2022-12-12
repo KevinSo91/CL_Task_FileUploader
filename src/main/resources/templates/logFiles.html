@@ -6,9 +6,7 @@
 
 <head>
 	<title> Logfile Analyzer - Manage Logfiles </title>
-	
-	<!-- custom css -->
-	<link rel="stylesheet" type="text/css" href="/css/test.css"/>
+		
 	
 	<!-- Java Script DataTables für die Tabellen Ansicht -->
 	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -31,14 +29,30 @@
 		    $('#table_logFileMatches').DataTable();
 		} );
 	</script>
-	<!-- ENDE Java Script DataTables für die Tabellen Ansicht -->		
+	<!-- ENDE Java Script DataTables für die Tabellen Ansicht -->
+		
+	<!-- fade out alerts -->
+	<script>
+		function hideDiv(){
+			document.getElementById("successMessage").style.visbility="hidden";
+		}
+		setTimeout("hideDiv", 3000);
+	</script>
+	
+	 <!-- 
+	 
+	 
+	 
+	  -->
+	
+		
 </head>
 
 
 <body>	
 	
-	<div th:if="${messageSuccess}" class="alert alert-success successMessage" role="alert" th:text="${messageSuccess}"></div>
-	<div th:if="${messageError}" class="alert alert-danger" role="alert" th:text="${messageError}"></div>
+	<div id="successMessage" class="alert alert-success successMessage fade-out" role="alert" th:if="${messageSuccess}" th:text="${messageSuccess}"></div>
+	<div id="errorMessage" th:if="${messageError}" class="alert alert-danger" role="alert" th:text="${messageError}"></div>
 	
 	
 	<!-- Button: Delete All Logfiles --> 

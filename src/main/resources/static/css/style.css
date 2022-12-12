@@ -1,0 +1,40 @@
+.noFile {
+	width:150px;
+	height:50px;	
+	}
+
+.successMessage {
+	width:500px;
+}
+
+.noFileFormColor {
+	border-color: red;
+	border-width: 5px;
+	border-style: solid;
+}
+
+.fade-in {
+	animation: fadeIn 5s;
+}
+
+.fade-out {
+	animation: fadeOut 5s;
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0.5;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

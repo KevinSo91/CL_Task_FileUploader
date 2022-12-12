@@ -55,7 +55,7 @@ public class HelpService{
 		Help HelpToDelete = this.helpRepo.getReferenceById(helpToDeleteId);
 		log.info(String.format("Deleting Help (id=%s) ..." , HelpToDelete.getId()));
 		this.helpRepo.deleteById(helpToDeleteId);
-		log.info(String.format("Help successfully deleted (id=%s)", HelpToDelete.getId()));
+		log.info(String.format("Help successfully deleted Help (id=%s)", HelpToDelete.getId()));
 		return HelpToDelete;
 	}
 	

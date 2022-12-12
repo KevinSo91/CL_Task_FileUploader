@@ -5,7 +5,7 @@
 <div th:insert="baseStructure/navbar :: navbar">  </div>
 
 <head>
-	<title> File Analyzer - All Helps </title>
+	<title> Logfile Analyzer - FAQ </title>
 	
 	<!-- Java Script für die Tabellen Ansicht -->
 	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -51,13 +51,13 @@
 					<td th:text="${help.link}"></td>
 					<!-- Edit Button -->
 					<td>					
-						<form method="POST" th:action="@{/help/updateHelpForm(helpToUpdateId=${help.id})}">
+						<form method="POST" th:action="@{/faq/updateHelpForm(helpToUpdateId=${help.id})}">
 							<button type="submit" name="submit" value="edit" class="btn btn-primary">edit</button>
 						</form>					 
 					</td>
 					<!-- delete Button -->
 					<td>
-						<form method="POST" th:action="@{/help/deleteHelp(helpToDeleteId=${help.id})}">
+						<form method="POST" th:action="@{/faq/deleteHelp(helpToDeleteId=${help.id})}">
 							<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
 						</form>
 					</td>			
@@ -70,30 +70,12 @@
 		
 	</div>
 	
-	<!-- Edit Form -->
-	<!-- 
-	<div class="container" th:if="${helpToEdit}">
-		<form method="POST" action="#" th:action="@{help/edit}" th:object="${newHelpToEdit}">
-		
-			<label>regEx </label>
-		    <input type="text" th:field="*{regEx}" value="${helpToEdit.regEx}" />
-		       
-		    <label>Help Text </label>
-		    <input type="text" th:field="*{helpText}" value="${helpToEdit.helpText}" />
-		    
-		    <label>link </label>
-		    <input type="text" th:field="*{link}" value="${helpToEdit.info}" />
-		        
-		    <input type="submit" value="save" />	  
-		    
-		</form>
-	</div>
-	-->
+
 	
 	<!-- Create Test-Patterns -->
 	<div class="container">		
 		
-		<form method="post" action="#" th:action="@{/help/createTestPattern}">			        
+		<form method="post" action="#" th:action="@{/faq/createTestPattern}">			        
 		    <input type="submit" value="create Test-Patterns" />
 		</form>
 		
@@ -102,27 +84,10 @@
 	<br><br>
 	
 	<!-- create new Help -->
-	<div class="container" style="border:1px solid #cecece">		
-		
-		<b>Add new Help</b>
-		<br><br>		
-		    
-		<form method="post" action="#" th:action="@{/help/createHelp}" th:object="${newHelp}">
-		
-			<label>regEx </label>
-		    <input type="text" th:field="*{regEx}" />
-		       
-		    <label>Help Text </label>
-		    <input type="text" th:field="*{helpText}" />
-		    
-		    <label>link </label>
-		    <input type="text" th:field="*{link}" />
-		        
-		    <input type="submit" value="add" />	   
-		
+	<div class="container">		
+		<form method="GET" th:action="@{/faq/createHelpForm}">
+			<button type="submit" class="btn btn-success">Create New Help</button>
 		</form>
-		
-		
 	</div>	
 	<br>
 
