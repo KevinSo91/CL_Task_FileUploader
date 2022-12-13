@@ -88,10 +88,5 @@ public class HelpController{
 		return "redirect:/faq/all";
 	}
 	
-	@GetMapping("/test")	
-	public String test(){
-		return "test";
-	}
-	
 	
 }

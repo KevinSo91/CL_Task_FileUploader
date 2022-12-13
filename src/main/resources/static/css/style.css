@@ -3,8 +3,10 @@
 	height:50px;	
 	}
 
-.successMessage {
-	width:500px;
+.messageFadeOut {
+	animation: fadeOut 3s;
+	width:300px;
+	position: absolute;
 }
 
 .noFileFormColor {
@@ -13,12 +15,33 @@
 	border-style: solid;
 }
 
+
+.help-input {
+	margin: 20px 20px 20px 20px;
+	
+}
+
+.noSpace {
+	position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .fade-in {
-	animation: fadeIn 5s;
+	animation: fadeIn 3s;
 }
 
 .fade-out {
-	animation: fadeOut 5s;
+	animation: fadeOut 3s;
 }
 
 @keyframes fadeOut {
@@ -38,3 +61,4 @@
 		opacity: 1;
 	}
 }
+

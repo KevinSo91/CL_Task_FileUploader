@@ -12,7 +12,7 @@
 <body>	
 
 	<!-- create new Help -->
-	<div class="container">				 
+	<div class="container-fluid help-input">				 
 		<form method="POST" action="#" th:action="@{/faq/createHelp}" th:object="${newHelp}">			
 			
 			<table class="table table-bordered table-striped">			
@@ -26,9 +26,9 @@
 				
 				<tbody>
 					<tr>
-						<td><textarea th:field="*{regEx}" cols="50" class="form-control" placeholder="Enter Regular Expression"></textarea></td>
-						<td><textarea th:field="*{helpText}" cols="100" class="form-control" placeholder="Enter Help Text"></textarea></td>
-						<td><input type="text" th:field="*{link}" class="form-control" placeholder="Enter Link for more Information"/></td>
+						<td><textarea th:field="*{regEx}" cols="100" class="form-control" placeholder="Enter Regular Expression"></textarea></td>
+						<td><textarea th:field="*{helpText}" cols="300" class="form-control" placeholder="Enter Help Text"></textarea></td>
+						<td><input type="text" th:field="*{link}" size="100" class="form-control" placeholder="Enter Link for more Information"/></td>
 						
 						<td><input class="btn btn-primary" type="submit" value="create Help" /></td>							
 					</tr>

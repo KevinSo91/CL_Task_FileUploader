@@ -7,25 +7,24 @@
 <head>
 	<title> Logfile Analyzer - FAQ </title>
 	
-	<!-- Java Script für die Tabellen Ansicht -->
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	
+	<!-- CSS/JS DataTable -->
 	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-	
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	<script th:src="@{/js/table.js}"></script>	
 	
-	<script>
-		$(document).ready(function() {
-		    $('#table_helps').DataTable();
-		} );
-	</script>
-	<!-- ENDE Java Script für die Tabellen Ansicht -->		
+	<!-- JS für die Message-Animation --> 
+	<script th:src="@{/js/message.js}"></script>
+	
 </head>
 
 
 <body>
 
-	<div th:if="${messageSuccess}" class="alert alert-success successMessage" role="alert" th:text="${messageSuccess}"></div>
-	<div th:if="${messageError}" class="alert alert-danger" role="alert" th:text="${messageError}"></div>
+	<div id="messageSuccess" th:if="${messageSuccess}" class="alert alert-success messageFadeOut" role="alert" th:text="${messageSuccess}"></div>
+	<div id="messageError" th:if="${messageError}" class="alert alert-danger messageFadeOut" role="alert" th:text="${messageError}"></div>
 
 	<br><br>
 	

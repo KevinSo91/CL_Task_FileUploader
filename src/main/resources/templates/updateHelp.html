@@ -11,7 +11,7 @@
 
 <body>	
   
-	<div style="margin-left: 30px">				 
+	<div class="container-fluid help-input">				 
 		<form method="POST" action="#" th:action="@{/faq/updateHelp}">
 			<input type="hidden" name="helpId" th:value="${id}" readonly />
 			
@@ -28,13 +28,14 @@
 				<tbody>
 					<tr>					
 						<td th:text="${helpToUpdate.id}"></td>
-						<td><textarea id="regExInput" name="regEx" th:text="${regEx}" cols="50" class="form-control"></textarea></td>
-						<td><textarea id="helpTestInput" name="helpText" th:text="${helpText}" cols="100" class="form-control"></textarea></td>
-						<td><input type="text" name="link" th:value="${link}" class="form-control" placeholder="Enter Link for more Information"/></td>
+						<td><textarea id="regExInput" name="regEx" th:text="${regEx}" cols="100" class="form-control"></textarea></td>
+						<td><textarea id="helpTestInput" name="helpText" th:text="${helpText}" cols="200" class="form-control"></textarea></td>
+						<td><input type="text" name="link" th:value="${link}" size="100" class="form-control" placeholder="Enter Link for more Information"/></td>
 						<td><input class="btn btn-primary" type="submit" value="save changes" /></td>							
 					</tr>
 				</tbody>
-			</table>			
+			</table>
+						
 		</form>
 	</div>	
 	

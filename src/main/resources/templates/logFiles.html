@@ -6,53 +6,26 @@
 
 <head>
 	<title> Logfile Analyzer - Manage Logfiles </title>
-		
 	
-	<!-- Java Script DataTables für die Tabellen Ansicht -->
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	
+	<!-- JS für die Messages (Close on click, hide after fading) -->	 
+	<script th:src="@{/js/message.js}"></script>
+	
+	<!-- CSS/JS DataTable -->
 	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-	
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	<script th:src="@{/js/table.js}"></script>	
 	
-	<script>
-		$(document).ready(function() {
-		    $('#table_logFiles').DataTable();
-		} );
-	</script>
-	<script>
-		$(document).ready(function() {
-		    $('#table_logFileLines').DataTable();
-		} );
-	</script>
-	<script>
-		$(document).ready(function() {
-		    $('#table_logFileMatches').DataTable();
-		} );
-	</script>
-	<!-- ENDE Java Script DataTables für die Tabellen Ansicht -->
-		
-	<!-- fade out alerts -->
-	<script>
-		function hideDiv(){
-			document.getElementById("successMessage").style.visbility="hidden";
-		}
-		setTimeout("hideDiv", 3000);
-	</script>
-	
-	 <!-- 
-	 
-	 
-	 
-	  -->
-	
-		
+			
 </head>
 
 
 <body>	
 	
-	<div id="successMessage" class="alert alert-success successMessage fade-out" role="alert" th:if="${messageSuccess}" th:text="${messageSuccess}"></div>
-	<div id="errorMessage" th:if="${messageError}" class="alert alert-danger" role="alert" th:text="${messageError}"></div>
+	<div id="messageSuccess" th:if="${messageSuccess}" class="alert alert-success messageFadeOut" role="alert"  th:text="${messageSuccess}"></div>
+	<div id="messageError" th:if="${messageError}" class="alert alert-danger messageFadeOut" role="alert" th:text="${messageError}"></div>
 	
 	
 	<!-- Button: Delete All Logfiles --> 
@@ -137,14 +110,13 @@
 		<br>
 	</div>
 	
-	<br><br>
-	
+		
 	
 	<!-- Tabelle Lines -->
 	<div class="container" th:if="${logFileLines != NULL}">
 				
 		<h2>Text Lines:</h2>
-		<h3>File: <span th:text="${logFileZeilen.fileName}"></span></h3>
+		<h3>File: <span th:text="${logFileLines.fileName}"></span></h3>
 		<br>
 		
 		<table id="table_logFileLines" class="table table-bordered table-striped">
@@ -156,7 +128,7 @@
 				
 			</thead>
 			<tbody>
-				<tr th:each="line,iter : ${logFileZeilen.lines}">
+				<tr th:each="line,iter : ${logFileLines.lines}">
 					<td th:text="${(iter.index)+1}"></td>					
 					<td th:text="${line}"></td>					
 				</tr>
@@ -203,7 +175,15 @@
 		<br><br>
 				
 	</div>
-
+	
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	
+	<!-- CSS/JS DataTable -->
+	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	<script th:src="@{/js/table.js}"></script>	
+	
+	
 </body>
 
 
