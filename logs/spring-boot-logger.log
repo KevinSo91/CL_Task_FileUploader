@@ -2339,3 +2339,34 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 2022-12-13 16:53:08,435 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-7] Deleting Help (id=4) ...
 2022-12-13 16:53:08,441 INFO de.mainPackage.service.HelpService [http-nio-10100-exec-7] Help successfully deleted Help (id=4)
 2022-12-13 16:53:27,460 INFO de.mainPackage.controller.LogFileController [http-nio-10100-exec-2] Deleting all Logfiles...
+2022-12-13 16:53:27,461 INFO de.mainPackage.controller.LogFileController [http-nio-10100-exec-2] Successfully deleted all (0) Logfiles
+2022-12-13 16:58:17,837 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-7] uploading logfile 'TestLog01.txt'...
+2022-12-13 16:58:17,839 INFO de.mainPackage.service.LogFileService [http-nio-10100-exec-7] successfully uploaded logfile 'TestLog01.txt'
+2022-12-13 17:02:13,631 INFO org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(75)-127.0.0.1] Application shutdown requested.
+2022-12-13 17:02:13,639 INFO org.apache.juli.logging.DirectJDKLog [RMI TCP Connection(75)-127.0.0.1] Pausing ProtocolHandler ["http-nio-10100"]
+2022-12-13 17:02:13,639 INFO org.apache.juli.logging.DirectJDKLog [RMI TCP Connection(75)-127.0.0.1] Stopping service [Tomcat]
+2022-12-13 17:02:13,639 INFO org.apache.juli.logging.DirectJDKLog [RMI TCP Connection(75)-127.0.0.1] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-13 17:02:13,642 WARN org.apache.juli.logging.DirectJDKLog [RMI TCP Connection(75)-127.0.0.1] The web application [ROOT] appears to have started a thread named [HikariPool-9 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.1/java.lang.Thread.run(Thread.java:833)
+2022-12-13 17:02:13,643 INFO org.apache.juli.logging.DirectJDKLog [RMI TCP Connection(75)-127.0.0.1] Stopping ProtocolHandler ["http-nio-10100"]
+2022-12-13 17:02:13,644 INFO org.apache.juli.logging.DirectJDKLog [RMI TCP Connection(75)-127.0.0.1] Destroying ProtocolHandler ["http-nio-10100"]
+2022-12-13 17:02:13,646 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [RMI TCP Connection(75)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 17:02:13,646 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [RMI TCP Connection(75)-127.0.0.1] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-13 17:02:13,647 WARN org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase [RMI TCP Connection(75)-127.0.0.1] HHH000335: Unable to log SQLWarnings : org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-13 17:02:13,648 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper [RMI TCP Connection(75)-127.0.0.1] SQL Error: 90121, SQLState: 90121
+2022-12-13 17:02:13,649 ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper [RMI TCP Connection(75)-127.0.0.1] Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-13 17:02:13,659 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [RMI TCP Connection(75)-127.0.0.1] Invocation of destroy method failed on bean with name 'entityManagerFactory': org.hibernate.exception.JDBCConnectionException: Unable to release JDBC Connection used for DDL execution
+2022-12-13 17:02:13,659 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [RMI TCP Connection(75)-127.0.0.1] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Die Datenbank wurde bereits geschlossen (um das automatische Schliessen beim Stopp der VM zu deaktivieren, die Datenbank URL mit ";DB_CLOSE_ON_EXIT=FALSE" ergänzen)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-12-13 17:02:13,660 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(75)-127.0.0.1] HikariPool-9 - Shutdown initiated...
+2022-12-13 17:02:13,661 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(75)-127.0.0.1] HikariPool-9 - Shutdown completed.
