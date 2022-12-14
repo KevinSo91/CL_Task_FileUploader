@@ -29,7 +29,7 @@
 	
 	
 	<!-- Button: Delete All Logfiles --> 
-	<div class="container text-right">
+	<div id="button-deleteAllLogfiles" class="container text-right deleteAllLogs">
 		<form method="POST" th:action="@{/logfiles/delete/all}">
 			<button type="submit" name="deleteAll" class="btn btn-danger" title="Delete All Logfile Objects & Files">Delete all Logfiles</button>
 		</form>		
@@ -37,9 +37,9 @@
 	
 	<br><br>
 	<!-- Tabelle Logfiles -->
-	<div class="container">
+	<div class="container-fluid table-main">
 	
-		<h1 align="center">Logfiles</h1>
+		<h1 class="headline">Logfiles</h1>
 		<br>
 		
 		<table id="table_logFiles" class="table table-bordered table-striped">
@@ -51,7 +51,9 @@
 					<th>Upload Time</th>
 					<th>Info</th>
 					<th>Lines Count</th>
-					<th>FAQ Hits</th>					
+					<th>FAQ Hits</th>
+					<th></th>
+					<th></th>					
 				</tr>				
 			</thead>
 			
@@ -68,19 +70,19 @@
 					<td th:switch="${logFile.matches.size()}">
 						<span th:case="0" th:text="${logFile.matches.size()}"></span>
 						<a th:case="*" th:href="@{/logfiles/all(showMatchesForLogfileId=${logFile.id})}" th:text="${logFile.matches.size()}"></a>						
-					</td>					
-					<!-- Remove Button -->
-					<td>
-						<form method="POST" th:action="@{/logfiles/delete(fileId=${logFile.id})}">
-							<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
-						</form>
 					</td>
 					<!-- Scan Button -->
 					<td>
 						<form method="POST" th:action="@{/logfiles/scan(fileId=${logFile.id})}">
 							<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
 						</form>
-					</td>					
+					</td>						
+					<!-- Remove Button -->
+					<td>
+						<form method="POST" th:action="@{/logfiles/delete(fileId=${logFile.id})}">
+							<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+						</form>
+					</td>									
 				</tr>
 			</tbody>
 			
@@ -92,7 +94,7 @@
 	
 	
 	<!-- Upload Form -->
-	<div class="container" style="border:1px solid #cecece">
+	<div class="container upload-form" style="border:1px solid #cecece">
 		<br>
 		<h3> Upload Logfile </h3>
 		<br>
@@ -100,7 +102,7 @@
 		<form method="POST" action="/logfiles/upload" enctype="multipart/form-data">
 		
 			<input type="file" name="uploadFile" accept="application/octet-stream|text/plain"
-				class="all" th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" />
+				th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" />
 			<!-- Info for User if no file has been selected -->
 			<span style="color:red" th:if="${messageNoFileError}">No File selected</span> <br><br>
 			<span>additional info: </span>

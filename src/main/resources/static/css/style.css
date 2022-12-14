@@ -1,23 +1,23 @@
 .noFile {
-	width:150px;
-	height:50px;	
+	width: 150px;
+	height: 50px;	
 	}
 
 .messageFadeOut {
 	animation: fadeOut 3s;
-	width:300px;
+	width: 300px;
 	position: absolute;
 }
 
 .noFileFormColor {
 	border-color: red;
-	border-width: 5px;
+	border-width: 3px;
 	border-style: solid;
 }
 
 
 .help-input {
-	margin: 20px 20px 20px 20px;
+	width: 90%;
 	
 }
 
@@ -25,6 +25,39 @@
 	position: absolute;
 }
 
+.table-main {
+	width: 90%;
+	margin-left: 100px;
+}
+
+.headline {
+	text-align: center;
+}
+
+/* logFiles */
+
+.deleteAllLogs {
+	margin-top: 10px;
+	position: absolute;	
+  	right: 100px;
+}
+
+.table-logfiles {
+	left: 50px;
+}
+
+.upload-form {
+	border: 1px solid black;
+	width: 500px;
+	margin-left: 100px;
+	margin-bottom: 50px;
+}
+
+.noBorder {
+	border: none;
+	border-right: none;
+	border-top: none;
+}
 
 
 
@@ -35,6 +68,10 @@
 
 
 
+
+.disabled-link {
+	pointer-events: none;
+}
 
 .fade-in {
 	animation: fadeIn 3s;

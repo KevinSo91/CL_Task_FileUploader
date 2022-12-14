@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+
+<div th:insert="baseStructure/header :: header">  </div>
+<div th:insert="baseStructure/navbar :: navbar">  </div>
+
+<head>
+	<title> TEST </title>		
+	
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	
+	<!-- JS für die Messages (Close on click, hide after fading) -->	 
+	<script th:src="@{/js/message.js}"></script>
+	
+	<!-- CSS/JS DataTable -->
+	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+	<script th:src="@{/js/table.js}"></script>
+			
+	
+	
+</head>
+
+
+<body>
+	
+	<br><br>
+
+	<!-- Tabelle Logfiles -->
+	<div id="logFiles" class="container-fluid table-main">
+	
+		<h1 class="headline">Logfiles</h1>
+		<br>
+		
+		<table id="table_logFiles" class="table table-bordered table-striped">
+		
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Upload Time</th>
+					<th>Info</th>
+					<th>Lines Count</th>
+					<th>FAQ Hits</th>
+					<th style="visibility: hidden"></th>					
+				</tr>				
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>aaa</td>
+					<td>testTime</td>
+					<td>testInfo</td>
+					<td>test LinesCount</td>
+					<td>test FAQ Hits</td>
+					<td>
+						<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
+						<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+					</td>						
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>bbb</td>
+					<td>testTime</td>
+					<td>testInfo</td>
+					<td>test LinesCount</td>
+					<td>test FAQ Hits</td>
+					<td>
+						<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
+						<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+					</td>							
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>bbb</td>
+					<td>testTime</td>
+					<td>testInfo</td>
+					<td>test LinesCount</td>
+					<td>test FAQ Hits</td>
+					<td>
+						<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
+						<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+					</td>							
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>bbb</td>
+					<td>testTime</td>
+					<td>testInfo</td>
+					<td>test LinesCount</td>
+					<td>test FAQ Hits</td>
+					<td>
+						<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
+						<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+					</td>							
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>bbb</td>
+					<td>testTime</td>
+					<td>testInfo</td>
+					<td>test LinesCount</td>
+					<td>test FAQ Hits</td>
+					<td>
+						<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
+						<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+					</td>							
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>bbb</td>
+					<td>testTime</td>
+					<td>testInfo</td>
+					<td>test LinesCount</td>
+					<td>test FAQ Hits</td>
+					<td>
+						<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
+						<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+					</td>							
+				</tr>
+			</tbody>
+			
+		</table>		
+		
+	</div>
+	
+	<br><br>
+
+
+	<!-- Upload Form -->
+	<div class="container upload-form">
+		<br>
+		<h3> Upload Logfile </h3>
+		<br>
+	
+		<form method="POST" action="/logfiles/upload" enctype="multipart/form-data">
+		
+			<input class="all" type="file" name="uploadFile" />
+			<br><br>				
+			<span>additional info: </span>
+			<input type="text" name="info" /><br><br>
+			<button type="submit" value="upload" class="btn btn-primary">upload</button>						
+		</form>
+		<br>
+	</div>
+
+</body>
+
+
+</html>

@@ -9,9 +9,15 @@
 </head>
 
 
-<body>	
+<body>
+	
+	<br><br>
   
-	<div class="container-fluid help-input">				 
+	<div class="container-fluid help-input">
+		
+		<h1 class="headline">Update Help</h1>
+		<br>
+						 
 		<form method="POST" action="#" th:action="@{/faq/updateHelp}">
 			<input type="hidden" name="helpId" th:value="${id}" readonly />
 			

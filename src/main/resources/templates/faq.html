@@ -10,13 +10,14 @@
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	
+	<!-- JS für die Messages (Close on click, hide after fading) -->	 
+	<script th:src="@{/js/message.js}"></script>
+	
 	<!-- CSS/JS DataTable -->
 	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 	<script th:src="@{/js/table.js}"></script>	
 	
-	<!-- JS für die Message-Animation --> 
-	<script th:src="@{/js/message.js}"></script>
 	
 </head>
 
@@ -28,7 +29,7 @@
 
 	<br><br>
 	
-	<div class="container">
+	<div class="container-fluid table-main">
 	
 		<h1 align="center">FAQ</h1>
 		<br>
