@@ -1,3 +1,12 @@
+body {
+	background-color: #f3f3f3;
+}
+
+navbar-custom {
+	background-color: red;
+}
+
+
 .noFile {
 	width: 150px;
 	height: 50px;	
@@ -5,7 +14,7 @@
 
 .messageFadeOut {
 	animation: fadeOut 3s;
-	width: 300px;
+	width: 500px;
 	position: absolute;
 }
 
@@ -17,8 +26,7 @@
 
 
 .help-input {
-	width: 90%;
-	
+	width: 90%;	
 }
 
 .noSpace {
@@ -60,7 +68,9 @@
 }
 
 
-
+h1 {
+	text-align: center;
+}
 
 
 

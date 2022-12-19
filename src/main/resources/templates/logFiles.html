@@ -18,6 +18,8 @@
 	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 	<script th:src="@{/js/table.js}"></script>	
 	
+	 <!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="/css/test-style.css"/>
 			
 </head>
 
@@ -27,163 +29,156 @@
 	<div id="messageSuccess" th:if="${messageSuccess}" class="alert alert-success messageFadeOut" role="alert"  th:text="${messageSuccess}"></div>
 	<div id="messageError" th:if="${messageError}" class="alert alert-danger messageFadeOut" role="alert" th:text="${messageError}"></div>
 	
+	<main>
 	
-	<!-- Button: Delete All Logfiles --> 
-	<div id="button-deleteAllLogfiles" class="container text-right deleteAllLogs">
-		<form method="POST" th:action="@{/logfiles/delete/all}">
-			<button type="submit" name="deleteAll" class="btn btn-danger" title="Delete All Logfile Objects & Files">Delete all Logfiles</button>
-		</form>		
-	</div>
-	
-	<br><br>
-	<!-- Tabelle Logfiles -->
-	<div class="container-fluid table-main">
-	
-		<h1 class="headline">Logfiles</h1>
-		<br>
-		
-		<table id="table_logFiles" class="table table-bordered table-striped">
-		
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Name</th>
-					<th>Upload Time</th>
-					<th>Info</th>
-					<th>Lines Count</th>
-					<th>FAQ Hits</th>
-					<th></th>
-					<th></th>					
-				</tr>				
-			</thead>
-			
-			<tbody>
-				<tr th:each="logFile : ${logFilesList}">
-					<td th:text="${logFile.id}"></td>
-					<td th:text="${logFile.fileName}"></td>					
-					<td th:text="${logFile.uploadTime}"></td>
-					<td th:text="${logFile.info}"></td>
-					<!-- Show Lines -->
-					<td><a th:href="@{/logfiles/all(showLinesForLogfileId=${logFile.id})}" th:text="${logFile.lines.size()}"></a></td>
-					<!--  -->
-					<!-- Show Matches (Soll nur als Link angezeigt werden, wenn Matches vorhanden sind) -->
-					<td th:switch="${logFile.matches.size()}">
-						<span th:case="0" th:text="${logFile.matches.size()}"></span>
-						<a th:case="*" th:href="@{/logfiles/all(showMatchesForLogfileId=${logFile.id})}" th:text="${logFile.matches.size()}"></a>						
-					</td>
-					<!-- Scan Button -->
-					<td>
-						<form method="POST" th:action="@{/logfiles/scan(fileId=${logFile.id})}">
-							<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
-						</form>
-					</td>						
-					<!-- Remove Button -->
-					<td>
-						<form method="POST" th:action="@{/logfiles/delete(fileId=${logFile.id})}">
-							<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
-						</form>
-					</td>									
-				</tr>
-			</tbody>
-			
-		</table>
-	
-	</div>
-	
-	<br><br>
-	
-	
-	<!-- Upload Form -->
-	<div class="container upload-form" style="border:1px solid #cecece">
-		<br>
-		<h3> Upload Logfile </h3>
-		<br>
-	
-		<form method="POST" action="/logfiles/upload" enctype="multipart/form-data">
-		
-			<input type="file" name="uploadFile" accept="application/octet-stream|text/plain"
-				th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" />
-			<!-- Info for User if no file has been selected -->
-			<span style="color:red" th:if="${messageNoFileError}">No File selected</span> <br><br>
-			<span>additional info: </span>
-			<input type="text" name="info" /><br><br>
-			<button type="submit" value="upload" class="btn btn-primary">upload</button>						
-		</form>
-		<br>
-	</div>
-	
-		
-	
-	<!-- Tabelle Lines -->
-	<div class="container" th:if="${logFileLines != NULL}">
-				
-		<h2>Text Lines:</h2>
-		<h3>File: <span th:text="${logFileLines.fileName}"></span></h3>
-		<br>
-		
-		<table id="table_logFileLines" class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Line Nr</th>					
-					<th>Line Text</th>				
-				</tr>
-				
-			</thead>
-			<tbody>
-				<tr th:each="line,iter : ${logFileLines.lines}">
-					<td th:text="${(iter.index)+1}"></td>					
-					<td th:text="${line}"></td>					
-				</tr>
-			</tbody>
-		</table>
+		<!-- Button: Delete All Logfiles --> 
+		<div id="button-deleteAllLogfiles" class="container text-right deleteAllLogs">
+			<form method="POST" th:action="@{/logfiles/delete/all}">
+				<button type="submit" name="deleteAll" class="btn btn-danger" title="Delete All Logfile Objects & Files">Delete all Logfiles</button>
+			</form>		
+		</div>
 		
 		<br><br>
 		
-	</div>	
-	
-	
-	
-	
-	<!-- Tabelle Matches -->
-	<div class="container" th:if="${logFileMatches != NULL}">
+		<!-- Upload Form -->
+		<div class="form-upload">
+			<br>
+			<h2> Upload Logfile </h2>
+			<br>
 		
-		<h2>Matches:</h2>
-		<h3>File: <span th:text="${logFileMatches.fileName}"></span></h3>
-		<br>
+			<form method="POST" action="/logfiles/upload" enctype="multipart/form-data">
+			
+				<input type="file" name="uploadFile" accept="application/octet-stream|text/plain"
+					th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" />
+				<!-- Info for User if no file has been selected -->
+				<br>
+				<span style="color:red" th:if="${messageNoFileError}">No File selected</span> <br><br>
+				<span>additional info: </span>
+				<input type="text" name="info" /><br><br>
+				<button type="submit" value="upload" class="btn btn-primary">upload</button>						
+			</form>
+			<br>
+		</div>
 		
-		<table id="table_logFileMatches" class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>LogFile ID</th>
-					<th>Line Nr</th>
-					<th>Line Text</th>
-					<th>regEx</th>		
-					<th>Help Text</th>
-					<th>Help Link</th>														
-				</tr>				
-			</thead>
-			<tbody>
-				<tr th:each="match : ${logFileMatches.matches}">
-					<td th:text="${logFileMatches.id}"></td>
-					<td th:text="${match.lineNr}"></td>
-					<td th:text="${match.lineText}"></td>
-					<td th:text="${match.help.regEx}"></td>
-					<td th:text="${match.help.helpText}"></td>
-					<td th:text="${match.help.link}"></td>		
-				</tr>
-			</tbody>
-		</table>
 		
-		<br><br>
+		<!-- Tabelle Logfiles -->
+		<div class="table-logfiles">
+		
+			<h1 class="headline">Logfiles</h1>
+			
+			
+			<table id="table_logFiles" class="table table-bordered table-striped">
+			
+				<thead>
+					<tr style="text-align: center;">
+						<th style="width: 10px">ID</th>
+						<th>Name</th>
+						<th style="width: 250px">Upload Time</th>
+						<th>Info</th>
+						<th style="width: 20px">Lines Count</th>
+						<th style="width: 20px">FAQ Hits</th>
+						<th style="width: 120px; visibility: hidden"></th>							
+					</tr>				
+				</thead>
 				
-	</div>
-	
-	<!-- jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	
-	<!-- CSS/JS DataTable -->
-	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-	<script th:src="@{/js/table.js}"></script>	
+				<tbody>
+					<tr th:each="logFile : ${logFilesList}">
+						<td th:text="${logFile.id}"></td>
+						<td th:text="${logFile.fileName}"></td>					
+						<td th:text="${logFile.uploadTime}"></td>
+						<td th:text="${logFile.info}"></td>
+						<!-- Show Lines -->
+						<td><a th:href="@{/logfiles/all(showLinesForLogfileId=${logFile.id})}" th:text="${logFile.lines.size()}"></a></td>
+						<!--  -->
+						<!-- Show Matches (Soll nur als Link angezeigt werden, wenn Matches vorhanden sind) -->
+						<td th:switch="${logFile.matches.size()}">
+							<span th:case="0" th:text="${logFile.matches.size()}"></span>
+							<a th:case="*" th:href="@{/logfiles/all(showMatchesForLogfileId=${logFile.id})}" th:text="${logFile.matches.size()}"></a>						
+						</td>						
+						<td>
+							<!-- Scan Button -->
+							<form class="button-logfile" method="POST" th:action="@{/logfiles/scan(fileId=${logFile.id})}">
+								<button type="submit" name="submit" value="scan" class="btn btn-success">scan</button>
+							</form>												
+							<!-- Remove Button -->						
+							<form class="button-logfile" method="POST" th:action="@{/logfiles/delete(fileId=${logFile.id})}">
+								<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+							</form>
+						</td>									
+					</tr>
+				</tbody>
+				
+			</table>
+		
+		</div>
+		
+				
+		<!-- Tabelle Lines -->
+		<div class="container table-lines" th:if="${logFileLines != NULL}">
+					
+			<h2>Text Lines</h2>
+			<h2>File: <span th:text="${logFileLines.fileName}"></span></h2>
+			<br>
+			
+			<table id="table_logFileLines" class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Line Nr</th>					
+						<th>Line Text</th>				
+					</tr>
+					
+				</thead>
+				<tbody>
+					<tr th:each="line,iter : ${logFileLines.lines}">
+						<td th:text="${(iter.index)+1}"></td>					
+						<td th:text="${line}"></td>					
+					</tr>
+				</tbody>
+			</table>
+			
+			<br><br>
+			
+		</div>	
+		
+		
+		
+		
+		<!-- Tabelle Matches -->
+		<div class="container table-matches" th:if="${logFileMatches != NULL}">
+			
+			<h2>Matches</h2>
+			<h2>File: <span th:text="${logFileMatches.fileName}"></span></h2>
+			<br>
+			
+			<table id="table_logFileMatches" class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>LogFile ID</th>
+						<th>Line Nr</th>
+						<th>Line Text</th>
+						<th>regEx</th>		
+						<th>Help Text</th>
+						<th>Help Link</th>														
+					</tr>				
+				</thead>
+				<tbody>
+					<tr th:each="match : ${logFileMatches.matches}">
+						<td th:text="${logFileMatches.id}"></td>
+						<td th:text="${match.lineNr}"></td>
+						<td th:text="${match.lineText}"></td>
+						<td th:text="${match.help.regEx}"></td>
+						<td th:text="${match.help.helpText}"></td>
+						<td th:text="${match.help.link}"></td>		
+					</tr>
+				</tbody>
+			</table>
+			
+			<br><br>
+					
+		</div>
+		
+	</main>
+		
 	
 	
 </body>

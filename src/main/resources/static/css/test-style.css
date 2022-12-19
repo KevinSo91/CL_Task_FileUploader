@@ -1,0 +1,66 @@
+/* 
+* {
+	border:2px solid #cecece;
+}
+*/
+
+body {
+	font-size: 16px;
+}
+
+body h1 {
+	text-align: center;
+	font-size: 32px;
+	/* border:2px solid #cecece; */
+}
+
+body h2 {	
+	text-align: center;
+	font-size: 26px;
+	/* border:2px solid #cecece; */
+}
+
+main {
+	margin-top: 30px;
+}
+
+
+.form-upload {
+	vertical-align: top;
+	padding: 10px;
+	margin-left: 30px;
+	border:2px solid #cecece;
+	display: inline-block;
+	box-sizing: border-box;
+	width: 350px;
+}
+
+.table-logfiles {
+	padding: 10px;
+	margin-bottom: 20px;
+	border:2px solid #cecece;
+	display: inline-block;
+	box-sizing: border-box;
+	width: 1300px;
+}
+
+.table-lines {
+	padding: 10px;
+	margin-bottom: 20px;
+	border:2px solid #cecece;
+	box-sizing: border-box;
+	width: 1300px;
+}
+
+.table-matches {
+	padding: 10px;
+	margin-bottom: 20px;
+	border:2px solid #cecece;
+	box-sizing: border-box;
+	width: 1300px;
+}
+
+.button-logfile{
+	display: inline-block;
+}
+

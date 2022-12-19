@@ -5,8 +5,6 @@ import lombok.Data;
 @Data
 public class Match{
 	
-	// Attributes
-	
 	
 	private int id;
 	
@@ -15,10 +13,7 @@ public class Match{
 	private String lineText;
 	private Help help;
 	
-	
-	
-	// Constructors
-	
+		
 	
 	public Match(int logFileId, long lineNr, String lineText, Help help) {
 		this.lineNr = lineNr;
