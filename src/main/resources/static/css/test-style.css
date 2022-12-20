@@ -42,6 +42,7 @@ main {
 	display: inline-block;
 	box-sizing: border-box;
 	width: 1300px;
+	white-space : nowrap;
 }
 
 .table-lines {
@@ -49,15 +50,21 @@ main {
 	margin-bottom: 20px;
 	border:2px solid #cecece;
 	box-sizing: border-box;
-	width: 1300px;
+	/*width: 1300px;*/
 }
+
 
 .table-matches {
 	padding: 10px;
 	margin-bottom: 20px;
+	margin-left:  400px;
 	border:2px solid #cecece;
 	box-sizing: border-box;
-	width: 1300px;
+	/*width: 1300px;*/
+}
+
+table thead {
+	text-align: center;
 }
 
 .button-logfile{

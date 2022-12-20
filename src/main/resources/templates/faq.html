@@ -59,7 +59,8 @@
 					<!-- delete Button -->
 					<td>
 						<form method="POST" th:action="@{/faq/deleteHelp(helpToDeleteId=${help.id})}">
-							<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+							<button type="submit" name="submit" value="delete" class="btn btn-danger"
+							onclick="return confirm('Delete Help?')">delete</button>
 						</form>
 					</td>			
 						

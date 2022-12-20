@@ -34,7 +34,8 @@
 		<!-- Button: Delete All Logfiles --> 
 		<div id="button-deleteAllLogfiles" class="container text-right deleteAllLogs">
 			<form method="POST" th:action="@{/logfiles/delete/all}">
-				<button type="submit" name="deleteAll" class="btn btn-danger" title="Delete All Logfile Objects & Files">Delete all Logfiles</button>
+				<button type="submit" name="deleteAll" class="btn btn-danger" title="Delete All Logfile Objects & Files"
+				 onclick="return confirm('Delete all Logfiles?')">Delete all Logfiles</button>
 			</form>		
 		</div>
 		
@@ -52,7 +53,8 @@
 					th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" />
 				<!-- Info for User if no file has been selected -->
 				<br>
-				<span style="color:red" th:if="${messageNoFileError}">No File selected</span> <br><br>
+				<span style="color:red" th:if="${messageNoFileError}">No File selected</span>
+				<br><br>
 				<span>additional info: </span>
 				<input type="text" name="info" /><br><br>
 				<button type="submit" value="upload" class="btn btn-primary">upload</button>						
@@ -67,17 +69,17 @@
 			<h1 class="headline">Logfiles</h1>
 			
 			
-			<table id="table_logFiles" class="table table-bordered table-striped">
+			<table id="table_logFiles" class="table-responsive table-bordered table-striped">
 			
 				<thead>
-					<tr style="text-align: center;">
-						<th style="width: 10px">ID</th>
-						<th>Name</th>
-						<th style="width: 250px">Upload Time</th>
+					<tr>
+						<th style="width:  30 px">ID</th>
+						<th style="width: 300 px">Name</th>
+						<th style="width: 250 px">Upload Time</th>
 						<th>Info</th>
-						<th style="width: 20px">Lines Count</th>
-						<th style="width: 20px">FAQ Hits</th>
-						<th style="width: 120px; visibility: hidden"></th>							
+						<th style="width:  30 px">Lines Count</th>
+						<th style="width:  30 px">FAQ Hits</th>
+						<th style="width: 120 px; visibility: hidden"></th>							
 					</tr>				
 				</thead>
 				
@@ -102,7 +104,8 @@
 							</form>												
 							<!-- Remove Button -->						
 							<form class="button-logfile" method="POST" th:action="@{/logfiles/delete(fileId=${logFile.id})}">
-								<button type="submit" name="submit" value="delete" class="btn btn-danger">delete</button>
+								<button type="submit" name="submit" value="delete" class="btn btn-danger"
+								 onclick="return confirm('Delete Logfile?')">delete</button>
 							</form>
 						</td>									
 					</tr>
@@ -114,7 +117,7 @@
 		
 				
 		<!-- Tabelle Lines -->
-		<div class="container table-lines" th:if="${logFileLines != NULL}">
+		<div class="table-lines" th:if="${logFileLines != NULL}">
 					
 			<h2>Text Lines</h2>
 			<h2>File: <span th:text="${logFileLines.fileName}"></span></h2>
@@ -144,7 +147,7 @@
 		
 		
 		<!-- Tabelle Matches -->
-		<div class="container table-matches" th:if="${logFileMatches != NULL}">
+		<div class="table-matches" th:if="${logFileMatches != NULL}">
 			
 			<h2>Matches</h2>
 			<h2>File: <span th:text="${logFileMatches.fileName}"></span></h2>
@@ -153,12 +156,12 @@
 			<table id="table_logFileMatches" class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>LogFile ID</th>
-						<th>Line Nr</th>
-						<th>Line Text</th>
-						<th>regEx</th>		
-						<th>Help Text</th>
-						<th>Help Link</th>														
+						<th style="width:  20 px">LogFile ID</th>
+						<th style="width:  20 px">Line Nr</th>
+						<th style="width: 300 px">Line Text</th>
+						<th style="width: 300 px">regEx</th>		
+						<th style="width: 300 px">Help Text</th>
+						<th style="width: 200 px">Help Link</th>														
 					</tr>				
 				</thead>
 				<tbody>
