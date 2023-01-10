@@ -50,14 +50,21 @@
 			<form method="POST" action="/logfiles/upload" enctype="multipart/form-data">
 			
 				<input type="file" name="uploadFile" accept="application/octet-stream|text/plain"
-					th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" />
-				<!-- Info for User if no file has been selected -->
+					th:classappend="${messageNoFileError != NULL ? 'noFileFormColor' : 'all'}" 
+					th:value="${multiFile != NULL}? multiFile : NULL"
+					
+					/>				
 				<br>
+				<!-- Info for User if no file has been selected -->
 				<span style="color:red" th:if="${messageNoFileError}">No File selected</span>
 				<br><br>
 				<span>additional info: </span>
 				<input type="text" name="info" /><br><br>
-				<button type="submit" value="upload" class="btn btn-primary">upload</button>						
+				<button type="submit" value="upload" class="btn btn-primary">upload</button>
+				<!-- IF: File with name already exists -->
+				<div th:if="${messageFileAlreadyExistsInfo}">					
+					<span>File with same Name already exists</span>					
+				</div>										
 			</form>
 			<br>
 		</div>
@@ -161,7 +168,8 @@
 						<th style="width: 300 px">Line Text</th>
 						<th style="width: 300 px">regEx</th>		
 						<th style="width: 300 px">Help Text</th>
-						<th style="width: 200 px">Help Link</th>														
+						<th style="width: 200 px">Help Link</th>
+						<th style="visibility: hidden"></th>													
 					</tr>				
 				</thead>
 				<tbody>
@@ -171,7 +179,13 @@
 						<td th:text="${match.lineText}"></td>
 						<td th:text="${match.help.regEx}"></td>
 						<td th:text="${match.help.helpText}"></td>
-						<td th:text="${match.help.link}"></td>		
+						<td th:text="${match.help.link}"></td>
+						<td>
+							<a th:href="'mailto:?body=' + ${match}">								
+								<button id="button_email" name="email" class="btn btn-primary">email</button>
+							</a>
+								
+						</td>
 					</tr>
 				</tbody>
 			</table>

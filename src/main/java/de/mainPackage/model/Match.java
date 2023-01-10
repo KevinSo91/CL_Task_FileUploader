@@ -21,5 +21,12 @@ public class Match{
 		this.help = help;
 	}
 
+	@Override
+	public String toString() {
+		String matchAsString;
+		matchAsString = "LogfileLine: " + this.lineText + "\nHelpText: " + this.help.getHelpText();		
+		return matchAsString;
+	}
+	
 	
 }

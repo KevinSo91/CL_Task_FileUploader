@@ -1,6 +1,8 @@
 package de.mainPackage.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -33,6 +35,8 @@ public class LogFileController {
 	
 	@Value("${logfiles.defaultDirectory}")
 	private String defaultDirectoy;
+	
+	private MultipartFile tempFile = null;
 		
 
 	
@@ -41,6 +45,8 @@ public class LogFileController {
 	public String getUploadPage(Model model 
 								,@RequestParam(value = "showLinesForLogfileId", required=false) Integer showLinesForLogfileId,
 								 @RequestParam(value = "showMatchesForLogfileId", required=false) Integer showMatchesForLogfileId
+//								 ,
+//								 @RequestParam(value = "messageFileAlreadyExistsInfo", required=false) String messageFileAlreadyExistsInfo
 								) {
 		model.addAttribute("activePage", "logfiles");
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());
@@ -52,6 +58,11 @@ public class LogFileController {
 			model.addAttribute("logFileMatches", this.logFileService.getLogFileById(showMatchesForLogfileId.intValue()));
 		}
 		
+		
+//		if(messageFileAlreadyExistsInfo != null) {
+//			model.addAttribute("messageFileAlreadyExistsInfo", messageFileAlreadyExistsInfo);
+//		}
+		
 		return "logFiles";
 	}
 	
@@ -60,6 +71,7 @@ public class LogFileController {
 	@PostMapping("/upload")
 	public String uploadFile(@RequestParam("uploadFile") MultipartFile file,
 							@RequestParam("info") String info,
+//							@RequestParam(value = "alternateName", required=false) String alternateName,
 							RedirectAttributes redirectAttributes
 							) throws IOException {		
 		
@@ -69,8 +81,30 @@ public class LogFileController {
 			return "redirect:/logfiles/all";
 		}
 		
+//		// Fall: File mit gleichem Namen bereits vorhanden
+//		String fileName = file.getOriginalFilename();
+//		Path filePath = Paths.get(this.logFileService.getDefaultDirectoy() + "\\" + LocalDate.now().toString() + "\\" + fileName);
+//		if(Files.exists(filePath)) {
+//			redirectAttributes.addFlashAttribute("messageFileAlreadyExistsInfo", fileName);
+//			model.addAttribute("multiFile", file);
+//			redirectAttributes.addAttribute("info", info);
+//			System.out.println("existiert bereits");
+//			return "redirect:/logfiles/all";
+//		}
+		
+		String directory = LocalDate.now().toString();
+		
+		String fileName = file.getOriginalFilename();
+		Path filePath = Paths.get(this.logFileService.getDefaultDirectoy() + "\\" + LocalDate.now().toString() + "\\" + fileName);
+		if(Files.exists(filePath)) {
+			directory = directory + "\\temp";
+		}
+		
+		
+		
+		
 		// Speichere Datei in Ordner mit aktuellem Datum
-		LogFile logFile = this.logFileService.uploadLogFile(file, LocalDate.now().toString(), info);				
+		LogFile logFile = this.logFileService.uploadLogFile(file, directory , info);				
 		// Schreibe Zeilen in ArrayList 'lines'
 		this.logFileService.saveLogFileLinesInArray(logFile);
 		// Prüfe gegen DB auf Treffer-Pattern
