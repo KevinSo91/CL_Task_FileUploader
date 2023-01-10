@@ -63,8 +63,6 @@ public class LogFileController {
 							RedirectAttributes redirectAttributes
 							) throws IOException {		
 		
-//--->	TODO: Prüfe: Datei ausgewählt? -> Datei-Typ und Größe
-
 		// Fall: Kein File ausgewählt		
 		if(!LogFileService.validateFile(file).equals("ok")) {
 			redirectAttributes.addFlashAttribute("messageNoFileError", "No File selected");

@@ -111,8 +111,8 @@ public class LogFileService{
 		else {
 			int i = 1;
 			while(Files.exists(filePath)) {
-				filePath = Paths.get(filePath + "(" + i +")");
-				fileName = fileName + "(" + i +")";
+				filePath = Paths.get(filePath + "(" + i + ")");
+				fileName = fileName + "(" + i + ")";
 				i++;
 			}
 		}
