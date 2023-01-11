@@ -45,8 +45,6 @@ public class LogFileController {
 	public String getUploadPage(Model model 
 								,@RequestParam(value = "showLinesForLogfileId", required=false) Integer showLinesForLogfileId,
 								 @RequestParam(value = "showMatchesForLogfileId", required=false) Integer showMatchesForLogfileId
-//								 ,
-//								 @RequestParam(value = "messageFileAlreadyExistsInfo", required=false) String messageFileAlreadyExistsInfo
 								) {
 		model.addAttribute("activePage", "logfiles");
 		model.addAttribute("logFilesList", logFileService.getAllLogFiles());

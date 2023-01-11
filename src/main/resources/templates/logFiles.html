@@ -13,6 +13,10 @@
 	<!-- JS für die Messages (Close on click, hide after fading) -->	 
 	<script th:src="@{/js/message.js}"></script>
 	
+	<!-- JS für die Mail-Funktion -->
+	<script th:src="@{/js/mail.js}"></script>
+	
+	
 	<!-- CSS/JS DataTable -->
 	<link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -160,7 +164,7 @@
 			<h2>File: <span th:text="${logFileMatches.fileName}"></span></h2>
 			<br>
 			
-			<table id="table_logFileMatches" class="table table-bordered table-striped">
+			<table id="table_logFileMatches" class="table table-bordered table-striped" style="white-space: pre">
 				<thead>
 					<tr>
 						<th style="width:  20 px">LogFile ID</th>
@@ -169,6 +173,7 @@
 						<th style="width: 300 px">regEx</th>		
 						<th style="width: 300 px">Help Text</th>
 						<th style="width: 200 px">Help Link</th>
+						<!-- <th>export</th> -->
 						<th style="visibility: hidden"></th>													
 					</tr>				
 				</thead>
@@ -176,15 +181,18 @@
 					<tr th:each="match : ${logFileMatches.matches}">
 						<td th:text="${logFileMatches.id}"></td>
 						<td th:text="${match.lineNr}"></td>
-						<td th:text="${match.lineText}"></td>
+						<td th:text="${match.lineText}" id="lineText"></td>
 						<td th:text="${match.help.regEx}"></td>
-						<td th:text="${match.help.helpText}"></td>
-						<td th:text="${match.help.link}"></td>
-						<td>
-							<a th:href="'mailto:?body=' + ${match}">								
+						<td th:text="${match.help.helpText}" id="helpText"></td>
+						<td th:text="${match.help.link}" id="link"></td>
+						<!--  <td th:text="${match.exportText}" id="exportText"></td> -->
+						<td><!-- 
+							<a th:href="'mailto:?body=' + ${match.exportText}">								
 								<button id="button_email" name="email" class="btn btn-primary">email</button>
 							</a>
-								
+								--> 
+							<input type="button" value="email" class="btn btn-primary" id="button_email" onclick="SendMail()">
+							
 						</td>
 					</tr>
 				</tbody>

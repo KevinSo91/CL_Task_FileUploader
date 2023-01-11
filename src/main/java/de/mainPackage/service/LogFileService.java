@@ -172,7 +172,9 @@ public class LogFileService{
 			ArrayList<Help> matches = this.helpService.checkLineForMatches(line);
 			if (matches.size() > 0) {
 				for (Help help : matches) {
-					logFile.addMatch(new Match(logFile.getId(), lineIndex, line, help));
+					Match match = new Match(logFile.getId(), lineIndex, line, help);
+					System.out.println(match.toExportFormat(line, help));
+					logFile.addMatch(match);
 				}					
 			}
 			lineIndex++;
